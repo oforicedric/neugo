@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Sweat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+	<!-- Font -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+
+	<link href="{% static 'feed/common-css/bootstrap.css' %}" rel='stylesheet' type='text/css'>
+	<link href="{% static 'feed/common-css/ionicons.css' %}"  rel='stylesheet'type='text/css'>
+    <link href="{% static 'feed/styles1.css' %}" rel='stylesheet' type='text/css'>
+	<link href="{% static 'feed/front-page-category/css/responsive.css' %}" rel='stylesheet'type='text/css'>
+	<link href="{% static 'users/css/main.css' %}" rel='stylesheet' type='text/css' >
+	<!-- <link href="{% static 'feed/countdown/countdowncss.css' %}" rel='stylesheet' type='text/css' > -->
+
+</head>
+<body >
+
+	<header>
+		<div class="container-fluid position-relative no-side-padding">
+
+			<!-- <a href="#" class="logo"><img src="images/logo.png" alt="Logo Image"></a> -->
+
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+			<ul class="main-menu visible-on-click" id="main-menu">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Discover</a></li>
+				<li><a href="#">Notifications</a></li>
+				<li><a href="#">Messages</a></li>
+			</ul><!-- main-menu -->
+
+			<div class="src-area">
+				<form>
+					<button class="src-btn" type="submit"><i class="ion-ios-search-strong" ></i></button>
+					<input class="src-input" type="text" placeholder="Type of search">
+				</form>	
+				
+			</div>
+			
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+			
+			<ul class="main-menu visible-on-click" id="main-menu">
+                <li><a href="{% url 'login' %}">Login/Register</a></li>
+				<li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+		</div><!-- conatiner -->
+	</header>
+
+ {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+{% block content %} 	
+{% endblock %}
+
+	<!-- SCIPTS -->
+
+	
+
+</body>
+</html>
