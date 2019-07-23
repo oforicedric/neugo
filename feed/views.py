@@ -8,6 +8,10 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Post,Task
+#to render a http page functions must have request passed in
+
+#.models contains Post and Task models, Task i created later to try and create a class which when a Task object was created 
+#would start a timer for the set amount of time.
 
 def ChoiceView(request):
 	return render(request,'feed/choice.html')
@@ -28,6 +32,7 @@ class TaskView(ListView):
 	model = Task
 	template_name = 'feed/neugo.html'
 
+#creates a task in the feed, fields exists in the create_task.html file which populates the page with input 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['task','level', 'time']
@@ -36,11 +41,12 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
 	    form.instance.user = self.request.user
 	    return super().form_valid(form)
-		
+#takes us to specific task - further information on a task, inherits from detail view and sets further atributes; model/template_name		
 class TaskDetailView(DetailView):
     model = Task
     template_name ='feed/task_detail.html'
-
+	
+#Class which shoes posts in a list formast
 class PostListView(ListView):
     model = Post
     template_name = 'feed/home.html'  # <app>/<model>_<viewtype>.html
@@ -52,7 +58,7 @@ class PostDetailView(DetailView):
     model = Post
     template_name ='feed/post_detail.html'
 
-
+#class for creating new post
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
@@ -62,7 +68,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-
+#class for updating view
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
@@ -77,7 +83,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
-
+#class for deleting view
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = '/'
