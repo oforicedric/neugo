@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+#stores attributes to create a post
 class Post(models.Model):
 	title = models.CharField(max_length=200)
 	content = models.TextField()
