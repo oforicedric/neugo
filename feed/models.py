@@ -16,6 +16,8 @@ class Post(models.Model):
 	def get_absolute_url(self):
 		return reverse('post-detail', kwargs={'pk': self.pk})
 		
+#attributes to create a task, tried to add time and level so it shows for every new task created here is where i got stuck 
+#with getting time to start when new object is created on feed
 
 class Task(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
