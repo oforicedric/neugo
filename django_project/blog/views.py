@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
@@ -8,7 +8,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post, FinishPost
 
 
 def home(request):
@@ -46,16 +46,10 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'content']
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
         return render(self.request, 'blog/study.html', {'title': 'About'})
 
-class FinishStudyView(LoginRequiredMixin, CreateView):
-    model = Post
-    fields = ['title', 'content']
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+def choose_city(request):
+    return redirect('deals_by_city', city_id=request.POST['city'])
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
@@ -82,6 +76,5 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-
 def about(request):
-    return render(request, 'blog/study.html', {'title': 'About'})
+    return render(request, 'blog/about.html', {'title': 'About'})
