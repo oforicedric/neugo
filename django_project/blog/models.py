@@ -5,10 +5,10 @@ from django.urls import reverse
 
 STUDY_TIME_LENGTHS = (
     ('', 'Choose...'),
-    ('15', '15 minutes'),
-    ('20', '20 minutes'),
-    ('25', '25 minutes'),
-    ('30', '30 minutes')
+    ('15 minutes', '15 minutes'),
+    ('20 minutes', '20 minutes'),
+    ('25 minutes', '25 minutes'),
+    ('30 minutes', '30 minutes')
 )
 
 class Post(models.Model):
@@ -21,4 +21,4 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_form')
+        return reverse('post-detail', kwargs={'pk': self.pk})

@@ -17,6 +17,11 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
+def study(request): 
+    return render(request, 'blog/study.html')
+
+def about(request):
+    return render(request, 'blog/about.html', {'title': 'About'})
 
 class PostListView(ListView):
     model = Post
@@ -48,8 +53,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
+        
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
@@ -74,7 +78,3 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
-
-
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
