@@ -30,19 +30,4 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk}) 
-
-class BackendTimer(models.Model): 
-    start = "start" #time.time()  
-    end = "end" #start + 15 * 60
-    title = "title"
-
-    def __str__(self): 
-        return self.title
-
-    def finishSession(self):
-        if time.time() < self.end:
-            self.end = time.time() 
-        self.save() 
-
-            
+        return reverse('post-detail', kwargs={'pk': self.pk})             

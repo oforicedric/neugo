@@ -8,7 +8,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post, BackendTimer
+from .models import Post
 from django.utils import timezone
 
 def home(request):
@@ -36,8 +36,6 @@ def finish_study(request):
     return render(request, 'blog/home.html', context)
 
 def study(request): 
-    model = BackendTimer()
-    model.save()
     return render(request, 'blog/study.html')
 
 def about(request):
