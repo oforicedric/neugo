@@ -8,8 +8,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
-
+from .models import Post, BackendTimer
+from django.utils import timezone
 
 def home(request):
     context = {
@@ -17,7 +17,27 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
+def finish_study(request):
+
+    from utils.make_a_new_blog_post import make_a_post
+    
+    dummy_date_1 = timezone.now()
+    dummy_date_2 = timezone.now()
+    time_studied = dummy_date_2.microsecond - dummy_date_1.microsecond
+
+    make_a_post(start_date=dummy_date_1,
+                time_studied=2,
+                user=request.user)
+
+    context = {
+        'posts': Post.objects.all()
+    }
+    
+    return render(request, 'blog/home.html', context)
+
 def study(request): 
+    model = BackendTimer()
+    model.save()
     return render(request, 'blog/study.html')
 
 def about(request):
