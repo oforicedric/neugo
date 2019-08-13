@@ -10,6 +10,7 @@ from django.views.generic import (
 )
 from .models import Post
 from django.utils import timezone
+import time 
 
 def home(request):
     context = {
@@ -21,12 +22,11 @@ def finish_study(request):
 
     from utils.make_a_new_blog_post import make_a_post
     
-    dummy_date_1 = timezone.now()
-    dummy_date_2 = timezone.now()
-    time_studied = dummy_date_2.microsecond - dummy_date_1.microsecond
+    time_finished = int(round(time.time())) 
+    time_studied = time_finished - request.session['start_time']
 
-    make_a_post(start_date=dummy_date_1,
-                time_studied=2,
+    make_a_post(start_date=timezone.now(),
+                time_studied=time_studied,
                 user=request.user)
 
     context = {
@@ -36,6 +36,7 @@ def finish_study(request):
     return render(request, 'blog/home.html', context)
 
 def study(request): 
+    request.session['start_time'] = int(round(time.time()))
     return render(request, 'blog/study.html')
 
 def about(request):
