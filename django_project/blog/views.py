@@ -29,11 +29,7 @@ def finish_study(request):
                 time_studied=time_studied,
                 user=request.user)
 
-    context = {
-        'posts': Post.objects.all()
-    }
-    
-    return render(request, 'blog/home.html', context)
+    return home(request)
 
 def study(request): 
     request.session['start_time'] = int(round(time.time()))
