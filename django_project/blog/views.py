@@ -28,8 +28,13 @@ def finish_study(request):
     make_a_post(start_date=timezone.now(),
                 time_studied=time_studied,
                 user=request.user)
+    
+    # 1 second = 1 wallet point
+    profile = request.user.profile
+    profile.wallet_points = request.user.profile.wallet_points + time_studied
+    profile.save() 
 
-    return home(request)
+    return home(request) 
 
 def study(request): 
     request.session['start_time'] = int(round(time.time()))
