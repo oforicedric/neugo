@@ -3,13 +3,17 @@
 <html>
 
 <body>
-    <script src = "{% static 'load_rewards.js' %}"></script>
-    <img src="/static/queue_skip.png" id='changeImage' />
-    <select id="itemImage" name="itemImage">
-        <option data-img="/static/queue_skip.png">Sport's Night Queue Skip at Loop (10 points)</option>
-        <option data-img="/static/XOYO.png" }>XOYO Free Entry (10 points)</option>
-        <option data-img="/static/free_coffee.png">Union Cafe Lunch (10 points)</option>
-        <option data-img="/static/nandos_chicken.png">Nando's 10 Chicken Wings (10 points)</option>
+    <p id="demo"></p>
+    <script src="{% static 'load_rewards.js' %}"></script>
+    <img src="/static/XOYO.png" id="img" />
+    <img src="/static/queue_skip.png" id="img" />
+    <img src="/static/free_coffee.png" id="img" />
+    <img src="/static/nandos_chicken.png" id="img" />
+    <select id="image" name="CarList">
+        <option value="queue_skip">Sport's Night Queue Skip at Loop (10 points)</option>
+        <option value="XOYO">XOYO Free Entry (10 points)</option>
+        <option value="free_coffee">Union Cafe Lunch (10 points)</option>
+        <option value="nandos_chicken">Nando's 10 Chicken Wings (10 points)</option>
     </select>
     <form action="finish" method="GET">
         <button type="submit">get rewards</button>
