@@ -1,13 +1,21 @@
+{% load static %}
 <!DOCTYPE HTML> 
 <html> 
 <head>  
+    <link rel="stylesheet" type="text/css" href="{% static 'css/timer.css' %}">
 </head> 
 <body> 
 <p id="demo"></p> 
-{% load static %}
+
 <script src = "{% static 'example.js' %}"></script> 
 <form action="finish" method="GET">
     <button type="submit">finish session</button>
 </form>
+<div id="countdown">
+        <div id="countdown-number"></div>
+        <svg>
+          <circle r="18" cx="20" cy="20"></circle>
+        </svg>
+</div>
 </body> 
 </html> 

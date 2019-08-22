@@ -40,6 +40,9 @@ def study(request):
     request.session['start_time'] = int(round(time.time()))
     return render(request, 'blog/study.html')
 
+def rewards(request): 
+    return render(request, 'blog/rewards.html')
+
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 
