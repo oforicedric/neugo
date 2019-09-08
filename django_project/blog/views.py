@@ -53,9 +53,6 @@ def purchase_rewards(request):
 
     return make_a_code(request)
 
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
-
 class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
