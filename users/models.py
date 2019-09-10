@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import PIL
-from PIL import Image
+import Image
 
 
 class Profile(models.Model):
