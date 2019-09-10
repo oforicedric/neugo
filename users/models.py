@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.auth.models import User
 from PIL import Image
 
-# profile model, attibutes can be added using models class
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
@@ -11,7 +11,7 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     def save(self, *args, **kwargs):
-        super(Profile, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
