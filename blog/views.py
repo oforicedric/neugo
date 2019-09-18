@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
@@ -8,8 +8,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post, FinishPost
-
+from .models import Post
+from django.utils import timezone
+import time 
 
 def home(request):
     context = {
@@ -17,6 +18,40 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
+def finish_study(request):
+
+    from utils.make_a_new_blog_post import make_a_post
+    
+    time_finished = int(round(time.time())) 
+    time_studied = time_finished - request.session['start_time']
+
+    make_a_post(start_date=timezone.now(),
+                time_studied=time_studied,
+                user=request.user)
+    
+    # 1 second = 1 wallet point
+    profile = request.user.profile
+    profile.wallet_points = request.user.profile.wallet_points + time_studied
+    profile.save() 
+
+    return home(request) 
+
+def study(request): 
+    request.session['start_time'] = int(round(time.time()))
+    return render(request, 'blog/study.html')
+
+def rewards(request): 
+    return render(request, 'blog/rewards.html')
+
+def make_a_code(request): 
+    return render(request, 'blog/make_a_code.html')
+
+def purchase_rewards(request):
+    profile = request.user.profile 
+    profile.wallet_points = request.user.profile.wallet_points - 10 
+    profile.save() 
+
+    return make_a_code(request)
 
 class PostListView(ListView):
     model = Post
@@ -46,11 +81,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'content']
 
     def form_valid(self, form):
-        return render(self.request, 'blog/study.html', {'title': 'About'})
-
-def choose_city(request):
-    return redirect('deals_by_city', city_id=request.POST['city'])
-
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+        
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
@@ -75,6 +108,3 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
-
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
