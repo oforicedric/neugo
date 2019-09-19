@@ -36,6 +36,9 @@ def finish_study(request):
 
     return home(request) 
 
+def map(request):
+    return render(request, 'blog/map.html')
+
 def study(request): 
     request.session['start_time'] = int(round(time.time()))
     return render(request, 'blog/study.html')
