@@ -12,6 +12,11 @@
     
     <link rel="stylesheet"  href="{% static 'css\app\app.css' %}">
     <link rel="stylesheet"  href="{% static 'css\vendor\all.css' %}">
+
+    <link href="{% static 'rewards/css/app/app.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'rewards/css/vendor/all.css' %}" rel="stylesheet">
+
     
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}"> {% if title %}
     <title>Neugo - {{ title }}</title>
@@ -57,7 +62,9 @@
                 <div class="alert alert-{{ message.tags }}">
                     {{ message }}
                 </div>
-                {% endfor %} {% endif %} {% block content %}{% endblock %}
+                {% endfor %} {% endif %} 
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
     </main>

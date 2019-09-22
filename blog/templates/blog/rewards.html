@@ -1,63 +1,32 @@
 {% load static %}
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l1 sidebar-r1-xs sidebar-r-48pc-lg sidebar-r-40pc" lang="en">
+
 <head>
     <link href="{% static 'rewards/css/app/app.css' %}" rel="stylesheet">
     
     <link href="{% static 'rewards/css/vendor/all.css' %}" rel="stylesheet">
-
+    
 </head>
 
-<body>
-    <!--<p id="demo"></p>
+    <body class = "breakpoint-768">
 
-    <script src="{% static 'load_rewards.js' %}"></script>
-    <img src="/static/XOYO.png" id="img" />
-    <img src="/static/queue_skip.png" id="img" />
-    <img src="/static/free_coffee.png" id="img" />
-    <img src="/static/nandos_chicken.png" id="img" />
-    <select id="image" name="CarList">
-        <option value="queue_skip">Sport's Night Queue Skip at Loop (10 points)</option>
-        <option value="XOYO">XOYO Free Entry (10 points)</option>
-        <option value="free_coffee.png">Union Cafe Lunch (10 points)</option>
-        <option value="nandos_chicken.png">Nando's 10 Chicken Wings (10 points)</option>
-    </select>
-    <form action="purchase_rewards" method="GET">
-        <button type="submit">get rewards</button>
-    </form>
-    
-    <div class="panel-body">
-        <h4 class="margin-v-0-5">Superb Backyard</h4>
-        <p class="small">
-            <span class="fa fa-fw fa-star text-yellow-800"></span>
-            <span class="fa fa-fw fa-star text-yellow-800"></span>
-            <span class="fa fa-fw fa-star text-yellow-800"></span>
-            <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-            <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <span class="label label-grey-100">&euro;175,654.00</span>&nbsp;
-
-        <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
-
-        <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
-    </div>-->
-    <aside class="sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id=sidebar-map data-toggle-layout=true data-toggle-bar=true>
+    <div class = "st-container">   
+        <aside class="sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id=sidebar-map data-toggle-layout=true data-toggle-bar=true>
             <div data-scrollable>
-      
               <div class="sidebar-block sidebar-block-full padding-none">
                 <div class="cover overlay hover cover-image-full height-220">
-                  <img src="images/photodune-3979102-superb-backyard-xs.jpg" alt="people" />
+                  <img src="/static/nandos_chicken.png" id ="img" />
                   <div class="overlay overlay-bg-black overlay-full">
                     <div class="v-center">
-                      <h3 class="text-overlay text-headline">Featured Property</h3>
-                      <p class="text-overlay text-subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <h3 class="text-overlay text-headline">Featured Reward of the week</h3>
+                      <p class="text-overlay text-subhead">Use your points to get 25% off Nandoes!</p>
                       <p class="text-h5">
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-white"></span>
+                        <span class="fa fa-f    w fa-star-o text-white"></span>
                       </p>
                     </div>
                   </div>
@@ -69,13 +38,13 @@
                 </div>
               </div>
       
-              <h4 class="category">Properties</h4>
+              <h4 class="category">Rewards</h4>
               <div class="sidebar-block padding-none">
                 <div data-toggle="gridalicious" data-width="200">
                   <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Sale</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-378874-real-estate-xs.jpg" alt="location" class="img-responsive" />
+                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Food</div>
+                    <div class="cover hover overlajpgy margin-none">
+                      <img src="/static/free_coffee.png" alt="location" class="img-responsive" />
                       <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
                         <span class="v-center">
                       <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
@@ -83,7 +52,7 @@
                       </a>
                     </div>
                     <div class="panel-body">
-                      <h4 class="margin-v-0-5">Property for sale</h4>
+                      <h4 class="margin-v-0-5">Free coffee at your library</h4>
                       <p class="small">
                         <span class="fa  fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
@@ -91,176 +60,110 @@
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
                       </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;277,028.00</span>&nbsp;
+                      <p>collect 100 points to get a free coffee!</p>
+                      <span class="label label-blue">points: 100</span>&nbsp;
       
                       <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
       
                       <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
                     </div>
                   </div>
-                  <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-default inline absolute left margin-none">Sale</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-195203-houses-xs.jpg" alt="location" class="img-responsive" />
-                      <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
+                </div>
+              </div>
+        
+              <div class="sidebar-block padding-none">
+                <div data-toggle="gridalicious" data-width="200">
+                    <div class="panel panel-default relative">
+                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Career</div>
+                    <div class="cover hover overlajpgy margin-none">
+                        <img src="/static/jp.png" alt="location" class="img-responsive" />
+                        <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
                         <span class="v-center">
-                      <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                        <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
                         </span>
-                      </a>
+                        </a>
                     </div>
                     <div class="panel-body">
-                      <h4 class="margin-v-0-5">Property for sale</h4>
-                      <p class="small">
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                        <h4 class="margin-v-0-5">Investment banking prep!</h4>
+                        <p class="small">
+                        <span class="fa  fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;82,331.00</span>&nbsp;
-      
-                      <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
-      
-                      <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
+                        </p>
+                        <p>collect 500 points for JP Morgan psychometric prep quetions</p>
+                        <span class="label label-blue">points: 500</span>&nbsp;
+        
+                        <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
+        
+                        <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
                     </div>
-                  </div>
-                  <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-default inline absolute left margin-none">Sale</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-196089-house-xs.jpg" alt="location" class="img-responsive" />
-                      <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
+                    </div>
+                </div>
+              </div>
+
+              <div class="sidebar-block padding-none">
+                <div data-toggle="gridalicious" data-width="200">
+                    <div class="panel panel-default relative">
+                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Events</div>
+                    <div class="cover hover overlajpgy margin-none">
+                        <img src="/static/XOYO.png" alt="location" class="img-responsive" />
+                        <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
                         <span class="v-center">
-                      <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                        <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
                         </span>
-                      </a>
+                        </a>
                     </div>
                     <div class="panel-body">
-                      <h4 class="margin-v-0-5">Property for sale</h4>
-                      <p class="small">
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                        <h4 class="margin-v-0-5">Jump the queue at XOYO every friday!</h4>
+                        <p class="small">
+                        <span class="fa  fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;81,662.00</span>&nbsp;
-      
-                      <i class="small fa fa-fw icon-user-1" data-toggle="tooltip" data-title="Individual"></i>
-      
-                      <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
+                        </p>
+                        <p>collect 50 points for the queue jump!</p>
+                        <span class="label label-blue">points: 50</span>&nbsp;
+        
+                        <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
+        
+                        <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
                     </div>
-                  </div>
-                  <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Rent</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-197173-residential-home-xs.jpg" alt="location" class="img-responsive" />
-                      <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
+                    </div>
+                </div>
+              </div>
+
+              <div class="sidebar-block padding-none">
+                <div data-toggle="gridalicious" data-width="200">
+                    <div class="panel panel-default relative">
+                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Food</div>
+                    <div class="cover hover overlajpgy margin-none">
+                        <img src="/static/nandos_chicken.png" alt="location" class="img-responsive" />
+                        <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
                         <span class="v-center">
-                      <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                        <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
                         </span>
-                      </a>
+                        </a>
                     </div>
                     <div class="panel-body">
-                      <h4 class="margin-v-0-5">Residential Home</h4>
-                      <p class="small">
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                        <h4 class="margin-v-0-5">25% off Nandos</h4>
+                        <p class="small">
+                        <span class="fa  fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
                         <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;132,021.00</span>&nbsp;
-      
-                      <i class="small fa fa-fw icon-user-1" data-toggle="tooltip" data-title="Individual"></i>
-      
-                      <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
+                        </p>
+                        <p>collect 200 points for a cheeky nandos!</p>
+                        <span class="label label-blue">points: 200</span>&nbsp;
+        
+                        <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
+        
+                        <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
                     </div>
-                  </div>
-                  <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Rent</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-3979102-superb-backyard-xs.jpg" alt="location" class="img-responsive" />
-                      <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
-                        <span class="v-center">
-                      <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
-                        </span>
-                      </a>
                     </div>
-                    <div class="panel-body">
-                      <h4 class="margin-v-0-5">Superb Backyard</h4>
-                      <p class="small">
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;175,654.00</span>&nbsp;
-      
-                      <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
-      
-                      <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
-                    </div>
-                  </div>
-                  <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-default inline absolute left margin-none">Sale</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-2238345-apartments-xs.jpg" alt="location" class="img-responsive" />
-                      <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
-                        <span class="v-center">
-                      <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
-                        </span>
-                      </a>
-                    </div>
-                    <div class="panel-body">
-                      <h4 class="margin-v-0-5">Apartment</h4>
-                      <p class="small">
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;187,285.00</span>&nbsp;
-      
-                      <i class="small fa fa-fw icon-user-1" data-toggle="tooltip" data-title="Individual"></i>
-      
-                      <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
-                    </div>
-                  </div>
-                  <div class="panel panel-default relative">
-                    <div class="ribbon-heading ribbon-default inline absolute left margin-none">Sale</div>
-                    <div class="cover hover overlay margin-none">
-                      <img src="images/photodune-1112879-modern-kitchen-in-luxury-mansion-xs.jpg" alt="location" class="img-responsive" />
-                      <a href="property.html" class="overlay overlay-full overlay-bg-black overlay-hover">
-                        <span class="v-center">
-                      <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
-                        </span>
-                      </a>
-                    </div>
-                    <div class="panel-body">
-                      <h4 class="margin-v-0-5">Luxury Mansion</h4>
-                      <p class="small">
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                      </p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <span class="label label-grey-100">&euro;72,152.00</span>&nbsp;
-      
-                      <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip" data-title="Agency"></i>
-      
-                      <a href="property.html" class="btn btn-primary btn-circle absolute bottom right"><i class="fa fa-shopping-cart"></i></a>
-                    </div>
-                  </div>
                 </div>
               </div>
       
@@ -273,9 +176,116 @@
                   <li><a href="#">&raquo;</a></li>
                 </ul>
               </div>
-      
             </div>
-    </aside>
-</body>
+        </aside>
 
-</html>
+        <!--<div class="st-content-inner padding-top-none" id="content">
+
+                <div id="google-fs-realestate" data-toggle="google-maps" data-file="js/data/google_maps/markers-listing.json" class="maps-google-fs"></div>
+      
+                <nav class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay">
+                  <a data-toggle="sidebar-menu" href="#sidebar-map" class="toggle pull-right hidden-xs margin-none active"><i class="fa fa-list"></i></a>
+                  <div class="navbar-header">
+                    <div class="container-fluid">
+                      <div class="navbar-text pull-left"><i class="fa fa-fw fa-info"></i> Discover thousands of locations</div>
+                      <a class="toggle pull-right margin-none visible-xs" data-toggle="collapse" data-target="#map-nav"><i class="fa fa-sliders fa-rotate-90"></i></a>
+                    </div>
+                  </div>
+                   -Collect the nav links, forms, and other content for toggling 
+                  <div class="collapse navbar-collapse" id="map-nav">
+                    <form class="navbar-form  navbar-left">
+                      <div class="search-2">
+                        <div class="input-group">
+                          <input type="text" class="form-control form-control-w-150" placeholder="Search ..">
+                          <span class="input-group-btn">
+                  <button class="btn btn-inverse" type="button"><i class="fa fa-search"></i></button>
+              </span>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </nav>
+      
+                <script id="real-estate-map-pop-1" type="text/x-handlebars-template">
+                  <div class="padding-none full">
+                    <div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute leftinline margin-none">{{ ribbon_mark_text }}</div>
+                    <div class="cover overlay cover-image-full margin-none">
+                      <a href="{{ details_url }}" class="thumb" data-height="150px">
+                        <img src="{{ image }}" alt="image" class="img-responsive">
+                      </a>
+                    </div>
+                    <div class="list-group margin-none">
+                      <div class="list-group-item">
+                        <a href="{{ details_url }}" class="btn btn-primary btn-circle pull-right">
+                          <i class="fa fa-shopping-cart"></i>
+                        </a>
+                        <h4 class="margin-v-0-5">{{ title }}</h4>
+                        <p class="small">
+                          <span class="fa fa-fw fa-star text-yellow-800"></span>
+                          <span class="fa fa-fw fa-star text-yellow-800"></span>
+                          <span class="fa fa-fw fa-star text-yellow-800"></span>
+                          <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                          <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                        </p>
+                        <p>{{ description }}</p>
+                        <label class="label label-blue">&euro;{{ price }}</label>&nbsp;
+                        <small>
+      
+                          <i class="fa fa-fw icon-home-fill-1"></i> Agency
+      
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </script>
+      
+                <script id="real-estate-map-pop_home" type="text/x-handlebars-template">
+                  <div class="padding-none">
+                    <div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute left inline margin-none">
+                      {{ ribbon_mark_text }}
+                    </div>
+                    <div class="cover cover-image-full margin-none">
+                      <a href="{{ details_url }}" class="thumb" data-height="150px">
+                        <img src="{{ image }}" alt="image" class="img-responsive">
+                      </a>
+                    </div>
+                    <div class="text-center">
+                      <h4 class="text-primary margin-bottom-none">{{ title }}</h4>
+                      <p class="h5 text-muted margin-v-5-15">{{ location }}</p>
+                    </div>
+                  </div>
+                </script>
+      
+                <script id="real-estate-map-pop_profile" type="text/x-handlebars-template">
+                  <div class="text-center">
+                    <p>
+                      <img src="{{ image }}" alt="" class="img-circle" />
+                    </p>
+                    <h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a></h4>
+                    <a href="mailto:{{ email }}">{{ email }}</a>
+                    <br/>
+                    <p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>
+                  </div>
+                </script>
+      
+                <script id="real-estate-map-pop_icon" type="text/x-handlebars-template">
+                  <div>
+                    <div class="text-center">
+                      <div class="h1 text-grey-300">
+                        <i class="{{ inner_icon }}"></i>
+                      </div>
+                      <p><a href="{{ details_url }}" class="h4 text-primary">{{ name }}</a></p>
+                      <p>{{ location }}</p>
+                    </div>
+                  </div>
+                </script>-->
+      
+              </div>
+    </div>
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="js/vendor/all.js"></script>
+
+    </body>
+
+    </html>
