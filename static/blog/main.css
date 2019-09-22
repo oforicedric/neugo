@@ -18,7 +18,11 @@ ul {
 }
 
 .bg-steel {
-    background-color: #5f788a;
+    background-color: #086fb4f5;
+}
+
+.bg-neugo {
+    background-color:#086fb4f5;
 }
 
 .site-header .navbar-nav .nav-link {

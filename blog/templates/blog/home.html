@@ -1,17 +1,35 @@
 {% extends "blog/base.html" %}
 {% block content %}
     {% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        <div class="col-xs-12 col-md-12 col-lg-12 item">
+          <div class="timeline-block">
+            <div class="panel panel-default">
+
+              <div class="panel-heading">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img src="{{ post.author.profile.image.url }}" width="60" height="70" id ="img" class="media-object"/>
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+
+                    <a href="#">{{ post.author }}</a>
+
+                    <span>{{ post.date_posted|date:"F d, Y" }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body">
+                <h2><a class="article-title" href="{% url 'post-detail' post.id %}">Session location: UoM</a></h2>
+                <p> time studied (s): </p>
+                  <p class="article-content">{{ post.time_studied }}</p>
+             </div>
             </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.author }}</a></h2>
-            <p> time studied (s): </p>
-              <p class="article-content">{{ post.time_studied }}</p>
-            </div>
-        </article>
+          </div>
+        </div>
     {% endfor %}
     {% if is_paginated %}
 
