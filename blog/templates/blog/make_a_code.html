@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+<body>
+    <p id="one"></p>
+    <button onclick="random()">reveal code</button>
+    <script src="{% static 'generate_random_number.js' %}"></script>
+    <p id="two">The generated code will also be sent to your email, once it is revealed.</p>    
+    <form action="go_home" method="GET">
+        <button type="submit">go home</button>
+    </form>
+</body>
+
+</html>
