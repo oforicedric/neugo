@@ -23,4 +23,5 @@ urlpatterns = [
     path('study/finish/', views.finish_study, name='blog-finish'),
     path('rewards/purchase_rewards/', views.purchase_rewards, name='blog-purchase_rewards'),
     path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'), 
+    path('profile2/',views.profile2, name='profile-2'),
 ]

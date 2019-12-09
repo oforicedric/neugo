@@ -26,10 +26,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================= */
-* {
-  margin: 0px;
-}
- .slider {
+.slider {
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -44,6 +41,11 @@
   margin-top: -5px;
   top: 50%;
   left: 0;
+}
+
+.t-image{
+  top:-8px;
+  position:relative;
 }
 .slider.slider-horizontal .slider-selection {
   height: 100%;
@@ -1459,13 +1461,6 @@ p {
     font-size: 21px;
   }
 }
-
-@media (min-width: 768px) {
-  .container {
-  min-width:960px;
-  } 
-}
-
 small,
 .small {
   font-size: 85%;
@@ -1736,16 +1731,14 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  width: 100%;
-  overflow: hidden;
-  margin-right: 0 auto;
-  margin-left: 0px;
-  padding-left: 1px;
-  padding-right: 1px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 @media (min-width: 768px) {
   .container {
-    width: 100;
+    width: 750px;
   }
 }
 @media (min-width: 992px) {
@@ -3675,7 +3668,7 @@ tbody.collapse.in {
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
   border-bottom: 4px solid;
-  content: "";
+  
 }
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
@@ -4214,7 +4207,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar {
     border-radius: 4px;
-  }
+}
 }
 @media (min-width: 768px) {
   .navbar-header {

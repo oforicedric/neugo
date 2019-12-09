@@ -16,7 +16,7 @@ def home(request):
     context = {
         'posts': Post.objects.all()
     }
-    return render(request, 'blog/home1.html', context)
+    return render(request, 'blog/home.html', context)
 
 def finish_study(request):
 
@@ -44,7 +44,10 @@ def study(request):
     return render(request, 'blog/study.html')
 
 def rewards(request): 
-    return render(request, 'blog/rewards1.html')
+    return render(request, 'blog/rewards.html')
+
+def profile2(request): 
+    return render(request, 'blog/profile2.html')
 
 def make_a_code(request): 
     return render(request, 'blog/make_a_code.html')
@@ -58,7 +61,7 @@ def purchase_rewards(request):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/landing.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 5
