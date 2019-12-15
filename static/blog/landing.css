@@ -993,12 +993,6 @@
  */
 /* FONT PATH
  * -------------------------- */
-@font-face {
-  font-family: 'FontAwesome';
-  src: url("../styles/vendors/font-awesome/fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("../styles/vendors/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("../styles/vendors/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("../styles/vendors/font-awesome/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("../styles/vendors/font-awesome/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("../styles/vendors/font-awesome/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
-  font-weight: normal;
-  font-style: normal; }
 
 .fa {
   display: inline-block;
@@ -2781,26 +2775,7 @@
 .fa-medium:before {
   content: ""; }
 
-/*
-** START: MIXINS
-*/
-@font-face {
-  font-family: 'arrrowsregular';
-  src: url("../vendors/arrrows/arrrows-regular-webfont.eot");
-  src: url("../vendors/arrrows/arrrows-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../vendors/arrrows/arrrows-regular-webfont.svg#arrrowsregular") format("svg"), url("../vendors/arrrows/arrrows-regular-webfont.woff") format("woff"), url("../vendors/arrrows/arrrows-regular-webfont.ttf") format("truetype");
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
 
-@font-face {
-  font-family: 'arrrowsbold';
-  src: url("../vendors/arrrows/arrrows-bold-webfont.eot");
-  src: url("../vendors/arrrows/arrrows-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../vendors/arrrows/arrrows-bold-webfont.svg#arrrowsbold") format("svg"), url("../vendors/arrrows/arrrows-bold-webfont.woff") format("woff"), url("../vendors/arrrows/arrrows-bold-webfont.ttf") format("truetype");
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
 
 /**
  * http://applemusic.tumblr.com/
@@ -3118,15 +3093,6 @@ nav {
         nav > ul li a.active-nav-item {
           position: relative;
           border-bottom: 2px solid rgba(218, 194, 151, 0.5); }
-      nav > ul li .logo-still {
-        background: url("../media/svg/logo_color.svg") left center/contain no-repeat;
-        height: 40px;
-        display: block;
-        padding-left: 55px;
-        font: 18px/40px "Nixie One", serif;
-        color: #676767;
-        letter-spacing: 1px;
-        transition: all 250ms cubic-bezier(0.23, 1, 0.32, 1); }
   @media (max-width: 500px) {
     nav {
       text-align: right; }
@@ -3674,20 +3640,7 @@ body.front-page header {
       z-index: 2;
       text-align: center;
       width: 232px; }
-    body.front-page header .cta .shadow {
-      position: absolute;
-      display: block;
-      z-index: 1;
-      width: 426px;
-      height: 238px;
-      background: url("../media/svg/shadow.svg") top left/cover no-repeat;
-      top: 0px;
-      left: 0;
-      pointer-events: none;
-      -webkit-transition: all 250ms cubic-bezier(0.23, 1, 0.32, 1);
-      -moz-transition: all 250ms cubic-bezier(0.23, 1, 0.32, 1);
-      -o-transition: all 250ms cubic-bezier(0.23, 1, 0.32, 1);
-      transition: all 250ms cubic-bezier(0.23, 1, 0.32, 1); }
+    
     body.front-page header .cta:hover .button {
       transform: scale(1.01) translateZ(0) translateY(-2px);
       transform-origin: center bottom;

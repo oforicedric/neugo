@@ -1,7 +1,7 @@
 body {
     background: #fafafa;
     color: #333333;
-    
+    margin-top: 5rem;
 }
 
 h1,
@@ -18,31 +18,19 @@ ul {
 }
 
 .bg-steel {
-   /* background-color: #086fb4f5;*/
-    background-color: #667db6;  /* fallback for old browsers */
-    background-color: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-    background-color: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-}
-
-.bg-neugo {
-   /* background-color:#086fb4f5;*/
-   background-color:#1976D2;
+    background-color: #5f788a;
 }
 
 .site-header .navbar-nav .nav-link {
     color: #cbd5db;
-    
 }
 
 .site-header .navbar-nav .nav-link:hover {
     color: #ffffff;
-   
 }
 
 .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
-   
 }
 
 .content-section {
