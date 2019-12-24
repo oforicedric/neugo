@@ -22,6 +22,7 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('study/finish/', views.finish_study, name='blog-finish'),
+    path('onboarding/saveprofile/', views.save_profile, name='blog-saveprofile'),
     path('rewards/purchase_rewards/', views.purchase_rewards, name='blog-purchase_rewards'),
     path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'), 
 ]
