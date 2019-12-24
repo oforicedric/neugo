@@ -1,0 +1,170 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+}
+
+#finish_session_button_div {
+    display: flex;
+    justify-content: center;
+}
+
+#countdown {
+    position: relative;
+    margin: auto;
+    margin-left: 50%;
+    margin-top: 100px;
+    height: 190px;
+    width: 190px;
+    text-align: center;
+}
+
+#countdown_number {
+    margin-top:5%;
+    margin-left:40%;
+    text-align: center;
+	z-index:999;
+	bottom:130px;
+	font-size:25px;
+    position:relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#212121;
+}
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gmap_canvas {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background: none!important;
+    height: 500px;
+   
+    margin-left: auto;
+    margin-right: auto;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 190px;
+    height: 190px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg circle {
+    stroke-dasharray: 505px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 10px;
+    stroke: #1976D2;
+    fill: none;
+    animation: countdown 900s linear infinite forwards;
+}
+
+@keyframes countdown {
+    from {
+        stroke-dashoffset: 0px;
+    }
+    to {
+        stroke-dashoffset: 505px;
+    }
+}
+@media screen and (max-width: 768px) {
+	body
+	{
+		margin:2rem;
+	}
+	#countdown {
+        margin-top:40%;
+        margin-left:auto;
+    }
+
+    #countdown_number {
+        margin-left:auto;
+    }
+
+    #finishbtn {
+        margin-left:15%;
+    }
+    
+    #pausebtn {
+        float:right;
+        margin-right:15%;
+    }
+    
+}
+
+#timerform {
+    width:max-content;
+    margin-top:25%;
+    margin-left: 30%;
+    text-align:center; 
+}
+#timerpara {
+    font-size:36px;  
+    text-align:center;
+}
+
+#finishbtn {
+    margin-left:40%
+}
+
+#pausebtn {
+    float:right;
+}
+
+
+@media screen and (max-width: 400px) {
+	body
+	{
+		margin:0;
+	}
+	#countdown {
+        margin-top:40%;
+        margin-left: auto;
+    }
+    #countdown_number {
+        margin-left:auto;
+    }
+
+    #sessionlength * { 
+        margin-top:5%;
+        margin:0 auto;
+        display:block;
+    }
+
+
+    #timerform {
+        margin-top:35%;
+        margin-left:6%;
+    }
+
+    #timerpara {
+        margin-top:20%;
+        font-size:30px;
+        margin-left:-3%;
+       }
+
+    #sessionbtn {
+        margin:0 auto;
+        margin-left:35%;
+        display:block;
+    }
+
+    #finishbtn {
+        margin-left:15%;
+    }
+    
+    #pausebtn {
+        float:right;
+        margin-right:15%;
+    }
+}

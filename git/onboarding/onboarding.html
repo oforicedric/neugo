@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE HTML>
+<head>
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/onboarding.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'blog/onboarding.js' %}"></script>
+</head>
+<div class="container">
+    <h1 class="landings">Welcome To Neugo!</h1>
+    <span class="close"></span>
+    
+    <div class="slider-container">
+      <div class="slider-turn">
+        <p>
+         Tell us your name..
+         
+        </p>
+  
+        <p>
+          Nice! which University do you you go to? 
+         </p>
+            
+        <p>
+          Amazing! what degree are you studying then?
+        </p>
+  
+        <p>
+          Name from Uni studying degree, correct?
+        </p>
+  
+        <p>Okay Name Lets Get started</p>
+
+        <!-- sort dropdown dissapearing on slide 2/3-->
+
+      </div>
+        <form id="form1" method="get"> <!--method="get" no DB so keeps showing if i put it in-->
+        First name: <input type="text" name="FirstName" value="Didn't"><br>
+        Last name: <input type="text" name="LastName" value="Revise"><br>
+       </form>
+    <div>
+        <select class="dropdown" id="unidropdown" style="display:none;">
+                <option>University of Manchester</option>
+                <option>Imperial College London</option>
+                <option>University College London</option>
+                <option>University of Leeds</option>
+                <option>University of Oxford</option>
+        </select>
+       </div>
+
+<div>
+        <select class="dropdown" id="degreedropdown" style="display:none;" onchange="showFinal()">
+                <option>Physics</option>
+                <option>Economics</option>
+                <option>Chemical Engineering</option>
+                <option>History</option>
+                <option>Psychology</option>
+        </select>
+</div>
+
+<div>
+         <button class="nobtn" id="nobtn"  type="button" margin-left="800px;" style="display:none;" onclick="window.location.reload();">no</button>
+
+</div>
+
+       </div>
+       
+    <div class="bottom">
+      <div class="step">
+        <span></span>
+        <ul>
+          <li data-num="1"></li>
+          <li data-num="2"></li>
+          <li data-num="3"></li>
+          <li data-num="4"></li>
+          <li data-num="5"></li>
+        </ul>
+      </div>
+      <button class="btn1" form="form1" type="button" onclick="showDropdown()">submit</button>
+      <button id="unibutton" select="unidropdown" class="btn2" type="button" style="display:none;" onclick="showDropdown1()">submit</button>
+      <button class="btn4" id="yesbtn"  type="button" style="display:none;" onclick="showstart()">yes</button>
+      <button class="btn4" onclick="window.location.href='/login'"  id="gobtn"  type="button" style="display:none;" >GO</button>
+    </div>
+  </div>
+  <button class="open" onclick="window.location.reload();">Open</button>
