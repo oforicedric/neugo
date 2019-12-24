@@ -11,6 +11,7 @@ from django.views.generic import (
 from .models import Post
 from django.utils import timezone
 import time 
+import pdb 
 
 def home(request):
     context = {
@@ -54,10 +55,11 @@ def onboarding(request):
 
 def save_profile(request):
     from users.forms import UserRegisterForm
-    form = UserRegisterForm()
-    request.session['name'] = ''
+    # pdb.set_trace()
+    request.session['name'] = '' #form[''].value()
     request.session['subject'] = ''
     request.session['university'] = ''
+    form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
 def make_a_code(request): 
