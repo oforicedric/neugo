@@ -50,14 +50,14 @@ def profile2(request):
     return render(request, 'blog/profile2.html')
 
 def onboarding(request): 
-    request.session['name'] = ''
-    request.session['subject'] = ''
-    request.session['university'] = ''
     return render(request, 'blog/onboarding.html')
 
 def save_profile(request):
     from users.forms import UserRegisterForm
     form = UserRegisterForm()
+    request.session['name'] = ''
+    request.session['subject'] = ''
+    request.session['university'] = ''
     return render(request, 'users/register.html', {'form': form})
 
 def make_a_code(request): 
