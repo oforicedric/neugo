@@ -17,6 +17,12 @@ ul {
     margin: 0;
 }
 
+@media screen and (min-width: 1000px) {
+    .timerpara {
+        margin-left:20%;
+    }
+}
+
 .bg-steel {
     background-color: #5f788a;
 }

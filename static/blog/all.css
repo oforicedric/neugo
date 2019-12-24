@@ -3263,6 +3263,8 @@ fieldset[disabled] .btn-primary.active {
   color: #26a69a;
   background-color: #ffffff;
 }
+
+
 .btn-success {
   color: #ffffff;
   background-color: #8bbf61;
@@ -5199,7 +5201,7 @@ a.thumbnail.active {
 .media-body {
   zoom: 1;
   overflow: hidden;
-  background-color:#1976D2;
+  background-color:#FFFF;
 ;
  
 }
@@ -5224,7 +5226,7 @@ a.thumbnail.active {
 .media-body {
   display: table-cell;
   vertical-align: top;
-  background-color:#1976D2;
+  background-color:#FFFF;
 ;
 
 }

@@ -17008,6 +17008,7 @@ ul.timeline-list .media-body.fixed {
 }
 .row [class*="col-"] {
   padding: 0 7.5px;
+  margin-top:15%;
 }
 .row [class*="col-"].control-label {
   padding-top: 6px;
@@ -17068,6 +17069,13 @@ html.app-mobile #content .container-fluid {
   overflow: hidden;
   position: relative;
 }
+@media (max-width: 400px){
+  .row [class*="col-"] {
+    padding: 0 7.5px;
+    margin-top:30%;
+  }
+}
+
 @media (min-width: 768px) {
   html.app-desktop {
     height: 100%;

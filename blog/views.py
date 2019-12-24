@@ -41,13 +41,16 @@ def map(request):
 
 def study(request): 
     request.session['start_time'] = int(round(time.time()))
-    return render(request, 'blog/study.html')
+    return render(request, 'blog/studynew.html')
 
 def rewards(request): 
-    return render(request, 'blog/rewards.html')
+    return render(request, 'blog/rewardsnew.html')
 
 def profile2(request): 
     return render(request, 'blog/profile2.html')
+
+def onboarding(request): 
+    return render(request, 'blog/onboarding.html')
 
 def make_a_code(request): 
     return render(request, 'blog/make_a_code.html')

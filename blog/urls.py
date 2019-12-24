@@ -13,6 +13,7 @@ urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     path('study/', views.study, name='blog-study'),
     path('map/', views.map, name='blog-map'),
+    path('onboarding/', views.onboarding, name='onboarding'),
     path('rewards/', views.rewards, name='blog-rewards'),
     path('make_a_code/', views.make_a_code, name='blog-make_a_code'),
     path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),

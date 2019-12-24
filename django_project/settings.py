@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku 
+#import django_heroku 
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,8 +29,8 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 #DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 DEBUG = 'False'
 
-ALLOWED_HOSTS = ['neugo-learning.herokuapp.com']
-#ALLOWED_HOSTS = ['127.0.0.1']
+#ALLOWED_HOSTS = ['neugo-learning.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -146,4 +146,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())

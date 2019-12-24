@@ -1,7 +1,23 @@
 {% extends "blog/base.html" %}
 {% block content %}
+<head>
+  <style>
+      @media (max-width: 400px){
+  .row [class*="col-"] {
+    padding: 0 7.5px;
+    margin-top:30px;
+    
+  }
+  @media (max-width: 4000px){
+  .row [class*="col-"] {
+    padding: 0 7.5px;
+    margin-top:15%;
+  }
+    </style>
+</head>
     {% for post in posts %}
-        <article class="media content-section">
+    
+        <article class="media content-section" >
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
           <div class="media-body">
             <div class="article-metadata">

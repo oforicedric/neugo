@@ -21,6 +21,7 @@ STUDY_TIME_INTEGERS = (
 )
 
 class Post(models.Model):
+    objects = models.Manager()
     title = "title" #models.CharField(max_length=100)
     time_studied = models.IntegerField(default=20)
     date_posted = models.DateTimeField(default=timezone.now)
