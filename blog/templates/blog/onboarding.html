@@ -39,12 +39,13 @@
       <!-- sort dropdown dissapearing on slide 2/3-->
 
     </div>
-    <form id="form1" action="saveprofile" method="get">
+    <form id="name_form" action='saveprofile/' onclick="showDropdown()" method="post"> 
+      {% csrf_token %}
       <!--method="get" no DB so keeps showing if i put it in-->
       First name: <input type="text" name="FirstName" value="Didn't"><br>
       Last name: <input type="text" name="LastName" value="Revise"><br>
     </form>
-      <form action="saveprofile" method="get">
+      <form action="saveprofile" method="post">
         <div>
           <select class="dropdown" id="unidropdown" style="display:none;">
             <option>choose a university
@@ -88,9 +89,9 @@
         <li data-num="5"></li>
       </ul>
     </div>
-    <form action="saveprofile" id="save_profile_button" method="POST">
-      <button class="btn1" form="form1" type="button" onclick="showDropdown()">next</button>
-      <button id="unibutton" select="unidropdown" class="btn2" type="button" style="display:none;"
+    <form action="saveprofile" id="save_profile_button" method="post">
+      <button class="btn4" form="name_form" type="submit" onsubmit="showDropdown1()">next</button>
+      <button id="unibutton" select="unidropdown" class="btn2" type="submit" style="display:none;"
         onclick="showDropdown1()">next</button>
       <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
       <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>

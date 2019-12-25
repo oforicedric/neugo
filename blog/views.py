@@ -56,11 +56,15 @@ def onboarding(request):
 def save_profile(request):
     from users.forms import UserRegisterForm
     # pdb.set_trace()
+    if(request.POST):
+        login_data = request.POST.dict()
+        return render(request, 'blog/onboarding_universities.html')
+
     request.session['name'] = '' #form[''].value()
     request.session['subject'] = ''
     request.session['university'] = ''
     form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'blog/onboarding_universities.html', {'form': form})
 
 def make_a_code(request): 
     return render(request, 'blog/make_a_code.html')
