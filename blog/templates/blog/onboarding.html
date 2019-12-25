@@ -39,7 +39,7 @@
       <!-- sort dropdown dissapearing on slide 2/3-->
 
     </div>
-    <form id="name_form" action='saveprofile/' onclick="showDropdown()" method="post"> 
+    <form id="name_form" action='saveprofile/' method="post"> 
       {% csrf_token %}
       <!--method="get" no DB so keeps showing if i put it in-->
       First name: <input type="text" name="FirstName" value="Didn't"><br>
@@ -90,7 +90,7 @@
       </ul>
     </div>
     <form action="saveprofile" id="save_profile_button" method="post">
-      <button class="btn4" form="name_form" type="submit" onsubmit="showDropdown1()">next</button>
+      <button class="btn4" form="name_form" type="submit" >next</button>
       <button id="unibutton" select="unidropdown" class="btn2" type="submit" style="display:none;"
         onclick="showDropdown1()">next</button>
       <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
@@ -100,3 +100,4 @@
   </div>
 </div>
 <button class="open" onclick="window.location.reload();">Open</button>
+</body>

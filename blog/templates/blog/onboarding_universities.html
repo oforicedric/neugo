@@ -7,6 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'blog/onboardingnew.js' %}"></script>
 </head>
+<body onload="showDropdown1()">
 <div class="logo">
   <img src="/static/neugo3.png" width="130" height="40" />
 </div>
@@ -34,7 +35,7 @@
       <!-- sort dropdown dissapearing on slide 2/3-->
 
     </div>
-      <form action="saveprofile" method="post">
+      <form action="saveprofile/" method="post">
         <div>
           <select class="dropdown" id="unidropdown" style="display:none;">
             <option>choose a university
@@ -71,7 +72,6 @@
     <div class="step">
       <span></span>
       <ul>
-        <li data-num="1"></li>
         <li data-num="2"></li>
         <li data-num="3"></li>
         <li data-num="4"></li>
@@ -79,7 +79,6 @@
       </ul>
     </div>
     <form action="saveprofile" id="save_profile_button" method="post">
-      <button class="btn4" form="name_form" type="submit" onsubmit="showDropdown1()">next</button>
       <button id="unibutton" select="unidropdown" class="btn2" type="submit" style="display:none;"
         onclick="showDropdown1()">next</button>
       <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
@@ -89,3 +88,4 @@
   </div>
 </div>
 <button class="open" onclick="window.location.reload();">Open</button>
+</body>
