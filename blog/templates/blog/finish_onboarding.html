@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'blog/onboardingnew.js' %}"></script>
 </head>
+<body onload="showFinal()">
 <div class="logo">
     <img src="/static/neugo3.png" width="130" height="40" />
 </div>
@@ -18,14 +19,6 @@
     <div class="slider-container">
         <div class="slider-turn">
             <p>
-                Nice! which University do you you go to?
-            </p>
-
-            <p>
-                Amazing! what degree are you studying then?
-            </p>
-
-            <p>
                 Name from Uni studying degree, correct?
             </p>
 
@@ -34,28 +27,9 @@
             <!-- sort dropdown dissapearing on slide 2/3-->
 
         </div>
-        <form id="uni_form" action="saveuni/" method="post">
-            {% csrf_token %}
-            <div>
-                <select class="dropdown" name="university">
-                    <option>choose a university</option>
-                    <option>University of Manchester</option>
-                    <option>Imperial College London</option>
-                    <option>University College London</option>
-                    <option>University of Leeds</option>
-                    <option>University of Oxford</option>
-                </select>
-        </form>
-
         <div>
             <select class="dropdown" id="degreedropdown" style="display:none;" onchange="showFinal()">
-                <option>choose a subject
-                <option>
-                <option>Physics</option>
-                <option>Economics</option>
-                <option>Chemical Engineering</option>
-                <option>History</option>
-                <option>Psychology</option>
+                
             </select>
         </div>
 
@@ -69,11 +43,11 @@
 
     <div class="bottom">
         <form action="saveuni" id="save_profile_button" method="post">
-            <button class="btn4" form="uni_form" type="submit" >next</button>
             <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
-            <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>
+            <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button>
         </form>
         <!-- <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button> -->
     </div>
 </div>
 <button class="open" onclick="window.location.reload();">Open</button>
+</body>

@@ -67,6 +67,34 @@ def save_profile(request):
     form = UserRegisterForm()
     return render(request, 'blog/onboarding_universities.html', {'form': form})
 
+def save_uni(request):
+    from users.forms import UserRegisterForm
+    # pdb.set_trace()
+    if(request.POST):
+        login_data = request.POST.dict()
+        print(login_data)
+        return render(request, 'blog/onboarding_subject.html')
+
+    request.session['name'] = '' #form[''].value()
+    request.session['subject'] = ''
+    request.session['university'] = ''
+    form = UserRegisterForm()
+    return render(request, 'blog/onboarding_subject.html', {'form': form})
+
+def save_subject(request): 
+    from users.forms import UserRegisterForm
+    # pdb.set_trace()
+    if(request.POST):
+        login_data = request.POST.dict()
+        print(login_data)
+        return render(request, 'blog/finish_onboarding.html')
+
+    request.session['name'] = '' #form[''].value()
+    request.session['subject'] = ''
+    request.session['university'] = ''
+    form = UserRegisterForm()
+    return render(request, 'blog/finish_onboarding.html', {'form': form})
+
 def make_a_code(request): 
     return render(request, 'blog/make_a_code.html')
 

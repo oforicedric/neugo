@@ -18,10 +18,6 @@
     <div class="slider-container">
         <div class="slider-turn">
             <p>
-                Nice! which University do you you go to?
-            </p>
-
-            <p>
                 Amazing! what degree are you studying then?
             </p>
 
@@ -34,28 +30,23 @@
             <!-- sort dropdown dissapearing on slide 2/3-->
 
         </div>
-        <form id="uni_form" action="saveuni/" method="post">
+        <form id="uni_form" action="savesubject/" method="post">
             {% csrf_token %}
             <div>
                 <select class="dropdown" name="university">
-                    <option>choose a university</option>
-                    <option>University of Manchester</option>
-                    <option>Imperial College London</option>
-                    <option>University College London</option>
-                    <option>University of Leeds</option>
-                    <option>University of Oxford</option>
+                    <option>choose a subject
+                    <option>
+                    <option>Physics</option>
+                    <option>Economics</option>
+                    <option>Chemical Engineering</option>
+                    <option>History</option>
+                    <option>Psychology</option>
                 </select>
         </form>
 
         <div>
             <select class="dropdown" id="degreedropdown" style="display:none;" onchange="showFinal()">
-                <option>choose a subject
-                <option>
-                <option>Physics</option>
-                <option>Economics</option>
-                <option>Chemical Engineering</option>
-                <option>History</option>
-                <option>Psychology</option>
+                
             </select>
         </div>
 

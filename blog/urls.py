@@ -23,6 +23,8 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('study/finish/', views.finish_study, name='blog-finish'),
     path('onboarding/saveprofile/', views.save_profile, name='blog-saveprofile'),
+    path('onboarding/saveprofile/saveuni/', views.save_uni, name='blog-saveuni'),
+    path('onboarding/saveprofile/saveuni/savesubject/', views.save_subject, name='blog-savesubject'), 
     path('rewards/purchase_rewards/', views.purchase_rewards, name='blog-purchase_rewards'),
     path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'), 
 ]
