@@ -54,46 +54,26 @@ def onboarding(request):
     return render(request, 'blog/onboarding.html')
 
 def save_profile(request):
-    from users.forms import UserRegisterForm
-    # pdb.set_trace()
     if(request.POST):
-        login_data = request.POST.dict()
-        print(login_data)
+        request.session['first_name'] = request.POST['FirstName']
+        request.session['second_name'] = request.POST['LastName']
         return render(request, 'blog/onboarding_universities.html')
 
-    request.session['name'] = '' #form[''].value()
-    request.session['subject'] = ''
-    request.session['university'] = ''
-    form = UserRegisterForm()
-    return render(request, 'blog/onboarding_universities.html', {'form': form})
+    return render(request, 'blog/onboarding_universities.html')
 
 def save_uni(request):
-    from users.forms import UserRegisterForm
-    # pdb.set_trace()
     if(request.POST):
-        login_data = request.POST.dict()
-        print(login_data)
+        request.session['university'] = request.POST['university']
         return render(request, 'blog/onboarding_subject.html')
 
-    request.session['name'] = '' #form[''].value()
-    request.session['subject'] = ''
-    request.session['university'] = ''
-    form = UserRegisterForm()
-    return render(request, 'blog/onboarding_subject.html', {'form': form})
+    return render(request, 'blog/onboarding_subject.html')
 
 def save_subject(request): 
-    from users.forms import UserRegisterForm
-    # pdb.set_trace()
     if(request.POST):
-        login_data = request.POST.dict()
-        print(login_data)
+        request.session['subject'] = request.POST['subject']
         return render(request, 'blog/finish_onboarding.html')
 
-    request.session['name'] = '' #form[''].value()
-    request.session['subject'] = ''
-    request.session['university'] = ''
-    form = UserRegisterForm()
-    return render(request, 'blog/finish_onboarding.html', {'form': form})
+    return render(request, 'blog/finish_onboarding.html')
 
 def make_a_code(request): 
     return render(request, 'blog/make_a_code.html')
