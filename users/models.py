@@ -15,13 +15,14 @@ class Profile(models.Model):
         "science_student.jpeg",
         "student_sitting_on_grass.jpg",
     ]
-
+    
     for i in range(len(profile_pictures)):
         profile_pictures[i] = "potential_pics/" + profile_pictures[i]
 
     image = models.ImageField(
         default=random.choice(profile_pictures), upload_to="profile_pics"
     )
+    
     wallet_points = models.BigIntegerField(default=0)
     university = models.CharField(default="", max_length=35)
     subject = models.CharField(default="", max_length=35)
