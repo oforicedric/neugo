@@ -58,6 +58,7 @@ def save_profile(request):
     # pdb.set_trace()
     if(request.POST):
         login_data = request.POST.dict()
+        print(login_data)
         return render(request, 'blog/onboarding_universities.html')
 
     request.session['name'] = '' #form[''].value()

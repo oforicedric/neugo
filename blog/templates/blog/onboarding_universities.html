@@ -2,90 +2,78 @@
 <!DOCTYPE HTML>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="{% static 'blog/onboardingnew.css' %}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="{% static 'blog/onboardingnew.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/onboardingnew.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'blog/onboardingnew.js' %}"></script>
 </head>
-<body onload="showDropdown1()">
 <div class="logo">
-  <img src="/static/neugo3.png" width="130" height="40" />
+    <img src="/static/neugo3.png" width="130" height="40" />
 </div>
 
 <div class="container">
-  <h1 class="landings">Welcome To Neugo!</h1>
-  <span class="close"></span>
+    <h1 class="landings">Welcome To Neugo!</h1>
+    <span class="close"></span>
 
-  <div class="slider-container">
-    <div class="slider-turn">
-      <p>
-        Nice! which University do you you go to?
-      </p>
+    <div class="slider-container">
+        <div class="slider-turn">
+            <p>
+                Nice! which University do you you go to?
+            </p>
 
-      <p>
-        Amazing! what degree are you studying then?
-      </p>
+            <p>
+                Amazing! what degree are you studying then?
+            </p>
 
-      <p>
-        Name from Uni studying degree, correct?
-      </p>
+            <p>
+                Name from Uni studying degree, correct?
+            </p>
 
-      <p>Okay name we just need an email and password to get started</p>
+            <p>Okay name we just need an email and password to get started</p>
 
-      <!-- sort dropdown dissapearing on slide 2/3-->
+            <!-- sort dropdown dissapearing on slide 2/3-->
+
+        </div>
+        <form action="saveprofile/" id="uni_form" method="post">
+            {% csrf_token %}
+            <div>
+                <select class="dropdown">
+                    <option>choose a university</option>
+                    <option>University of Manchester</option>
+                    <option>Imperial College London</option>
+                    <option>University College London</option>
+                    <option>University of Leeds</option>
+                    <option>University of Oxford</option>
+                </select>
+        </form>
+
+        <div>
+            <select class="dropdown" id="degreedropdown" style="display:none;" onchange="showFinal()">
+                <option>choose a subject
+                <option>
+                <option>Physics</option>
+                <option>Economics</option>
+                <option>Chemical Engineering</option>
+                <option>History</option>
+                <option>Psychology</option>
+            </select>
+        </div>
+
+        <div>
+            <button class="nobtn" id="nobtn" type="button" margin-left="800px;" style="display:none;"
+                onclick="window.location.reload();">no</button>
+
+        </div>
 
     </div>
-      <form action="saveprofile/" method="post">
-        <div>
-          <select class="dropdown" id="unidropdown" style="display:none;">
-            <option>choose a university
-            <option>
-            <option>University of Manchester</option>
-            <option>Imperial College London</option>
-            <option>University College London</option>
-            <option>University of Leeds</option>
-            <option>University of Oxford</option>
-          </select>
-        </div>
 
-        <div>
-          <select class="dropdown" id="degreedropdown" style="display:none;" onchange="showFinal()">
-            <option>choose a subject
-            <option>
-            <option>Physics</option>
-            <option>Economics</option>
-            <option>Chemical Engineering</option>
-            <option>History</option>
-            <option>Psychology</option>
-          </select>
-        </div>
-
-        <div>
-          <button class="nobtn" id="nobtn" type="button" margin-left="800px;" style="display:none;"
-            onclick="window.location.reload();">no</button>
-
-        </div>
-
-  </div>
-
-  <div class="bottom">
-    <div class="step">
-      <span></span>
-      <ul>
-        <li data-num="2"></li>
-        <li data-num="3"></li>
-        <li data-num="4"></li>
-        <li data-num="5"></li>
-      </ul>
+    <div class="bottom">
+        <form action="saveprofile" id="save_profile_button" method="post">
+            <button class="btn4" form="uni_form" type="submit">next</button>
+            <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
+            <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>
+        </form>
+        <!-- <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button> -->
     </div>
-    <form action="saveprofile" id="save_profile_button" method="post">
-      <button id="unibutton" select="unidropdown" class="btn2" type="submit" style="display:none;"
-        onclick="showDropdown1()">next</button>
-      <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
-      <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>
-    </form>
-    <!-- <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button> -->
-  </div>
 </div>
 <button class="open" onclick="window.location.reload();">Open</button>
-</body>

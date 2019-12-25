@@ -45,7 +45,8 @@
       First name: <input type="text" name="FirstName" value="Didn't"><br>
       Last name: <input type="text" name="LastName" value="Revise"><br>
     </form>
-      <form action="saveprofile" method="post">
+      <form action="saveprofile/" method="post">
+        {% csrf_token %}
         <div>
           <select class="dropdown" id="unidropdown" style="display:none;">
             <option>choose a university
@@ -79,20 +80,9 @@
   </div>
 
   <div class="bottom">
-    <div class="step">
-      <span></span>
-      <ul>
-        <li data-num="1"></li>
-        <li data-num="2"></li>
-        <li data-num="3"></li>
-        <li data-num="4"></li>
-        <li data-num="5"></li>
-      </ul>
-    </div>
     <form action="saveprofile" id="save_profile_button" method="post">
       <button class="btn4" form="name_form" type="submit" >next</button>
-      <button id="unibutton" select="unidropdown" class="btn2" type="submit" style="display:none;"
-        onclick="showDropdown1()">next</button>
+      <button id="unibutton" select="unidropdown" class="btn2" type="submit" style="display:none;">next</button>
       <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
       <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>
     </form>
