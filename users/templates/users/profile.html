@@ -25,8 +25,8 @@
       </div>
 
       <div class="profile-card__cnt js-profile-cnt">
-        <div class="profile-card__name">Muhammed Erdem</div>
-        <div class="profile-card__txt">Front-end Developer from <strong>Mesopotamia</strong></div>
+        <div class="profile-card__name">{{ request.session.first_name }} {{ request.session.second_name }}</div>
+        <div class="profile-card__txt">{{ request.session.subject }} student at <strong>{{ request.session.university }}</strong></div>
         <div class="profile-card-loc">
           <span class="profile-card-loc__icon">
             <svg class="icon">
@@ -35,7 +35,7 @@
           </span>
 
           <span class="profile-card-loc__txt">
-            Istanbul, Turkey
+            United Kingdom
           </span>
         </div>
 
