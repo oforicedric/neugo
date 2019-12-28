@@ -61,6 +61,13 @@ def save_profile(request):
 
     return render(request, 'blog/onboarding_universities.html')
 
+def store_time(request): 
+    if (request.POST): 
+        request.session['study_time'] = request.POST['sessionlength']
+        for i in range(100): 
+            print(request.session['study_time'])
+    return render(request, 'blog/study.html')
+
 def save_uni(request):
     if(request.POST):
         request.session['university'] = request.POST['university']

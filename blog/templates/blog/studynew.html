@@ -1,44 +1,25 @@
-
 {% extends "blog/base.html" %}
 {% block content %}
 {% load static %}
-<!DOCTYPE HTML>
-<html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/timernew.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/timernew.css' %}">
 
 </head>
 
-<body  >
-    <form id="timerform"  >
-    <p id="timerpara"  >
-      Set your session length: <br>
-      <input 
-      style="border-radius:5%;margin-left:1%;margin-top:5%;margin-bottom:1%;" type="time" id="sessionlength" name="sessionlength" step="900" value="00:60" />
-    </p >
-  <p>
-    <button type="submit" class="btn btn-success" id="sessionbtn" style="background-color:#4cf16e;color:#FFFF;" onclick="showtimer();">Go</button>
+<body>
+  <p id="timerpara">
+    Set your session length: <br>
+    <form id="timerform" action='store_time/' method="post">
+      {% csrf_token %}
+      <input style="border-radius:5%;margin-left:1%;margin-top:5%;margin-bottom:1%;" type="time" id="sessionlength"
+        name="sessionlength" step="900" value="00:60" />
+    </form>
   </p>
-</form >
-
-    <script src="{% static 'timer_rendernew.js' %}"></script>
-    <div id="countdown" style="display:none;">
-        <svg>
-          <circle r="80" cx="100" cy="95"></circle>
-        </svg>
-    </div>
-    <p id="countdown_number" style="display:none;">20:00</p>
-    <script src="{% static 'examplenew.js' %}"></script>
-    
-    <div id="finish_session_button_div"style="display:none;" >
-        <form action="finish" id="finish_session_button" method="GET">
-            <button id="finishbtn" type="submit" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
-            <button id="pausebtn" type="submit" style="background-color:#ccc ;color:#FFFF;" class="btn btn-success">Pause</button>
-          </form>
-    </div>
+  <p>
+    <button type="submit" class="btn btn-success" id="sessionbtn" style="background-color:#4cf16e;color:#FFFF;"
+      form="timerform"">Go</button>
+  </p>
 </body>
-
-</html>
 
 {% endblock content %}

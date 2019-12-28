@@ -1,3 +1,4 @@
+
 {% extends "blog/base.html" %}
 {% block content %}
 {% load static %}
@@ -9,9 +10,9 @@
 
 </head>
 
-<body>
+<body onload="showtimer();" >
     <script src="{% static 'timer_rendernew.js' %}"></script>
-    <div id="countdown">
+    <div id="countdown" style="display:none;">
         <svg>
           <circle r="80" cx="100" cy="95"></circle>
         </svg>
@@ -26,5 +27,7 @@
           </form>
     </div>
 </body>
+
+</html>
 
 {% endblock content %}
