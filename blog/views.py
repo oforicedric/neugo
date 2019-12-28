@@ -104,6 +104,9 @@ def purchase_rewards(request):
 
     return make_a_code(request)
 
+def load_user_post_stats(): 
+    posts = Post.objects().all()
+    return posts
 
 class PostListView(ListView):
     model = Post
