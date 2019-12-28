@@ -24,14 +24,16 @@ def register(request):
 
 @login_required
 def profile(request):
-    from datetime import datetime
-    from django.utils import timezone
-    from datetime import timedelta, date
-    from django.utils import timezone
-
-    posts = Post.objects.filter(author=request.user)  # filter(date_posted=date.today())
-    request.session["user_study_activity"] = turn_posts_into_list_for_template(posts)
-    print(request.session["user_study_activity"])
+    all_posts = Post.objects.all()
+    user_posts = Post.objects.filter(
+        author=request.user
+    )  
+    request.session["user_study_activity"] = turn_posts_into_list_for_template(
+        user_posts
+    )
+    request.session["all_users_study_activity"] = turn_posts_into_list_for_template(
+        all_posts
+    )
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(
@@ -54,7 +56,6 @@ def profile(request):
 
 def turn_posts_into_list_for_template(posts_object):
     from datetime import timedelta, date
-    from django.utils import timezone
 
     point_counts = [0] * 7
     for days_back in range(7):
