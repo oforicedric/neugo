@@ -18,8 +18,8 @@
     </div>
     <p id="countdown_number"">20:00</p>
     <script src="{% static 'example.js' %}"></script>
-    <script>countdownTimeStart()</script>
-    <div id="finish_session_button_div">
+    <script>countdownTimeStart(90000)</script>
+    <div id="finish_session_button_div"style="display:none;" >
         <form action="finish" id="finish_session_button" method="GET">
             <button id="finishbtn" type="submit" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
             <button id="pausebtn" type="submit" style="background-color:#ccc ;color:#FFFF;" class="btn btn-success">Pause</button>
