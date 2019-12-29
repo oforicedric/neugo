@@ -34,6 +34,7 @@ def profile(request):
     request.session["all_users_study_activity"] = turn_posts_into_list_for_template(
         all_posts
     )
+    request.session["graph_labels"] = generate_graph_labels()
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(
@@ -53,7 +54,6 @@ def profile(request):
 
     return render(request, "users/profile.html", context)
 
-
 def turn_posts_into_list_for_template(posts_object):
     from datetime import timedelta, date
 
@@ -63,5 +63,14 @@ def turn_posts_into_list_for_template(posts_object):
         for _, post in enumerate(posts_object):
             if post.date_posted.date() == date_to_query:
                 point_counts[days_back] += post.time_studied
-
+    point_counts.reverse()
     return point_counts
+
+def generate_graph_labels(): 
+    from datetime import date
+    labels = []
+    day_of_month_today = date.today().day 
+    for i in range(7): 
+        labels.append(day_of_month_today - i)
+    labels.reverse()
+    return labels

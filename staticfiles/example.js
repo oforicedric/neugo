@@ -1,9 +1,9 @@
 // Set the date we're counting down to
 
-function countdownTimeStart(amount_of_time) {
+function countdownTimeStart(milliseconds) {
 
     var currentDate = new Date();
-    var twentyMinutesLater = new Date(currentDate.getTime() + amount_of_time);
+    var twentyMinutesLater = new Date(currentDate.getTime() + milliseconds);
 
     // Update the count down every 1 second
     var x = setInterval(function() {
@@ -20,7 +20,7 @@ function countdownTimeStart(amount_of_time) {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Output the result in an element with id="demo"
-        document.getElementById("countdown_number").innerHTML = minutes + ":" + "02";
+        document.getElementById("countdown_number").innerHTML = minutes + ":" + seconds;
 
         // If the count down is over, write some text 
         if (distance < 0) {
