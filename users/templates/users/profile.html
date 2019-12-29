@@ -19,7 +19,7 @@
   <div class="wrapper">
     <div class="profile-card js-profile-card">
       <div class="profile-card__img">
-        <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg"
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
           alt="profile card">
       </div>
       <div class="profile-card__cnt js-profile-cnt">
@@ -38,20 +38,16 @@
         </div>
         <div class="profile-card-inf">
           <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">1598</div>
-            <div class="profile-card-inf__txt">Followers</div>
+            <div class="profile-card-inf__title">{{ user.profile.wallet_points }}</div>
+            <div class="profile-card-inf__txt">Wallet Points</div>
           </div>
           <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">65</div>
-            <div class="profile-card-inf__txt">Following</div>
+            <div class="profile-card-inf__title">{{ request.session.time_studied_this_week }}</div>
+            <div class="profile-card-inf__txt">Points Earned this Week</div>
           </div>
           <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">123</div>
-            <div class="profile-card-inf__txt">Articles</div>
-          </div>
-          <div class="profile-card-inf__item">
-            <div class="profile-card-inf__title">85</div>
-            <div class="profile-card-inf__txt">Works</div>
+            <div class="profile-card-inf__title"> 3 </div>
+            <div class="profile-card-inf__txt">Class Rank</div>
           </div>
         </div>
         <div id="chart" style="width:500px; height:250px; margin:0 auto;">
@@ -65,54 +61,14 @@
         </div>
         <div class="profile-card__overlay js-message-close"></div>
         <div id="buttonbar">
-          <button class="goalbtn goalbody a">Goal:--pts</button>
+          <button class="goalbtn goalbody a">Goal: {{request.session.daily_goal}} pts</button>
           <div class="progress">
-            <div class="bar" id="bar" style="width:30%"></div>
+            <div class="bar" id="bar" style="width:{{request.session.progress}}%"></div>
           </div>
         </div>
       </div>
-
-      <div class="blog-slider">
-        <div class="blog-slider__wrp swiper-wrapper">
-          <div class="blog-slider__item swiper-slide">
-            <div class="blog-slider__img">
-
-              <img
-                src="https://res.cloudinary.com/muhammederdem/image/upload/v1535759872/kuldar-kalvik-799168-unsplash.jpg"
-                alt="">
-            </div>
-            <div class="blog-slider__content">
-              <span class="blog-slider__code">26 December 2019</span>
-              <div class="blog-slider__title">Lorem Ipsum Dolor</div>
-              <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae
-                voluptate repellendus magni illo ea animi? </div>
-              <a href="#" class="blog-slider__button">READ MORE</a>
-            </div>
-          </div>
-          <div class="blog-slider__item swiper-slide">
-            <div class="blog-slider__img">
-              <img
-                src="https://res.cloudinary.com/muhammederdem/image/upload/v1535759871/jason-leung-798979-unsplash.jpg"
-                alt="">
-            </div>
-            <div class="blog-slider__content">
-              <span class="blog-slider__code">26 December 2019</span>
-              <div class="blog-slider__title">Lorem Ipsum Dolor2</div>
-              <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae
-                voluptate repellendus magni illo ea animi?</div>
-              <a href="#" class="blog-slider__button">READ MORE</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="blog-slider__pagination"></div>
-      </div>
-
-
-
     </div>
 
-  </div>
   </div>
 
 </body>

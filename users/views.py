@@ -24,17 +24,28 @@ def register(request):
 
 @login_required
 def profile(request):
+    from django.contrib.auth.models import User
+    num_of_users = len(User.objects.all())
     all_posts = Post.objects.all()
-    user_posts = Post.objects.filter(
-        author=request.user
-    )  
+    user_posts = Post.objects.filter(author=request.user)
     request.session["user_study_activity"] = turn_posts_into_list_for_template(
         user_posts
     )
-    request.session["all_users_study_activity"] = turn_posts_into_list_for_template(
+    total_activity = turn_posts_into_list_for_template(
         all_posts
     )
+    average_activity = [x / num_of_users for x in total_activity]
+    request.session["all_users_study_activity"] = average_activity
+    request.session["daily_goal"] = int(
+        (sum(request.session["user_study_activity"]) / 7) * 1.1
+    )
+    request.session["progress"] = 100 * (
+        request.session["user_study_activity"][-1] / request.session["daily_goal"]
+    )
+    request.session["time_studied_this_week"] = sum(request.session["user_study_activity"]) 
     request.session["graph_labels"] = generate_graph_labels()
+    print(request.session["progress"])
+    print(request.session["daily_goal"])
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(
@@ -54,6 +65,7 @@ def profile(request):
 
     return render(request, "users/profile.html", context)
 
+
 def turn_posts_into_list_for_template(posts_object):
     from datetime import timedelta, date
 
@@ -66,11 +78,13 @@ def turn_posts_into_list_for_template(posts_object):
     point_counts.reverse()
     return point_counts
 
-def generate_graph_labels(): 
+
+def generate_graph_labels():
     from datetime import date
+
     labels = []
-    day_of_month_today = date.today().day 
-    for i in range(7): 
+    day_of_month_today = date.today().day
+    for i in range(7):
         labels.append(day_of_month_today - i)
     labels.reverse()
     return labels

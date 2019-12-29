@@ -9,13 +9,13 @@ function showChart(user_activity, all_activity) {
       datasets: [
         {
           data: user_activity,
-          label: "Africa",
+          label: "My Study Activity",
           borderColor: "#3e95cd",
           fill: false
         },
         {
           data: all_activity,
-          label: "Asia",
+          label: "Average Neugo User Activity",
           borderColor: "#8e5ea2",
           fill: false
         },
