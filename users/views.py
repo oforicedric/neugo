@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,11 +12,11 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get("username")
+            #username = form.cleaned_data.get("username")
             messages.success(
                 request, f"Your account has been created! You are now able to log in"
             )
-            request.user.university = request.session["university"]
+            #request.user.university = request.session["university"]
             return redirect("login")
     else:
         form = UserRegisterForm()
@@ -40,7 +41,7 @@ def profile(request):
         (sum(request.session["user_study_activity"]) / 7) * 1.1
     )
     request.session["progress"] = 100 * (
-        request.session["user_study_activity"][-1] / request.session["daily_goal"]
+        #request.session["user_study_activity"][-1] / request.session["daily_goal"]
     )
     request.session["time_studied_this_week"] = sum(request.session["user_study_activity"]) 
     request.session["graph_labels"] = generate_graph_labels()
@@ -63,7 +64,7 @@ def profile(request):
 
     context = {"u_form": u_form, "p_form": p_form}
 
-    return render(request, "users/profile.html", context)
+    return render(request, "users/profilefinal.html", context)
 
 
 def turn_posts_into_list_for_template(posts_object):

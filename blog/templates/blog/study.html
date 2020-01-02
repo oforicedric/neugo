@@ -12,7 +12,7 @@
           <circle r="80" cx="100" cy="95"></circle>
         </svg>
     </div>
-    <p id="countdown_number"">{{request.session.initial_time_string}}</p>
+    <p id="countdown_number">{{request.session.initial_time_string}}</p>
     <script src="{% static 'example.js' %}"></script>
     <script type="text/javascript">
         var time_string = "{{request.session.study_time}}";

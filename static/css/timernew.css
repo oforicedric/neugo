@@ -92,7 +92,7 @@ svg circle {
     }
 
     #finishbtn {
-        margin-left:15%;
+        margin-left:0%;
     }
     
     #pausebtn {
@@ -114,7 +114,7 @@ svg circle {
 }
 
 #finishbtn {
-    margin-left:40%
+    margin-left:0%
 }
 
 #pausebtn {
@@ -142,15 +142,16 @@ svg circle {
     }
 
 
-    #timerform {
+   /* #timerform {
         margin-top:35%;
         margin-left:6%;
-    }
+    } */
 
     #timerpara {
         margin-top:20%;
         font-size:30px;
         margin-left:-3%;
+        line-height:1.42857143;
        }
 
     #sessionbtn {
@@ -160,7 +161,7 @@ svg circle {
     }
 
     #finishbtn {
-        margin-left:15%;
+        margin-left:0%;
     }
     
     #pausebtn {

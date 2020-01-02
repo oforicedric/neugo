@@ -5,14 +5,31 @@
       @media (max-width: 400px){
   .row [class*="col-"] {
     padding: 0 7.5px;
-    margin-top:30px;
+    margin-top:57px;
+    min-width: 395px;
+    margin-left: -5%;
     
-  }
+  }};
   @media (max-width: 4000px){
   .row [class*="col-"] {
-    padding: 0 7.5px;
+    padding: 0 0px;
     margin-top:15%;
   }
+ 
+};
+
+
+@media screen and (max-width:500px){
+  .row [class*="col-md-12"]{
+    margin-top:60px;
+    padding: 0 0px;
+    min-width: 450px;
+    margin-left: -12%;
+  };
+  };
+ 
+
+ 
     </style>
 </head>
     {% for post in posts %}
