@@ -30,7 +30,7 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 DEBUG = 'False'
 
 #ALLOWED_HOSTS = ['neugo-learning.herokuapp.com','localhost']
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
