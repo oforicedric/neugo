@@ -21,19 +21,14 @@
                 Amazing! what degree are you studying then?
             </p>
 
-            <p>
-                Name from Uni studying degree, correct?
-            </p>
-
-            <p>Okay name we just need an email and password to get started</p>
-
+          
             <!-- sort dropdown dissapearing on slide 2/3-->
 
         </div>
         <form id="uni_form" action="savesubject/" method="post">
             {% csrf_token %}
             <div>
-                <select class="dropdown" name="subject">
+                <select id="subjdrop" class="dropdown" name="subject">
                     <option>choose a subject
                     <option>
                     <option>Physics</option>
@@ -58,9 +53,9 @@
 
     </div>
 
-    <div class="bottom">
+    <div class="bottom" style="margin-left:-25px">
         <form action="saveuni" id="save_profile_button" method="post">
-            <button class="btn4" form="uni_form" type="submit" >next</button>
+            <button id="subjbtn" class="btn4" form="uni_form" type="submit" >next</button>
             <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
             <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>
         </form>

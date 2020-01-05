@@ -11,7 +11,7 @@
     <img src="/static/neugo3.png" width="130" height="40" />
 </div>
 
-<div class="container">
+<div class="container" style="position:absolute">
     <h1 class="landings">Welcome To Neugo!</h1>
     <span class="close"></span>
 
@@ -21,23 +21,14 @@
                 Nice! which University do you you go to?
             </p>
 
-            <p>
-                Amazing! what degree are you studying then?
-            </p>
-
-            <p>
-                Name from Uni studying degree, correct?
-            </p>
-
-            <p>Okay name we just need an email and password to get started</p>
-
+       
             <!-- sort dropdown dissapearing on slide 2/3-->
 
         </div>
         <form id="uni_form" action="saveuni/" method="post">
             {% csrf_token %}
             <div>
-                <select class="dropdown" name="university">
+                <select id="unidrop" class="dropdown" name="university">
                     <option>choose a university</option>
                     <option>University of Manchester</option>
                     <option>Imperial College London</option>
@@ -67,9 +58,9 @@
 
     </div>
 
-    <div class="bottom">
+    <div class="bottom" style="margin-left:-25px;">
         <form action="saveuni" id="save_profile_button" method="post">
-            <button class="btn4" form="uni_form" type="submit" >next</button>
+            <button class="btn4" form="uni_form" type="submit" style="width: 100%;border-radius: 0 0 6px 6px;">next</button>
             <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
             <button class="btn4" id="gobtn" type="submit" style="display:none;">Go</button>
         </form>

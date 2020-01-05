@@ -16,13 +16,13 @@
     <h1 class="landings">Welcome To Neugo!</h1>
     <span class="close"></span>
 
-    <div class="slider-container">
+    <div class="slider-container" id="finishcon">
         <div class="slider-turn">
-            <p>
-                Name from Uni studying degree, correct?
+            <p style="margin-left:0px;word-wrap:break-word;" >
+                {{ request.session.first_name }} from {{ request.session.university }} studying {{ request.session.subject }}, correct?
             </p>
 
-            <p>Okay name we just need an email and password to get started</p>
+            <p id="p2" style="word-wrap:break-word;" >Okay {{ request.session.first_name } we just need an email and password to get started...</p>
 
             <!-- sort dropdown dissapearing on slide 2/3-->
 
@@ -34,17 +34,17 @@
         </div>
 
         <div>
-            <button class="nobtn" id="nobtn" type="button" margin-left="800px;" style="display:none;"
-                onclick="window.location.reload();">no</button>
+            <button class="nobtn" id="nobtn" type="button"  style="display:none;"
+                onclick="window.location.href='/onboarding'">no</button>
 
         </div>
 
     </div>
 
-    <div class="bottom">
-        <form action="saveuni" id="save_profile_button" method="post">
-            <button class="btn4" id="yesbtn" type="button" style="display:none;" onclick="showstart()">yes</button>
-            <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button>
+    <div class="bottom" style="margin-left:0px">
+        <form action="saveuni" id="save_profile_button" method="post" style="min-width:100%">
+            <button class="btn4" id="yesbtn" type="button" style="min-width:100%;display:none;" onclick="showstart()">yes</button>
+            <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="min-width:100%;display:none;" >GO</button>
         </form>
         <!-- <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button> -->
     </div>

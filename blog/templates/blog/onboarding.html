@@ -22,28 +22,15 @@
 
       </p>
 
-      <p>
-        Nice! which University do you you go to?
-      </p>
-
-      <p>
-        Amazing! what degree are you studying then?
-      </p>
-
-      <p>
-        Name from Uni studying degree, correct?
-      </p>
-
-      <p>Okay name we just need an email and password to get started</p>
-
+      
       <!-- sort dropdown dissapearing on slide 2/3-->
 
     </div>
-    <form id="name_form" action='saveprofile/' method="post"> 
+    <form id="name_form" style="color:#5d5e5ff5;" action='saveprofile/' method="post"> 
       {% csrf_token %}
       <!--method="get" no DB so keeps showing if i put it in-->
-      First name: <input type="text" name="FirstName" value="Didn't"><br>
-      Last name: <input type="text" name="LastName" value="Revise"><br>
+      First name: <input type="text" name="FirstName" value="Didn't" style="border-radius:3px"><br>
+      Last name: <input type="text" name="LastName" value="Revise" style="border-radius:3px"><br>
     </form>
       <form action="saveuni/" method="post">
         {% csrf_token %}
