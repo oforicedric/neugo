@@ -14,7 +14,13 @@
   <link rel="stylesheet" href="{% static 'profile/stylefarm.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
-
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/neugoiphone.png">
+  <link rel="manifest" sizes="192x192" href="/static/neugoandroid.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/neugo32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/neugo16.png">
+  <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
 
 </head>
 
@@ -24,7 +30,7 @@
 
   <div class="wrapper">
     <a href="/rewards/purchase_rewards/go_home"><img src="/static/left-arrow.png"
-        style="top:1%;bottom:1%;position:absolute;"></a>
+        style="top:2%;left:2%;bottom:1%;position:absolute;"></a>
 
     <div class="profile-card js-profile-card">
       <div class="profile-card__img">
@@ -57,28 +63,44 @@
             <div class="profile-card-inf__txt"> Rank</div>
           </div>
         </div>
-
-        <div id="chart" style="width:500px; height:250px; margin:0 auto;">
+        <div>
+        <div id="chart" style="width:500px; height:250px;float:left; margin:0 auto;">
           <canvas id="myChart" class="bodyb"></canvas>
           <script>
-            var user_activity = {{ request.session.user_study_activity| safe }};
+          var user_activity = {{ request.session.user_study_activity| safe }};
             var all_activity = {{ request.session.all_users_study_activity| safe }};
             var graph_labels = {{ request.session.graph_labels| safe }};
             showChart(user_activity, all_activity, graph_labels);
           </script>
         </div>
+        <div>
+        <button class="goalbtn goalbody a" style="margin-top:10%;border-width:0;float:right;font-size:9px;">Set weekly goal: --</button>
+        </div>
+        </div>  
 
-        <div class="profile-card__overlay js-message-close"></div>
+        <div style="display:inline-block;" class="profile-card__overlay js-message-close"></div>
         <div id="buttonbar">
+          
+          <div>
+          <div style="float:left;text-align:left">
+          <div class="profile-card-inf__txt" style="margin-bottom:-1%;color:#5d5e5f69">THIS MONTH</div>
+          <div class="profile-card-inf__title" style="color:#5d5e5ff5;font-size:20px;">{{ request.session.time_studied_this_week }}/goal</div> 
+          </div>
+          <div style="float:right;text-align:right">
+          <div class="profile-card-inf__title">--</div> 
+          <div class="profile-card-inf__txt" style="color:#35aefa;margin-top:-0.5%;">Set Montly Goal</div>          
+          </div>
+          </div>
           <div class="progress">
             <div class="bar" id="bar" style="width:number'{{request.session.progress}}%';"></div>
           </div>
-          <button class="goalbtn goalbody a">Goal (week): {{request.session.daily_goal}} pts</button>
-        </div>
+          <div class="profile-card-inf__txt" style="text-align:left;">Neugo suggested daily goal: {{request.session.daily_goal}} goal</div>
+          <!--<button class="goalbtn goalbody a" style="font-size:9px;">Goal (week): {{request.session.daily_goal}} pts</button>
+          --></div>
         <br /><br />
         <!--competitions-->
-        <h1 class="profile" id="competitions">Competitions</h1>
-        <hr />
+        <h1 class="profile" id="competitions" style="text-align:left;">Competitions</h1>
+        <hr style="float:left;"/>
         <br />
         <div class="comp1">
           <img src="/static/challenge1.png" class="leftimage">
@@ -94,7 +116,7 @@
           <img src="/static/challenge3.png" class="leftimage">
           <div class="rightside">
             <h2 style="font-weight:500;">The {{ request.session.university }} challenge</h2>
-            <p style="font-weight:200;">Earn 300 points in one week</pstyle="font-weight:200;">
+            <p style="font-weight:200;">Earn 160 points in one day</pstyle="font-weight:200;">
           </div>
           <div style="clear:both;"></div>
           <input type="button" name="CompButton" id="CompButton2" class="compbutton" value="Register"
@@ -129,7 +151,7 @@
         <!--endofocmpetitions-->
         <br /><br />
         <!-- Awards -->
-        <h1 class="profile" id="awards">Awards</h1>
+        <h1 class="profile" id="awards" style="text-align:left">Awards</h1>
         <hr />
         <br />
         <div id="mainawards">
