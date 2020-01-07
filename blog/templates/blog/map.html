@@ -35,7 +35,7 @@
   .mapouter { height: 300px; }
   .row [class*="col-"] {
     
-    margin-top: 10%;
+    margin-top: 15.5%;
 }
 #maplinks {
   margin-top:20%;
@@ -52,11 +52,29 @@
       width:100%;}
   .row [class*="col-"] {
     
-    margin-top: 10%;
+    margin-top: 9%;
 }
 #maplinks {
   margin-top:20%;
 }
+  #mappara{
+    margin-left:5%;
+  }
+  #mapbtn{
+    left:30%;
+  }
+}
+
+@media screen and (min-width:401px){
+  body{
+    margin:0rem;
+  }
+  #mappara{
+    margin-left:2%;
+  }
+  #mapbtn{
+  left:33%;
+  }
 }
 
 @media screen and (min-width: 768.5px) {
@@ -91,8 +109,8 @@
     </div>
     <div id="maplinks">
     <div id="finish_session_button_div" >
-        <a>You are in the University of Manchester study zone, start you session to earn points: </a>
-        <a href="{% url 'blog-study' %}" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">start session</a>
+        <div id="mappara" style="color:#424242e0;display:inline;"><h3 >You are in a Neugo study zone! start your session to earn points: </h3>
+        <a id="mapbtn" href="{% url 'blog-study' %}" style="margin-top:3%;font-size:12px;font-weight:600;background-color:#1976d2;color:#FFFF;" class="btn btn-success">start session</a>
       </div>
   </div sty>
 </body>

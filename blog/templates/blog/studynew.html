@@ -4,7 +4,22 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'css/timernew.css' %}">
+<style>
+@media screen and (max-width:768px){
+  body{
+    margin:0rem;
+}
+}
 
+@media screen and (min-width:400px){
+  .row [class*="col-"]{
+    margin-top:40%;
+  }
+  #sessionbtn{
+    margin-left:39%;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -12,12 +27,12 @@
     Set your session length: <br>
     <form id="timerform" action='store_time/' method="post">
       {% csrf_token %}
-      <input style="border-radius:5%;margin-left:1%;margin-top:5%;margin-bottom:1%;" type="time" id="sessionlength"
+      <input style="border-radius:5%;width:100px;margin-left:0%;margin-top:5%;margin-bottom:1%;" type="time" id="sessionlength"
         name="sessionlength" step="900" value="00:60" />
     </form>
   </p>
   <p>
-    <button type="submit" class="btn btn-success" id="sessionbtn" style="margin-left:40%;background-color:#4cf16e;color:#FFFF;"
+    <button type="submit" class="btn btn-success" id="sessionbtn" style="margin-left:40%;font-weight:600;background-color:#4cf16e;color:#FFFF;"
       form="timerform">Go</button>
   </p>
 </body>
