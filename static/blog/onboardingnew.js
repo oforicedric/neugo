@@ -266,3 +266,14 @@ function showChart(user_activity, all_activity) {
     }
   });
 }
+
+// onboarding final margins
+function smallMargin(){
+  if ($(window.width())<400){
+  document.getElementById('p2').style.marginLeft ="-17px";
+  }
+  else if ($(window.width())>401) {
+  document.getElementById('p2').style.marginLeft ="-13px";
+  }
+};
+

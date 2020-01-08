@@ -29,3 +29,15 @@ function countdownTimeStart(milliseconds) {
         }
     }, 1000);
 }
+
+//function to show comment div after session
+
+
+
+function getComments() {
+  
+document.getElementById('finish_comment').style.display = "block";
+document.getElementById('finish_Session_button_div').style.display="none";
+    
+}
+

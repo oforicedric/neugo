@@ -18,7 +18,7 @@
 
     <div class="slider-container" id="finishcon">
         <div class="slider-turn">
-            <p style="margin-left:0px;word-wrap:break-word;" >
+            <p id="p1" style="margin-left:0px;word-wrap:break-word;" >
                 {{ request.session.first_name }} from {{ request.session.university }} studying {{ request.session.subject }}, correct?
             </p>
 
@@ -43,7 +43,7 @@
 
     <div class="bottom" style="margin-left:0px">
         <form action="saveuni" id="save_profile_button" method="post" style="min-width:100%">
-            <button class="btn4" id="yesbtn" type="button" style="min-width:100%;display:none;" onclick="showstart()">yes</button>
+            <button class="btn4" id="yesbtn" type="button" style="min-width:100%;display:none;" onclick="showstart();smallMargin();">yes</button>
             <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="min-width:100%;display:none;" >GO</button>
         </form>
         <!-- <button class="btn4" onclick="window.location.href='/register'"  id="gobtn"  type="button" style="display:none;" >GO</button> -->

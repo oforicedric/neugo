@@ -75,7 +75,7 @@
 	 border-color: rgba(0, 0, 0, 0) #f3f3f3 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
 }
  .container p {
-	 width: 350px;
+	 width: 325px;
 	 font-size: 16px;
 	 color: #a8aab2;
 	 font-weight: 400;
@@ -84,14 +84,22 @@
 	 margin: 0;
 }
 
+@media screen and (min-width:401px){
+#p1{
+	margin-right:0px;
+	margin-left: 18px;
+}
+}
 @media screen and (max-width:400px){
 	.container p{
-		width: 320px;
+		width: 293px;
+		margin-right: 23px;
 	}
 
 	#p2 {
 		width:293px;
-		margin-left: 34px;
+		margin-left: 16px;
+		/* padding-left: 27px; */
 	}
 }
  .container .bottom {
@@ -235,7 +243,7 @@
   border: 0;
   margin: 0;
   padding: 0;
-  height: 30px;
+  height: 42px;
   text-transform: uppercase;
   color: #fff;
   font-weight: bold;
@@ -243,6 +251,7 @@
   cursor: pointer;
   transition: all 0.3s;
 }
+
 .nobtn{
   margin-top: 15%;
   margin-left: 90%;
@@ -282,6 +291,9 @@
 	
 	#finishcon {
 		margin: 0 14px;
+	}
+	#nobtn{
+		margin-top:7%;
 	}
 }
 

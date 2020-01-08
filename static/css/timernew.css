@@ -162,7 +162,7 @@ svg circle {
     }
 
     #finishbtn {
-        margin-left:0%;
+        margin-left: 2%;
     }
     
     #pausebtn {
@@ -170,3 +170,24 @@ svg circle {
         margin-right:15%;
     }
 }
+
+/*comment box */
+
+.commentBox {
+
+	border-radius:5px;
+	border-color:#1964d2;
+	border-width:1.5px;
+	line-height:1;
+	padding:2px 20px 35px 2px;
+	margin-left:20%;
+	line-height:1;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:16px;
+
+}
+
+#fin_comment{
+	font-size:26px;
+}
+

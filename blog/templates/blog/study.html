@@ -20,9 +20,15 @@
         countdownTimeStart(time_int);
     </script>
     <div id="finish_session_button_div">
-        <form action="finish" id="finish_session_button" method="GET">
-            <button id="finishbtn" type="submit" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
+        <form  id="finish_session_button"> <!--took out action=finish() andtype submit from btn and method=get-->
+            <button onclick="getComments()" id="finishbtn" type="button"style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
           </form>
+    </div>
+    <div id="finish_comment" style="display:none;">
+    <div><h2 id="fin_comment" style="float:left;">{{ request.session.first_name }},how was your session? </h2></div>
+    <textarea id="get_comment" class="commentBox" placeholder="Productive essay planning session!"></textarea>
+     <button onclick="getComments()" id="finishbtn" type="button" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
+       
     </div>
 </body>
 
