@@ -27,7 +27,7 @@ ul {
 
 .bg-neugo {
    /* background-color:#086fb4f5;*/
-   background-color:#1976D2;
+   background-color: rgb(255, 255, 255);
 }
 
 .site-header .navbar-nav .nav-link {
@@ -54,7 +54,7 @@ ul {
 }
 
 .article-title {
-    color: #444444;
+    color: #424242;
 }
 
 a.article-title:hover {
@@ -64,18 +64,20 @@ a.article-title:hover {
 
 .article-content {
     white-space: pre-line;
+    color: #424242;
 }
 
 .article-img {
-    height: 65px;
-    width: 65px;
+    height: 45px;
+    width: 45px;
     margin-right: 16px;
 }
 
 .article-metadata {
     padding-bottom: 1px;
     margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
+    /* border-bottom: 1px solid #e3e3e3 */
+    margin-top: 2px;
 }
 
 .article-metadata a:hover {

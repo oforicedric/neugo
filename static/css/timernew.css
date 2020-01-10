@@ -121,6 +121,11 @@ svg circle {
     float:right;
 }
 
+@media screen and (max-width: 500px){
+    #commentsubmitbtn{
+	margin-left:35%;
+}
+}
 
 @media screen and (max-width: 400px) {
 	body
@@ -139,6 +144,9 @@ svg circle {
         margin-top:5%;
         margin:0 auto;
         display:block;
+    }
+    #commentsubmitbtn{
+    	margin-left: 34%;
     }
 
 
@@ -174,20 +182,21 @@ svg circle {
 /*comment box */
 
 .commentBox {
-
-	border-radius:5px;
-	border-color:#1964d2;
-	border-width:1.5px;
-	line-height:1;
-	padding:2px 20px 35px 2px;
-	margin-left:20%;
-	line-height:1;
-	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size:16px;
-
+border-radius:5px;
+/* border-color:#1964d2; */
+border-width: 0;
+box-shadow: 2;
+box-shadow: 0px 0px 2px 0px;
+line-height:1;
+padding:2px 20px 35px 2px;
+margin-left:20%;
+line-height:1;
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:16px;
 }
 
 #fin_comment{
-	font-size:26px;
+	font-size: 23px;
+	margin-top: 1%;
 }
 

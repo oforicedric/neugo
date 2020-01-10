@@ -27,9 +27,7 @@ function countdownTimeStart(milliseconds) {
             clearInterval(x);
             document.getElementById("countdown_number").innerHTML = "EXPIRED";
         }
-    }, 1000);
-}
-
+    }, 1000);}
 //function to show comment div after session
 
 

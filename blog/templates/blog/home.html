@@ -31,20 +31,48 @@
 
  
     </style>
+
+<script>
+function pointsScale(x) {
+ var pts = x * 24 ;
+ return var;
+}
+</script>
+
 </head>
     {% for post in posts %}
     
         <article class="media content-section" >
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
+          <div><div class="media-body">
+            <div class="article-metadata
+             <small style="font-weight:600" class="text-muted">{request.session.first_name}</small></br>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.author }}</a></h2>
-            <p> time studied (s): </p>
-              <p class="article-content">{{ post.time_studied }}</p>
+          </div >
+          <div style="margin-left:-4pc" class="media-body">
+            <h2 style="font-size:20px;font-weight:600;"><a class="article-title" href="{% url 'post-detail' post.id %}">Good session</a></h2>
+            <div>
+            <div class="feednotes" >
+            <p class="text-muted"> Study time </p>
+              <p style="font-weight:600;font-size:20px;"class="article-content">{{ post.time_studied }}</p>
+            </div style="margin-left:">
+            
+             <div class="feednotes" >
+            <p class="text-muted"> Points earned </p>
+              <p style="font-weight:600;font-size:20px;"class="article-content">1{{ post.time_studied }}</p>
             </div>
+
+            <div style="border-width:0"class="feednotes" >
+            <p class="text-muted">Rating</p>
+              <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
+            </div>
+          </div>
+
+           </div>
         </article>
+        <div style="margin-top:0px;padding-top:0px;"class="media content-section">
+          </div>
     {% endfor %}
     {% if is_paginated %}
 
@@ -68,3 +96,5 @@
 
     {% endif %}
 {% endblock content %}
+
+

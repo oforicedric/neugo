@@ -5224,11 +5224,9 @@ a.thumbnail.active {
 .media-left,
 .media-right,
 .media-body {
-  display: table-cell;
-  vertical-align: top;
+  /* display: table-cell; */
+  /* vertical-align: top; */
   background-color:#FFFF;
-;
-
 }
 .media-middle {
   vertical-align: middle;

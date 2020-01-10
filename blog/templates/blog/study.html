@@ -20,14 +20,17 @@
         countdownTimeStart(time_int);
     </script>
     <div id="finish_session_button_div">
-        <form  id="finish_session_button"> <!--took out action=finish() andtype submit from btn and method=get-->
-            <button onclick="getComments()" id="finishbtn" type="button"style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
+        <form  id="finish_session_button" action="finish" method="GET"> <!--took out action=finish() andtype submit from btn and method=get-->
+            <button onclick="getComments()"  id="finishbtn" type="button"style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
           </form>
     </div>
+     
     <div id="finish_comment" style="display:none;">
+    <h1 class="profile" id="Feedbackhead" style="text-align:left;color:#424242;font-size:32px;">Feedback</h1>
+        <hr style="border-width:2px;color:#424242"/>
     <div><h2 id="fin_comment" style="float:left;">{{ request.session.first_name }},how was your session? </h2></div>
     <textarea id="get_comment" class="commentBox" placeholder="Productive essay planning session!"></textarea>
-     <button onclick="getComments()" id="finishbtn" type="button" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">finish </button>
+     <button  id="commentsubmitbtn" form="finish_session_button" type="submit" style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">Submit </button>
        
     </div>
 </body>

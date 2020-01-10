@@ -6709,6 +6709,9 @@ ul.icon-list.icon-list-block li:not(:last-of-type) {
 .media-grid > .media-right {
   padding-left: 15px;
 }
+//
+
+
 @media (max-width: 480px) {
   .media-clearfix-xs-min > .pull-left,
   .media-clearfix-xs-min > .pull-right,
@@ -17200,7 +17203,7 @@ html.app-mobile #content .container-fluid {
   }
 }
 .navbar .container .navbar-brand {
-  margin-left: 0;
+  margin-left: 81px;
 }
 ..container .navbar-right:last-of-type {
   margin-right: 0;
@@ -29803,4 +29806,16 @@ fieldset[disabled] .sidebar.sidebar-skin-white-brown .btn-default.active {
 }
 [data-pagination="true"][data-pagination-position*="BOTTOM"] + .map-overlay-top {
   top: 0;
+}
+
+/* feed css */
+
+@media (max-width:400px){
+  .feednotes{
+    border-right-style: solid;
+    border-color:#dee2e6e8;
+    border-width: thin;
+    width: 106px;
+    display:inline-block;
+  }
 }
