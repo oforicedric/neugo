@@ -49,8 +49,8 @@ def rewards(request):
     return render(request, "blog/rewardsnew.html")
 
 
-def profile2(request):
-    return render(request, "blog/profile2.html")
+def tutorial(request):
+    return render(request, "blog/tutorial3.html")
 
 
 def onboarding(request):

@@ -2913,7 +2913,8 @@ body {
   min-height: 100vh;
   background-color: #FFF;
   overflow-x: hidden !important;
-  width: 100vw; }
+  width: 100vw;
+  }
   body.no-scroll {
     overflow: hidden; }
   @media (max-width: 992px) {

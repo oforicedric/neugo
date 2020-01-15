@@ -4,7 +4,7 @@
   <style>
       @media (max-width: 400px){
   .row [class*="col-"] {
-    padding: 0 7.5px;
+    padding: 0 0px;
     margin-top:57px;
     min-width: 395px;
     margin-left: -5%;
@@ -18,18 +18,27 @@
  
 };
 
+@media screen and (min-width:405px) and (max-width:420px){
+    .row [class*="col-md-12"]{
+    margin-top:0px;
+    padding: 0 0px;
+  };
+  #feednote{
+    display:inline-block;
+  };
+};
 
 @media screen and (max-width:500px){
   .row [class*="col-md-12"]{
     margin-top:60px;
     padding: 0 0px;
     min-width: 450px;
-    margin-left: -12%;
+    margin-left: 0%;
   };
   };
- 
 
- 
+
+}
     </style>
 
 <script>
@@ -43,27 +52,27 @@ function pointsScale(x) {
     {% for post in posts %}
     
         <article class="media content-section" >
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div><div class="media-body">
-            <div class="article-metadata
+         <div style="inline-block;"> <img class="rounded-circle article-img"  src="{{ post.author.profile.image.url }}">
+          <div style="display:inline-block;"><div class="media-body">
+            <div class="article-metadata"
              <small style="font-weight:600" class="text-muted">{request.session.first_name}</small></br>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
-          </div >
-          <div style="margin-left:-4pc" class="media-body">
+          </div ></div>
+          <div  class="media-body">
             <h2 style="font-size:20px;font-weight:600;"><a class="article-title" href="{% url 'post-detail' post.id %}">Good session</a></h2>
             <div>
-            <div class="feednotes" >
+            <div class="feednotes" id="feednote" >
             <p class="text-muted"> Study time </p>
               <p style="font-weight:600;font-size:20px;"class="article-content">{{ post.time_studied }}</p>
             </div style="margin-left:">
             
-             <div class="feednotes" >
+             <div class="feednotes" id="feednote">
             <p class="text-muted"> Points earned </p>
               <p style="font-weight:600;font-size:20px;"class="article-content">1{{ post.time_studied }}</p>
             </div>
 
-            <div style="border-width:0"class="feednotes" >
+            <div style="border-width:0"class="feednotes"id="feednote" >
             <p class="text-muted">Rating</p>
               <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
             </div>
@@ -71,8 +80,17 @@ function pointsScale(x) {
 
            </div>
         </article>
-        <div style="margin-top:0px;padding-top:0px;"class="media content-section">
-          </div>
+        <div id="likebox" style="margin-top:0px;padding-top:0px;"class="media content-section likebox">
+<div style="width:100%;padding-top:4%;">
+ <div class="feednotes likes"  >          
+  &nbsp&#10084;&#65039;
+</div> 
+<div class="feednotes likes" style="border-width:0px;" >    
+&nbsp;&#x1F4AC;      
+</div>
+</div>
+
+</div>
     {% endfor %}
     {% if is_paginated %}
 

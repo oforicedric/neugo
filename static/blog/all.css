@@ -211,7 +211,7 @@ template {
   display: none;
 }
 a {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 a:active,
 a:hover {
@@ -1234,7 +1234,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: comment;
   font-size: 14px;
   line-height: 1.42857143;
   color: #212121;
@@ -1374,7 +1374,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 h1 small,
@@ -1454,7 +1454,7 @@ p {
 }
 small,
 .small {
-  font-size: 85%;
+  font-size: 73%;
 }
 mark,
 .mark {
@@ -1487,6 +1487,7 @@ mark,
 }
 .text-muted {
   color: #777777;
+  font-family: pointsdiv;
 }
 .text-primary {
   color: #26a69a;
@@ -1724,8 +1725,8 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  /* padding-left: 15px; */
+  /* padding-right: 15px; */
 }
 @media (min-width: 768px) {
   .container {
@@ -5192,7 +5193,7 @@ a.thumbnail.active {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .media {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .media:first-child {
   margin-top: 0;
@@ -5203,10 +5204,14 @@ a.thumbnail.active {
   overflow: hidden;
   background-color:#FFFF;
 ;
- 
+.likebox{
+  background-color:grey;
+  ;
+}
+
 }
 .media-body {
-  width: 10000px;
+  width: auto;
   background-color:#1976D2;
 ;
 }
@@ -5225,7 +5230,7 @@ a.thumbnail.active {
 .media-right,
 .media-body {
   /* display: table-cell; */
-  /* vertical-align: top; */
+  /* display: inline-block; */
   background-color:#FFFF;
 }
 .media-middle {
@@ -16041,6 +16046,7 @@ a .material-icons {
 
 .rounded-circle {
   border-radius: 50%!important;
+  /* display: inline-block; */
 }
 
 .img-fluid, .img-thumbnail {
@@ -16065,9 +16071,10 @@ a .material-icons {
 }
 
 p {
-  font-size: 14px;
-  margin: 0 0 10px;
+  font-size: 9px;
+  margin: 0 0 0px;
 }
+
 
 .profile-page .profile-tabs {
   margin-top: 4.284rem;

@@ -28,4 +28,6 @@ urlpatterns = [
     path('study/store_time/', views.store_time, name='blog-storetime'), 
     path('rewards/purchase_rewards/', views.purchase_rewards, name='blog-purchase_rewards'),
     path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'), 
+    path('tutorial/', views.tutorial, name='tutorial'), 
+
 ]

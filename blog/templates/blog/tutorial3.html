@@ -1,0 +1,85 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Onboarding</title>
+<link rel="stylesheet" href="{% static 'blog/styleonboard3.css' %}">
+<link rel="stylesheet" href="styleonboard.css">
+</head>
+<body>
+<div class="device">
+    <div class="owl-carousel" id="owl-demo">
+      <div class="item">
+      <div class="paper">
+        <img class="paper_img" src="/static/neugoiphone.png" alt="" />
+      </div>
+      <div class="mid">
+         <h1>welcome to Neugo </h1>
+       <p>We will be with you every step of the way as you become the efficient person you were born to be!</p>
+     </div>
+   </div>
+
+      <div class="item">
+        <div class="paper">
+          <img class="paper_img" src="/static/slider1.png" alt="" />
+        </div>
+        <div class="mid">
+            <h1>See how you stack up</h1>
+            <p>Keep your motivation high with some healthy competition with your peers at your university</p>
+        </div>
+       </div>
+
+    <div class="item">
+		<div class="paper">
+		  <img class="paper_img" src="/static/slider3.png" alt="" />
+		</div>
+		<div class="mid">
+		   <h1>Study smart</h1>
+		 <p> Aim for efficient studying with the help of Neug to challenge and optimizing your progress</p>
+	   </div>
+	 </div>
+     <div class="item">
+		<div class="paper">
+		  <img class="paper_img" src="/static/slider2.png" alt="" />
+		</div>
+		<div class="mid">
+		   <h1>See the whole picture</h1>
+		 <p> Analyze your study patterns to effectively spot ways to improve</p>
+	   </div>
+	 </div>
+</div>
+<div class="btm customNavigation next">
+  <button type="button" class="btnnext" name="button">Let's Start</button>
+</div>
+  </div>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script src="{% static 'blog/owl.carousel.min3.js' %}"></script>
+<script src="owl.carousel.min.js"></script>
+<script>
+$(document).ready(function() {
+  var owl = $("owl-demo");
+  $("#owl-demo").owlCarousel({
+		navigation : false,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem: true
+  });
+  
+  $(".next").click(function(){
+	if(!$("body").find(".owl-page").last().hasClass("active"))
+		$("#owl-demo").trigger("owl.next");
+	if($("body").find(".owl-page").last().hasClass("active"))
+		$(".next button").text("Finish");
+  })
+  $(".owl-page").click(function(){
+	  if($("body").find(".owl-page").last().hasClass("active"))
+	  	  $(".finish").css("display","block");
+	  else
+	  		$(".finish").css("display","none");
+  });
+});
+</script>
+</body>
+</html>
