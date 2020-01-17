@@ -25,6 +25,11 @@ def finish_study(request):
     time_finished = int(round(time.time()))
     time_studied = time_finished - request.session["start_time"]
     request.session["user_description"] = request.POST["user_description"]
+    if request.session["user_description"] == "": 
+        from datetime import datetime
+        now = datetime.now()
+        current_time = now.strftime("%H:%M")
+        request.session["user_description"] = "Session at " + current_time
     make_a_post(
         start_date=timezone.now(),
         time_studied=time_studied,
