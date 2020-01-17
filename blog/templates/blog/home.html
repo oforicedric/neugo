@@ -55,7 +55,7 @@ function pointsScale(x) {
          <div style="inline-block;"> <img class="rounded-circle article-img"  src="{{ post.author.profile.image.url }}">
           <div style="display:inline-block;"><div class="media-body">
             <div class="article-metadata"
-             <small style="font-weight:600" class="text-muted">{request.session.first_name}</small></br>
+             <small style="font-weight:600" class="text-muted">{{request.session.first_name}}</small></br>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
           </div ></div>
