@@ -23,7 +23,8 @@ def finish_study(request):
 
     from utils.make_a_new_blog_post import make_a_post
     time_finished = int(round(time.time()))
-    time_studied = time_finished - request.session["start_time"]
+    points_earned = time_finished - request.session["start_time"]
+    time_studied = int(points_earned / 60) 
     request.session["user_description"] = request.POST["user_description"]
     if request.session["user_description"] == "": 
         from datetime import datetime
@@ -33,6 +34,7 @@ def finish_study(request):
     make_a_post(
         start_date=timezone.now(),
         time_studied=time_studied,
+        points_earned=points_earned,
         user=request.user,
         user_description=request.session["user_description"],
     )
