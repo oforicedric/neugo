@@ -22,6 +22,43 @@ def register(request):
     return render(request, "users/register.html", {"form": form})
 
 
+def set_goals(request):
+    request.session["weekly_goal"] = compute_weekly_goal()
+    request.session["monthly_goal"] = compute_monthly_goal()
+    request.session["daily_goal"] = compute_daily_goal()
+    print("monthly goal is ", request.session["monthly_goal"])
+
+
+def compute_daily_goal():
+    return 1000
+
+
+def compute_weekly_goal():
+    return 3000
+
+
+def compute_monthly_goal():
+    return int(7000 * 4.3)
+
+
+def compute_progress(request):
+    request.session["daily_progress"] = 100 * (
+        0.01
+        + (request.session["user_study_activity"][-1] / request.session["daily_goal"])
+    )
+    request.session["weekly_progress"] = 100 * (
+        0.01
+        + (sum(request.session["user_study_activity"]) / request.session["weekly_goal"])
+    )
+    request.session["monthly_progress"] = 100 * (
+        0.01
+        + (
+            sum(request.session["user_study_activity"])
+            / request.session["monthly_goal"]
+        )
+    )
+
+
 @login_required
 def profile(request):
     from django.contrib.auth.models import User
@@ -33,25 +70,13 @@ def profile(request):
         user_posts
     )
     total_activity = turn_posts_into_list_for_template(all_posts)
-    average_activity = [x / num_of_users for x in total_activity]
-    request.session["all_users_study_activity"] = average_activity
-    request.session["daily_goal"] = int(
-        (sum(request.session["user_study_activity"]) / 7) * 1.1
-    )
-    try:
-        request.session["progress"] = 100 * (
-            request.session["user_study_activity"][-1] / request.session["daily_goal"]
-        )
-    except:
-        request.session["progress"] = 100 * (
-            request.session["user_study_activity"][-1] / 1
-        )
+    # average_activity = [x / num_of_users for x in total_activity]
+    set_goals(request)
+    compute_progress(request)
     request.session["time_studied_this_week"] = sum(
         request.session["user_study_activity"]
     )
     request.session["graph_labels"] = generate_graph_labels()
-    print(request.session["progress"])
-    print(request.session["daily_goal"])
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(
