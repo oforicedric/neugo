@@ -1,118 +1,137 @@
 {% extends "blog/base.html" %}
 {% block content %}
+
 <head>
   <style>
-      @media (max-width: 400px){
-  .row [class*="col-"] {
-    padding: 0 0px;
-    margin-top:57px;
-    min-width: 395px;
-    margin-left: -5%;
-    
-  }};
-  @media (max-width: 4000px){
-  .row [class*="col-"] {
-    padding: 0 0px;
-    margin-top:15%;
-  }
- 
-};
+    @media (max-width: 400px) {
+      .row [class*="col-"] {
+        padding: 0 0px;
+        margin-top: 57px;
+        min-width: 395px;
+        margin-left: -5%;
 
-@media screen and (min-width:405px) and (max-width:420px){
-    .row [class*="col-md-12"]{
-    margin-top:0px;
-    padding: 0 0px;
-  };
-  #feednote{
-    display:inline-block;
-  };
-};
+      }
+    }
 
-@media screen and (max-width:500px){
-  .row [class*="col-md-12"]{
-    margin-top:60px;
-    padding: 0 0px;
-    min-width: 450px;
-    margin-left: 0%;
-  };
-  };
+    ;
+
+    @media (max-width: 4000px) {
+      .row [class*="col-"] {
+        padding: 0 0px;
+        margin-top: 15%;
+      }
+
+    }
+
+    ;
+
+    @media screen and (min-width:405px) and (max-width:420px) {
+      .row [class*="col-md-12"] {
+        margin-top: 0px;
+        padding: 0 0px;
+      }
+
+      ;
+
+      #feednote {
+        display: inline-block;
+      }
+
+      ;
+    }
+
+    ;
+
+    @media screen and (max-width:500px) {
+      .row [class*="col-md-12"] {
+        margin-top: 60px;
+        padding: 0 0px;
+        min-width: 450px;
+        margin-left: 0%;
+      }
+
+      ;
+    }
+
+    ;
 
 
-}
-    </style>
+    }
+  </style>
 
-<script>
-function pointsScale(x) {
- var pts = x * 24 ;
- return var;
-}
-</script>
+  <script>
+    function pointsScale(x) {
+      var pts = x * 24;
+      return var ;
+    }
+  </script>
 
 </head>
-    {% for post in posts %}
-    
-        <article class="media content-section" >
-         <div style="inline-block;"> <img class="rounded-circle article-img"  src="{{ post.author.profile.image.url }}">
-          <div style="display:inline-block;"><div class="media-body">
-            <div class="article-metadata"
-             <small style="font-weight:600" class="text-muted">{{request.session.first_name}}</small></br>
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-            </div>
-          </div ></div>
-          <div  class="media-body">
-            <h2 style="font-size:20px;font-weight:600;"><a class="article-title" href="{% url 'post-detail' post.id %}">Good session</a></h2>
-            <div>
-            <div class="feednotes" id="feednote" >
-            <p class="text-muted"> Study time </p>
-              <p style="font-weight:600;font-size:20px;"class="article-content">{{ post.time_studied }}</p>
-            </div style="margin-left:">
-            
-             <div class="feednotes" id="feednote">
-            <p class="text-muted"> Points earned </p>
-              <p style="font-weight:600;font-size:20px;"class="article-content">1{{ post.time_studied }}</p>
-            </div>
+{% for post in posts %}
 
-            <div style="border-width:0"class="feednotes"id="feednote" >
-            <p class="text-muted">Rating</p>
-              <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
-            </div>
-          </div>
+<article class="media content-section">
+  <div style="inline-block;"> <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+    <div style="display:inline-block;">
+      <div class="media-body">
+        <div class="article-metadata" <small style="font-weight:600" class="text-muted">
+          {{request.session.first_name}}</small></br>
+          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        </div>
+      </div>
+    </div>
+    <div class="media-body">
+      <h2 style="font-size:20px;font-weight:600;"><a class="article-title" href="{% url 'post-detail' post.id %}">Good
+          session</a></h2>
+      <div>
+        <div class="feednotes" id="feednote">
+          <p class="text-muted"> Study time </p>
+          <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
+        </div style="margin-left:">
 
-           </div>
-        </article>
-        <div id="likebox" style="margin-top:0px;padding-top:0px;"class="media content-section likebox">
-<div style="width:100%;padding-top:4%;">
- <div class="feednotes likes"  >          
-  &nbsp&#10084;&#65039;
-</div> 
-<div class="feednotes likes" style="border-width:0px;" >    
-&nbsp;&#x1F4AC;      
+        <div class="feednotes" id="feednote">
+          <p class="text-muted"> Points earned </p>
+          <p style="font-weight:600;font-size:20px;" class="article-content">1{{ post.time_studied }}</p>
+        </div>
+
+        <div style="border-width:0" class="feednotes" id="feednote">
+          <p class="text-muted">Rating</p>
+          <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
+        </div>
+      </div>
+
+    </div>
+</article>
+<div id="likebox" style="margin-top:0px;padding-top:0px;" class="media content-section likebox">
+  <div style="width:100%;padding-top:4%;">
+    <div class="feednotes likes">
+      &nbsp&#10084;&#65039;
+    </div>
+    <div class="feednotes likes" style="border-width:0px;">
+      &nbsp;&#x1F4AC;
+    </div>
+  </div>
+
 </div>
-</div>
+{% endfor %}
+{% if is_paginated %}
 
-</div>
-    {% endfor %}
-    {% if is_paginated %}
+{% if page_obj.has_previous %}
+<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %}
 
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+{% endif %}
+{% endfor %}
 
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
-      {% endfor %}
+{% if page_obj.has_next %}
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+{% endif %}
 
-      {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
-
-    {% endif %}
+{% endif %}
 {% endblock content %}
-
-

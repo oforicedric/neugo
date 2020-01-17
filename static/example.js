@@ -6,7 +6,7 @@ function countdownTimeStart(milliseconds) {
     var twentyMinutesLater = new Date(currentDate.getTime() + milliseconds);
 
     // Update the count down every 1 second
-    var x = setInterval(function() {
+    var x = setInterval(function () {
 
         // Get todays date and time
         var now = new Date().getTime();
@@ -27,15 +27,14 @@ function countdownTimeStart(milliseconds) {
             clearInterval(x);
             document.getElementById("countdown_number").innerHTML = "EXPIRED";
         }
-    }, 1000);}
-//function to show comment div after session
-
-
-
-function getComments() {
-  
-document.getElementById('finish_comment').style.display = "block";
-document.getElementById('finish_Session_button_div').style.display="none";
-    
+    }, 1000);
 }
 
+function getComments() {
+    var x = setInterval(function () {
+        document.getElementById("countdown_number").innerHTML = "--:--"    
+    }, 10);
+    document.getElementById('finish_comment').style.display = "block";
+    document.getElementById('finish_Session_button_div').style.display = "none";
+
+}
