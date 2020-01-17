@@ -22,11 +22,15 @@ def home(request):
 def finish_study(request):
 
     from utils.make_a_new_blog_post import make_a_post
-
     time_finished = int(round(time.time()))
     time_studied = time_finished - request.session["start_time"]
-
-    make_a_post(start_date=timezone.now(), time_studied=time_studied, user=request.user)
+    request.session["user_description"] = request.POST["user_description"]
+    make_a_post(
+        start_date=timezone.now(),
+        time_studied=time_studied,
+        user=request.user,
+        user_description=request.session["user_description"],
+    )
 
     # 1 second = 1 wallet point
     profile = request.user.profile
@@ -42,6 +46,7 @@ def map(request):
 
 def study(request):
     request.session["start_time"] = int(round(time.time()))
+    request.session["user_description"] = ""
     return render(request, "blog/studynew.html")
 
 
@@ -72,7 +77,9 @@ def store_time(request):
         minutes = session_length_string[:2]
         seconds = session_length_string[-2:]
         request.session["initial_time_string"] = request.POST["sessionlength"]
-        request.session["study_time"] = (int(minutes) * 60 * 1000) + (int(seconds) * 1000)
+        request.session["study_time"] = (int(minutes) * 60 * 1000) + (
+            int(seconds) * 1000
+        )
 
     return render(request, "blog/study.html")
 
@@ -104,9 +111,11 @@ def purchase_rewards(request):
 
     return make_a_code(request)
 
-def load_user_post_stats(): 
+
+def load_user_post_stats():
     posts = Post.objects().all()
     return posts
+
 
 class PostListView(ListView):
     model = Post

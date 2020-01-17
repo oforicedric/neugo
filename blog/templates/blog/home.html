@@ -80,8 +80,8 @@
       </div>
     </div>
     <div class="media-body">
-      <h2 style="font-size:20px;font-weight:600;"><a class="article-title" href="{% url 'post-detail' post.id %}">Good
-          session</a></h2>
+      <h2 style="font-size:20px;font-weight:600;"><a class="article-title"
+          href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a></h2>
       <div>
         <div class="feednotes" id="feednote">
           <p class="text-muted"> Study time </p>
@@ -90,12 +90,12 @@
 
         <div class="feednotes" id="feednote">
           <p class="text-muted"> Points earned </p>
-          <p style="font-weight:600;font-size:20px;" class="article-content">1{{ post.time_studied }}</p>
+          <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
         </div>
 
         <div style="border-width:0" class="feednotes" id="feednote">
           <p class="text-muted">Rating</p>
-          <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
+          <p style="font-weight:600;font-size:20px;" class="article-content">3</p>
         </div>
       </div>
 

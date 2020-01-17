@@ -33,10 +33,14 @@
         <div>
             <h2 id="fin_comment" style="float:left;">{{ request.session.first_name }}, how was your session? </h2>
         </div>
-        <textarea id="get_comment" class="commentBox" placeholder="Productive essay planning session!"></textarea>
-        <button id="commentsubmitbtn" form="finish_session_button" type="submit"
-            style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">Submit </button>
-
+        <form action="finish/" id="finish_session_comment" method="post">
+            {% csrf_token %}
+            <textarea id="get_comment" class="commentBox" name="user_description"></textarea>
+        </form>
+        <form action="finish" id="finish_session_button" method="post">
+            <button id="commentsubmitbtn" type="submit" form="finish_session_comment"
+                style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">Post</button>
+        </form>
     </div>
 </body>
 
