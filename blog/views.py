@@ -54,7 +54,7 @@ def map(request):
 def study(request):
     request.session["start_time"] = int(round(time.time()))
     request.session["user_description"] = ""
-    return render(request, "blog/studynew.html")
+    return render(request, "blog/settfime.html")
 
 
 def rewards(request):
@@ -62,7 +62,7 @@ def rewards(request):
 
 
 def tutorial(request):
-    return render(request, "blog/tutorial3.html")
+    return render(request, "blog/Tutorial.html")
 
 
 def onboarding(request):
@@ -88,7 +88,7 @@ def store_time(request):
             int(seconds) * 1000
         )
 
-    return render(request, "blog/study.html")
+    return render(request, "blog/Timer.html")
 
 
 def save_uni(request):

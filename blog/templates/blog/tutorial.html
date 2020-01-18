@@ -1,28 +1,29 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Onboarding</title>
-<link rel="stylesheet" href="{% static 'blog/styleonboard2.css' %}">
+<link rel="stylesheet" href="{% static 'blog/Tutorial/Tutorial.css' %}">
+<!--<link rel="stylesheet" href="styleonboard.css">-->
 </head>
 <body>
 <div class="device">
     <div class="owl-carousel" id="owl-demo">
       <div class="item">
-      <div class="planet">
-        <img class="main_pictures" src="/static/main1.png" alt="" />
+      <div class="paper">
+        <img class="paper_img" src="/static/neugoiphone.png" alt="" />
       </div>
       <div class="mid">
-         <h1>welcome to Neugo, {{request.session.first_name }}</h1>
+         <h1>welcome to Neugo </h1>
        <p>We will be with you every step of the way as you become the efficient person you were born to be!</p>
      </div>
    </div>
 
       <div class="item">
-        <div class="mountains">
-          <img class="mountains_img" src="/static/slider1.png" alt="" />
+        <div class="paper">
+          <img class="paper_img" src="/static/slider1.png" alt="" />
         </div>
         <div class="mid">
             <h1>See how you stack up</h1>
@@ -49,12 +50,13 @@
 	   </div>
 	 </div>
 </div>
-<div class="btm customNavigation finish" style="display:none;">
-  <button type="button" name="button">FINISH</button>
+<div class="btm customNavigation next">
+  <button type="button" class="btnnext" name="button">Let's Start</button>
 </div>
   </div>
   <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script src="{% static 'blog/owl.carousel.min2.js' %}"></script>
+<script src="{% static 'blog/Tutorial/Tutorialslider.js' %}"></script>
+<!--<script src="owl.carousel.min.js"></script>-->
 <script>
 $(document).ready(function() {
   var owl = $("owl-demo");
@@ -65,15 +67,17 @@ $(document).ready(function() {
       singleItem: true
   });
   
-  var totalSlide = $("body").find(".owl-item").length;
+  $(".next").click(function(){
+	if(!$("body").find(".owl-page").last().hasClass("active"))
+		$("#owl-demo").trigger("owl.next");
+	if($("body").find(".owl-page").last().hasClass("active"))
+		$(".next button").text("Finish");
+  })
   $(".owl-page").click(function(){
 	  if($("body").find(".owl-page").last().hasClass("active"))
 	  	  $(".finish").css("display","block");
 	  else
 	  		$(".finish").css("display","none");
-  });
-  $("button").click(function(){
-    $("#owl-demo").trigger("owl.next");	
   });
 });
 </script>
