@@ -111,13 +111,28 @@ def make_a_code(request):
     return render(request, "blog/make_a_code.html")
 
 
-def purchase_rewards(request):
+def purchase_rewards_100(request):
     profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 10
+    profile.wallet_points = request.user.profile.wallet_points - 100
     profile.save()
 
     return home(request)
 
+
+def purchase_rewards_500(request):
+    profile = request.user.profile
+    profile.wallet_points = request.user.profile.wallet_points - 500
+    profile.save()
+
+    return home(request)
+
+
+def purchase_rewards_50(request):
+    profile = request.user.profile
+    profile.wallet_points = request.user.profile.wallet_points - 50
+    profile.save()
+
+    return home(request)
 
 def load_user_post_stats():
     posts = Post.objects().all()
