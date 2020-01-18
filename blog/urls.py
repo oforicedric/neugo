@@ -26,7 +26,9 @@ urlpatterns = [
     path('onboarding/saveprofile/saveuni/', views.save_uni, name='blog-saveuni'),
     path('onboarding/saveprofile/saveuni/savesubject/', views.save_subject, name='blog-savesubject'), 
     path('study/store_time/', views.store_time, name='blog-storetime'), 
-    path('rewards/purchase_rewards/', views.purchase_rewards, name='blog-purchase_rewards'),
+    path('rewards/purchase_rewards_100/', views.purchase_rewards_100, name='blog-purchase_rewards-100'),
+    path('rewards/purchase_rewards_500/', views.purchase_rewards_500, name='blog-purchase_rewards-500'),
+    path('rewards/purchase_rewards_50/', views.purchase_rewards_50, name='blog-purchase_rewards-50'),
     path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'), 
     path('tutorial/', views.tutorial, name='tutorial'), 
 

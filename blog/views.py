@@ -15,7 +15,7 @@ import pdb
 
 
 def home(request):
-    context = {"posts": Post.objects.all()}
+    context = {"posts": Post.objects.all().order_by("-date_posted")}
     return render(request, "blog/home.html", context)
 
 
@@ -104,20 +104,35 @@ def save_subject(request):
         request.session["subject"] = request.POST["subject"]
         return render(request, "blog/finish_onboarding.html")
 
-    return render(request, "blog/finish_onboarding.html")
+    return render(request, "blog/finish_onboarding.ht ml")
 
 
 def make_a_code(request):
     return render(request, "blog/make_a_code.html")
 
 
-def purchase_rewards(request):
+def purchase_rewards_100(request):
     profile = request.user.profile
     profile.wallet_points = request.user.profile.wallet_points - 10
     profile.save()
 
-    return make_a_code(request)
+    return home(request)
 
+
+def purchase_rewards_500(request):
+    profile = request.user.profile
+    profile.wallet_points = request.user.profile.wallet_points - 50
+    profile.save()
+
+    return home(request)
+
+
+def purchase_rewards_50(request):
+    profile = request.user.profile
+    profile.wallet_points = request.user.profile.wallet_points - 50
+    profile.save()
+
+    return home(request)
 
 def load_user_post_stats():
     posts = Post.objects().all()
@@ -126,7 +141,7 @@ def load_user_post_stats():
 
 class PostListView(ListView):
     model = Post
-    template_name = "blog/landing.html"  # <app>/<model>_<viewtype>.html
+    template_name = "blog/landing.html"  
     context_object_name = "posts"
     ordering = ["-date_posted"]
     paginate_by = 5
@@ -134,7 +149,7 @@ class PostListView(ListView):
 
 class UserPostListView(ListView):
     model = Post
-    template_name = "blog/user_posts.html"  # <app>/<model>_<viewtype>.html
+    template_name = "blog/user_posts.html"
     context_object_name = "posts"
     paginate_by = 5
 
