@@ -70,6 +70,7 @@ def profile(request):
     )
     total_activity = turn_posts_into_list_for_template(all_posts)
     average_activity = [x / num_of_users for x in total_activity]
+    request.session["all_users_study_activity"] = average_activity
     set_goals(request)
     compute_progress(request)
     request.session["time_studied_this_week"] = sum(
