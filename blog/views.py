@@ -104,7 +104,7 @@ def save_subject(request):
         request.session["subject"] = request.POST["subject"]
         return render(request, "blog/finish_onboarding.html")
 
-    return render(request, "blog/finish_onboarding.html")
+    return render(request, "blog/finish_onboarding.ht ml")
 
 
 def make_a_code(request):
@@ -116,7 +116,7 @@ def purchase_rewards(request):
     profile.wallet_points = request.user.profile.wallet_points - 10
     profile.save()
 
-    return make_a_code(request)
+    return home(request)
 
 
 def load_user_post_stats():

@@ -26,7 +26,6 @@ def set_goals(request):
     request.session["weekly_goal"] = compute_weekly_goal()
     request.session["monthly_goal"] = compute_monthly_goal()
     request.session["daily_goal"] = compute_daily_goal()
-    print("monthly goal is ", request.session["monthly_goal"])
 
 
 def compute_daily_goal():
@@ -70,7 +69,7 @@ def profile(request):
         user_posts
     )
     total_activity = turn_posts_into_list_for_template(all_posts)
-    # average_activity = [x / num_of_users for x in total_activity]
+    average_activity = [x / num_of_users for x in total_activity]
     set_goals(request)
     compute_progress(request)
     request.session["time_studied_this_week"] = sum(
