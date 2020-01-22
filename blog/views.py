@@ -18,53 +18,6 @@ def home(request):
     context = {"posts": Post.objects.all().order_by("-date_posted")}
     return render(request, "blog/home.html", context)
 
-
-def finish_study(request):
-
-    from utils.make_a_new_blog_post import make_a_post
-    time_finished = int(round(time.time()))
-    points_earned = time_finished - request.session["start_time"]
-    time_studied = int(points_earned / 60) 
-    request.session["user_description"] = request.POST["user_description"]
-    if request.session["user_description"] == "": 
-        from datetime import datetime
-        now = datetime.now()
-        current_time = now.strftime("%H:%M")
-        request.session["user_description"] = "Session at " + current_time
-    make_a_post(
-        start_date=timezone.now(),
-        time_studied=time_studied,
-        points_earned=points_earned,
-        user=request.user,
-        user_description=request.session["user_description"],
-    )
-
-    # 1 second = 1 wallet point
-    profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points + time_studied
-    profile.save()
-
-    return home(request)
-
-
-def map(request):
-    return render(request, "blog/map.html")
-
-
-def study(request):
-    request.session["start_time"] = int(round(time.time()))
-    request.session["user_description"] = ""
-    return render(request, "blog/studynew.html")
-
-
-def rewards(request):
-    return render(request, "blog/rewardsnew.html")
-
-
-def tutorial(request):
-    return render(request, "blog/tutorial3.html")
-
-
 def onboarding(request):
     return render(request, "blog/onboarding.html")
 
@@ -76,19 +29,6 @@ def save_profile(request):
         return render(request, "blog/onboarding_universities.html")
 
     return render(request, "blog/onboarding_universities.html")
-
-
-def store_time(request):
-    if request.POST:
-        session_length_string = request.POST["sessionlength"]
-        minutes = session_length_string[:2]
-        seconds = session_length_string[-2:]
-        request.session["initial_time_string"] = request.POST["sessionlength"]
-        request.session["study_time"] = (int(minutes) * 60 * 1000) + (
-            int(seconds) * 1000
-        )
-
-    return render(request, "blog/study.html")
 
 
 def save_uni(request):
@@ -105,34 +45,6 @@ def save_subject(request):
         return render(request, "blog/finish_onboarding.html")
 
     return render(request, "blog/finish_onboarding.ht ml")
-
-
-def make_a_code(request):
-    return render(request, "blog/make_a_code.html")
-
-
-def purchase_rewards_100(request):
-    profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 10
-    profile.save()
-
-    return home(request)
-
-
-def purchase_rewards_500(request):
-    profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 50
-    profile.save()
-
-    return home(request)
-
-
-def purchase_rewards_50(request):
-    profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 50
-    profile.save()
-
-    return home(request)
 
 def load_user_post_stats():
     posts = Post.objects().all()
