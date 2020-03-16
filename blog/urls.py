@@ -29,7 +29,9 @@ urlpatterns = [
     path('rewards/purchase_rewards_100/', views.purchase_rewards_100, name='blog-purchase_rewards-100'),
     path('rewards/purchase_rewards_500/', views.purchase_rewards_500, name='blog-purchase_rewards-500'),
     path('rewards/purchase_rewards_50/', views.purchase_rewards_50, name='blog-purchase_rewards-50'),
-    path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'), 
+    path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'),
+    path('ajax/post/<int:pk>/like', views.ajax_like_post, name='ajax_like_post'),
+    path('ajax/post/<int:pk>/create/comment/', views.create_comment, name='create_comment'),
     path('tutorial/', views.tutorial, name='tutorial'), 
 
 ]

@@ -1,0 +1,6 @@
+{% for comment in post.post_comments %}
+        <div class="list-group-item">
+            <p>{{ comment.message }}</p>
+            <p>Comment by: {{ comment.user }}</p>
+        </div>
+{% endfor %}

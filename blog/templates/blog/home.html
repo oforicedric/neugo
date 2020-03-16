@@ -1,137 +1,265 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 {% block content %}
 
-<head>
-  <style>
-    @media (max-width: 400px) {
-      .row [class*="col-"] {
-        padding: 0 0px;
-        margin-top: 57px;
-        min-width: 395px;
-        margin-left: -5%;
+    <head>
+        <style>
+            @media (max-width: 400px) {
+                .row [class*="col-"] {
+                    padding: 0 0px;
+                    margin-top: 57px;
+                    min-width: 395px;
+                    margin-left: -5%;
 
-      }
-    }
+                }
+            }
 
-    ;
+            ;
 
-    @media (max-width: 4000px) {
-      .row [class*="col-"] {
-        padding: 0 0px;
-        margin-top: 15%;
-      }
+            @media (max-width: 4000px) {
+                .row [class*="col-"] {
+                    padding: 0 0px;
+                    margin-top: 15%;
+                }
 
-    }
+            }
 
-    ;
+            ;
 
-    @media screen and (min-width:405px) and (max-width:420px) {
-      .row [class*="col-md-12"] {
-        margin-top: 0px;
-        padding: 0 0px;
-      }
+            @media screen and (min-width: 405px) and (max-width: 420px) {
+                .row [class*="col-md-12"] {
+                    margin-top: 0px;
+                    padding: 0 0px;
+                }
 
-      ;
+            ;
 
-      #feednote {
-        display: inline-block;
-      }
+                #feednote {
+                    display: inline-block;
+                }
 
-      ;
-    }
+            ;
+            }
 
-    ;
+            ;
 
-    @media screen and (max-width:500px) {
-      .row [class*="col-md-12"] {
-        margin-top: 60px;
-        padding: 0 0px;
-        min-width: 450px;
-        margin-left: 0%;
-      }
+            @media screen and (max-width: 500px) {
+                .row [class*="col-md-12"] {
+                    margin-top: 60px;
+                    padding: 0 0px;
+                    min-width: 450px;
+                    margin-left: 0%;
+                }
 
-      ;
-    }
+            ;
+            }
 
-    ;
+            ;
 
 
-    }
-  </style>
+            }
+        </style>
 
-  <script>
-    function pointsScale(x) {
-      var pts = x * 24;
-      return var ;
-    }
-  </script>
+        <script>
+            function pointsScale(x) {
+                var pts = x * 24;
+                return
+                var ;
+            }
+        </script>
 
-</head>
-{% for post in posts %}
+    </head>
+    {% for post in posts %}
 
-<article class="media content-section">
-  <div style="inline-block;"> <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-    <div style="display:inline-block;">
-      <div class="media-body">
-        <div class="article-metadata" <small style="font-weight:600" class="text-muted">
-          {{request.session.first_name}}</small></br>
-          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        <article class="media content-section">
+            <div style="inline-block;"><img class="rounded-circle article-img"
+                                            src="{{ post.author.profile.image.url }}">
+                <div style="display:inline-block;">
+                    <div class="media-body">
+                        <div class="article-metadata"
+                        <small style="font-weight:600" class="text-muted">
+                            {{ request.session.first_name }}</small></br>
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                <h2 style="font-size:20px;font-weight:600;"><a class="article-title"
+                                                               href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a>
+                </h2>
+                <div>
+                    <div class="feednotes" id="feednote">
+                        <p class="text-muted"> Study time (minutes)</p>
+                        <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
+                    </div style="margin-left:">
+
+                    <div class="feednotes" id="feednote">
+                        <p class="text-muted"> Points earned </p>
+                        <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.points_earned }}</p>
+                    </div>
+
+                    <div style="border-width:0" class="feednotes" id="feednote">
+                        <p class="text-muted">Rating</p>
+                        <p style="font-weight:600;font-size:20px;" class="article-content">3</p>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+        <div id="likebox" style="margin-top:0px;padding-top:0px;" class="media content-section likebox">
+            <div style="width:100%;padding-top:4%;">
+                <div class="feednotes likes">
+                    <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
+                    {% if post.count_post_likes.count == 1 %}
+                        <span id="changeWordEnding{{ post.id }}">Like</span>
+                    {% else %}
+                        <span id="changeWordEnding{{ post.id }}">Likes</span>
+                    {% endif %}
+                    <a href="#" onclick="likePost(event, {{ post.id }})">
+                        {% if post|liked_by_user:request.user %}
+                            <span id="likePostText{{ post.id }}">Unlike</span>
+                        {% else %}
+                            <span id="likePostText{{ post.id }}">Like</span>
+                            {#                            &nbsp&#10084;&#65039;#}
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="feednotes likes" style="border-width:0px;">
+                    <span id="countComments{{ post.id }}">{{ post.count_comments.count }}</span>
+                    &nbsp;&#x1F4AC;
+                    <a href="#" onclick="showMoreComments(event, {{ post.id }})" id="commentsButton{{ post.id }}">
+                        {% if post.post_comments %}
+                        Show Comments
+                        {% else %}
+                        Add Comment
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="media-body">
-      <h2 style="font-size:20px;font-weight:600;"><a class="article-title"
-          href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a></h2>
-      <div>
-        <div class="feednotes" id="feednote">
-          <p class="text-muted"> Study time (minutes)</p>
-          <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
-        </div style="margin-left:">
-
-        <div class="feednotes" id="feednote">
-          <p class="text-muted"> Points earned </p>
-          <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.points_earned }}</p>
+        <div id="commentsList{{ post.id }}" style="display: none" class="list-group list-group-flush">
+            {% include "blog/includes/comment.html" %}
         </div>
-
-        <div style="border-width:0" class="feednotes" id="feednote">
-          <p class="text-muted">Rating</p>
-          <p style="font-weight:600;font-size:20px;" class="article-content">3</p>
+        <div id="commentFormDiv{{ post.id }}" style="display: none;">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Comment on this post" aria-label=""
+                       aria-describedby="basic-addon1" id="input-value{{ post.id }}">
+                <div class="input-group-prepend">
+                    <button type="submit" class="btn btn-primary mb-2"
+                            onclick="createPostComment(event, {{ post.id }})">Comment
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
+    {% endfor %}
+    {% if is_paginated %}
 
-    </div>
-</article>
-<div id="likebox" style="margin-top:0px;padding-top:0px;" class="media content-section likebox">
-  <div style="width:100%;padding-top:4%;">
-    <div class="feednotes likes">
-      &nbsp&#10084;&#65039;
-    </div>
-    <div class="feednotes likes" style="border-width:0px;">
-      &nbsp;&#x1F4AC;
-    </div>
-  </div>
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
 
-</div>
-{% endfor %}
-{% if is_paginated %}
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
 
-{% if page_obj.has_previous %}
-<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-{% endif %}
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
 
-{% for num in page_obj.paginator.page_range %}
-{% if page_obj.number == num %}
-<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-{% endif %}
-{% endfor %}
+    {% endif %}
 
-{% if page_obj.has_next %}
-<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-{% endif %}
+    <script type="text/javascript">
+        function likePost(e, post_id) {
+            e.preventDefault();
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/ajax/post/' + post_id + '/like', true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    let like = document.getElementById('likePostText' + post_id);
+                    let number = document.getElementById('countLikes' + post_id);
+                    let word = document.getElementById('changeWordEnding' + post_id);
+                    const currentText = like.innerText;
+                    let currentNumber = number.innerText;
+                    let currentEnding = word.innerText;
 
-{% endif %}
+                    let output;
+
+                    if (currentText === 'Like') {
+                        output = 'Unlike';
+                        currentNumber = parseInt(currentNumber) + 1;
+                    } else {
+                        output = 'Like';
+                        currentNumber = parseInt(currentNumber) - 1;
+                    }
+
+                    if (currentNumber === 1) {
+                        currentEnding = 'Like'
+                    } else {
+                        currentEnding = 'Likes'
+                    }
+
+                    like.innerHTML = output;
+                    number.innerHTML = currentNumber;
+                    word.innerHTML = currentEnding;
+                }
+            };
+            xhr.send('like');
+        }
+
+        function createPostComment(e, post_id) {
+            e.preventDefault();
+            let formInput = document.getElementById('input-value' + post_id).value;
+            let oldDiv = document.getElementById('commentsList' + post_id);
+            let countComments = document.getElementById('countComments' + post_id);
+            let currentNumber = countComments.innerText;
+
+            if (formInput) {
+                let data = new FormData();
+                data.append('the_comment', formInput);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/ajax/post/' + post_id + '/create/comment/', true);
+                xhr.onload = function () {
+                    if (this.status === 200) {
+                        let newDiv = xhr.responseText;
+                        oldDiv.innerHTML = newDiv;
+                        currentNumber = parseInt(currentNumber) + 1;
+                        countComments.innerHTML = currentNumber;
+                        document.getElementById('input-value' + post_id).value = "";
+                        document.getElementById('commentsList' + post_id).style.display = "block";
+                        document.getElementById('commentsButton' + post_id).style.display = "block";
+                        document.getElementById('commentsButton' + post_id).innerText = "Hide Comments";
+                    }
+                };
+                xhr.send(data);
+            }
+        }
+
+        function showMoreComments(e, post_id) {
+            console.log('clicked');
+            e.preventDefault();
+            let showCommentsBlock = document.getElementById('commentsList' + post_id);
+            let commentFormDiv = document.getElementById('commentFormDiv' + post_id);
+            let changeCommentButton = document.getElementById('commentsButton' + post_id);
+            let currentText = changeCommentButton.innerText;
+
+            if (showCommentsBlock.style.display === "none") {
+                showCommentsBlock.style.display = 'block';
+                commentFormDiv.style.display = 'block';
+                currentText = "Hide Comments";
+            } else {
+                showCommentsBlock.style.display = "none";
+                commentFormDiv.style.display = 'none';
+                currentText = "Show Comments";
+            }
+
+            changeCommentButton.innerText = currentText;
+        }
+
+    </script>
 {% endblock content %}

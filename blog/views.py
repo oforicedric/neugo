@@ -1,6 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (
     ListView,
     DetailView,
@@ -8,14 +11,20 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from .models import Post
+from .models import Post, PostLike, PostComment
 from django.utils import timezone
 import time
 import pdb
+from django.http import JsonResponse
 
 
 def home(request):
-    context = {"posts": Post.objects.all().order_by("-date_posted")}
+    posts = Post.objects.all().order_by("-date_posted")
+
+    context = {
+        "posts": posts,
+    }
+
     return render(request, "blog/home.html", context)
 
 
@@ -195,3 +204,36 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
+@csrf_exempt
+def ajax_like_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    post_like = PostLike.objects.filter(post=post, user=request.user)
+
+    if post_like.exists():
+        post_like.delete()
+    else:
+        PostLike.objects.create(post=post, user=request.user)
+
+    return HttpResponse(status=200)
+
+
+@csrf_exempt
+def create_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == 'POST':
+        comment_message = request.POST.get('the_comment')
+
+        comment = PostComment(post=post, user=request.user, message=comment_message)
+        comment.save()
+
+        context = {
+            "post": post
+        }
+
+        html = render_to_string('blog/includes/comment.html', context)
+
+        return HttpResponse(html)
+
