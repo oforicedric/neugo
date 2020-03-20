@@ -32,6 +32,7 @@ urlpatterns = [
     path('rewards/purchase_rewards/go_home/', views.home, name='blog-home'),
     path('ajax/post/<int:pk>/like', views.ajax_like_post, name='ajax_like_post'),
     path('ajax/post/<int:pk>/create/comment/', views.create_comment, name='create_comment'),
-    path('tutorial/', views.tutorial, name='tutorial'), 
+    path('tutorial/', views.tutorial, name='tutorial'),
+    path('join-competition/<int:pk>/', views.join_competition, name='join_competition')
 
 ]

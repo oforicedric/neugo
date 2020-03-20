@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-from blog.models import Post
+from blog.models import Post, Competition
 import datetime
 
 
@@ -42,19 +42,19 @@ def compute_monthly_goal():
 
 def compute_progress(request):
     request.session["daily_progress"] = 100 * (
-        0.01
-        + (request.session["user_study_activity"][-1] / request.session["daily_goal"])
+            0.01
+            + (request.session["user_study_activity"][-1] / request.session["daily_goal"])
     )
     request.session["weekly_progress"] = 100 * (
-        0.01
-        + (sum(request.session["user_study_activity"]) / request.session["weekly_goal"])
+            0.01
+            + (sum(request.session["user_study_activity"]) / request.session["weekly_goal"])
     )
     request.session["monthly_progress"] = 100 * (
-        0.01
-        + (
-            sum(request.session["user_study_activity"])
-            / request.session["monthly_goal"]
-        )
+            0.01
+            + (
+                    sum(request.session["user_study_activity"])
+                    / request.session["monthly_goal"]
+            )
     )
 
 
@@ -91,7 +91,18 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
-    context = {"u_form": u_form, "p_form": p_form}
+    competitions = Competition.objects.all()
+    context = {
+        "u_form": u_form,
+        "p_form": p_form,
+        "competitions": competitions
+    }
+
+    for competition in competitions:
+        for participant in competition.competitionparticipant_set.all():
+            result = participant.fulfill_competition_conditions()
+
+            print(result)
 
     return render(request, "users/profilefinal.html", context)
 

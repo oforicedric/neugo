@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 import time
 from datetime import datetime
+from PIL import Image
 
 
 class Post(models.Model):
@@ -56,4 +57,69 @@ class PostComment(models.Model):
 
     def __str__(self):
         return "%s commented a post no. %d" % (self.user, self.post.id)
+
+
+class Competition(models.Model):
+    title = models.CharField(max_length=100)
+    message = models.CharField(max_length=200)
+    duration = models.DurationField()
+    points_required = models.PositiveIntegerField(default=0)
+    reward_name = models.CharField(max_length=100)
+    reward_description = models.CharField(max_length=200)
+    reward_image = models.ImageField(default='default.png', upload_to='rewards')
+
+    def __str__(self):
+        return "Competition '%s'" % self.title
+
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.reward_image.path)
+
+
+        if img.height > 100 or img.width > 100:
+            output_size = (100, 100)
+            img.thumbnail(output_size)
+            img.save(self.reward_image.path)
+
+    def joined_by_user(self, user):
+        participant = CompetitionParticipant.objects.filter(competition=self, user=user)
+        if participant.exists():
+            return True
+        else:
+            return False
+
+    def user_won_award(self, user):
+        participant = CompetitionParticipant.objects.filter(competition=self, user=user).first()
+        if participant:
+            return participant.fulfill_competition_conditions()
+        else:
+            return False
+
+
+class CompetitionParticipant(models.Model):
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    datetime_joined = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%s joined competition '%s'" % (self.user, self.competition.title)
+
+    def fulfill_competition_conditions(self):
+        competition_finishing_time = self.datetime_joined + self.competition.duration
+        points_count = 0
+        for post in Post.objects.all().filter(author=self.user):
+            if self.datetime_joined < post.date_posted < competition_finishing_time:
+                points_count = points_count + post.points_earned
+
+        if points_count >= self.competition.points_required:
+            return True
+        else:
+            return False
+
+
+class Event(models.Model):
+    datetime_created = models.DateTimeField(auto_now_add=True)
+    post = models.OneToOneField(Post, on_delete=models.CASCADE, blank=True, null=True)
+    participant = models.OneToOneField(CompetitionParticipant, on_delete=models.CASCADE, blank=True, null=True)
 
