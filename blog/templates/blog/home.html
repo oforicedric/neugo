@@ -128,19 +128,19 @@
                             &nbsp;&#x1F4AC;
                             <a href="#" onclick="showMoreComments(event, {{ post.id }})"
                                id="commentsButton{{ post.id }}">
-                                {% if post.post_comments %}
-                                    Show Comments
+                                {% if post.post_comments.count > 1 %}
+                                    Show More Comments
+                                {% elif post.post_comments.count == 1 %}
                                 {% else %}
-                                    Add Comment
                                 {% endif %}
                             </a>
                         </div>
                     </div>
                 </div>
-                <div id="commentsList{{ post.id }}" style="display: none" class="list-group list-group-flush">
+                <div id="commentsList{{ post.id }}" class="list-group list-group-flush">
                     {% include "blog/includes/comment.html" %}
                 </div>
-                <div id="commentFormDiv{{ post.id }}" style="display: none;">
+                <div id="commentFormDiv{{ post.id }}">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Comment on this post" aria-label=""
                                aria-describedby="basic-addon1" id="input-value{{ post.id }}">
@@ -252,10 +252,15 @@
                         oldDiv.innerHTML = newDiv;
                         currentNumber = parseInt(currentNumber) + 1;
                         countComments.innerHTML = currentNumber;
+                        if (currentNumber <= 1) {
+                            document.getElementById('commentsButton' + post_id).innerText = "";
+                            console.log('labas')
+                        } else {
+                            document.getElementById('commentsButton' + post_id).innerText = "Hide Comments";
+                        }
+
                         document.getElementById('input-value' + post_id).value = "";
-                        document.getElementById('commentsList' + post_id).style.display = "block";
-                        document.getElementById('commentsButton' + post_id).style.display = "block";
-                        document.getElementById('commentsButton' + post_id).innerText = "Hide Comments";
+                        document.getElementById('all-comments' + post_id).style.display = "block";
                     }
                 };
                 xhr.send(data);
@@ -266,21 +271,21 @@
             console.log('clicked');
             e.preventDefault();
             let showCommentsBlock = document.getElementById('commentsList' + post_id);
+            let allCommentsDiv = document.getElementById('all-comments' + post_id);
             let commentFormDiv = document.getElementById('commentFormDiv' + post_id);
             let changeCommentButton = document.getElementById('commentsButton' + post_id);
             let currentText = changeCommentButton.innerText;
 
-            if (showCommentsBlock.style.display === "none") {
-                showCommentsBlock.style.display = 'block';
-                commentFormDiv.style.display = 'block';
-                currentText = "Hide Comments";
+            if (allCommentsDiv.style.display === 'none') {
+                allCommentsDiv.style.display = 'block';
+                currentText = 'Hide Comments';
             } else {
-                showCommentsBlock.style.display = "none";
-                commentFormDiv.style.display = 'none';
-                currentText = "Show Comments";
+                allCommentsDiv.style.display = 'none';
+                currentText = 'Show More Comments';
             }
 
             changeCommentButton.innerText = currentText;
+
         }
 
     </script>

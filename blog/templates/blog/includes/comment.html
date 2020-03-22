@@ -1,6 +1,20 @@
-{% for comment in post.post_comments %}
-        <div class="list-group-item">
-            <p>{{ comment.message }}</p>
-            <p>Comment by: {{ comment.user }}</p>
-        </div>
-{% endfor %}
+<div id="all-comments{{ post.id }}" {% if post.post_comments.count > 1 %} style="display: none" {% else %} style="display: block" {% endif %}>
+    {% for comment in post.post_comments %}
+        {% if not forloop.last %}
+            <div class="list-group-item">
+                <p>{{ comment.message }}</p>
+                <p>Comment by: {{ comment.user }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+<div id="last-comment{{ post.id }}">
+    {% for comment in post.post_comments %}
+        {% if forloop.last %}
+            <div class="list-group-item">
+                <p>{{ comment.message }}</p>
+                <p>Comment by: {{ comment.user }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
