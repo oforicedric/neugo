@@ -1,25 +1,52 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth import logout
+from .forms import *
 from blog.models import Post, Competition
-import datetime
+from formtools.wizard.views import SessionWizardView
 
 
 def register(request):
-    if request.method == "POST":
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get("username")
-            messages.success(
-                request, f"Your account has been created! You are now able to log in"
-            )
-            request.user.university = request.session["university"]
-            return redirect("login")
-    else:
-        form = UserRegisterForm()
-    return render(request, "users/register.html", {"form": form})
+    logout(request)
+    return redirect('register_onboarding')
+
+
+class RegistrationWizard(SessionWizardView):
+    template_name = "users/register.html"
+    form_list = [OnboardingNameForm, OnboardingUniversityForm, OnboardingSubjectForm, UserRegisterForm]
+
+    def get_context_data(self, form, **kwargs):
+        context = super().get_context_data(form=form, **kwargs)
+        container_text = " "
+
+        if self.steps.current == '0':
+            container_text = "Tell us your name.."
+        elif self.steps.current == '1':
+            container_text = "Nice! which University do you you go to?"
+        elif self.steps.current == '2':
+            container_text = "Amazing! What subject are you studying then?"
+        elif self.steps.current == '3':
+            container_text = "Okay, we just need a username, email and password to get started..."
+
+        context.update({'container_text': container_text})
+
+        return context
+
+    def done(self, form_list, **kwargs):
+        form_list = list(form_list)
+        # create user
+        new_user = form_list[3].save()
+        # fill in profile
+        new_user.profile.first_name = form_list[0].cleaned_data['first_name']
+        new_user.profile.last_name = form_list[0].cleaned_data['last_name']
+        new_user.profile.university = form_list[1].cleaned_data['university']
+        new_user.profile.subject = form_list[2].cleaned_data['subject']
+        new_user.profile.save()
+
+        # redirect
+        return redirect("blog-home")
 
 
 def set_goals(request):

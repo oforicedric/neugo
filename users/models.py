@@ -4,9 +4,29 @@ from django.contrib.auth.models import User
 from PIL import Image
 from blog.models import Post
 
+UNIVERSITIES = (
+    ("UM", "University of Manchester"),
+    ("ICL", "Imperial College London"),
+    ("UCL", "University College London"),
+    ("UL", "University of Leeds"),
+    ("UO", "University of Oxford")
+)
+
+SUBJECTS = (
+    ("Physics", "Physics"),
+    ("Economics", "Economics"),
+    ("Chemical Engineering", "Chemical Engineering"),
+    ("History", "History"),
+    ("Psychology", "Psychology")
+)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    university = models.CharField(choices=UNIVERSITIES, max_length=100)
+    subject = models.CharField(choices=SUBJECTS, max_length=100)
     profile_pictures = [
         "asian_student.jpeg",
         "black_and_white_photo.jpg",
@@ -25,8 +45,6 @@ class Profile(models.Model):
     )
     
     wallet_points = models.BigIntegerField(default=0)
-    university = models.CharField(default="", max_length=35)
-    subject = models.CharField(default="", max_length=35)
 
     def __str__(self):
         return f"{self.user.username} Profile"

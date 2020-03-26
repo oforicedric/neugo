@@ -19,6 +19,7 @@ import pdb
 from django.http import JsonResponse
 
 
+@login_required
 def home(request):
     events = Event.objects.all().order_by("-datetime_created")
 
