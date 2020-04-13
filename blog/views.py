@@ -64,7 +64,7 @@ def map(request):
 def study(request):
     request.session["start_time"] = int(round(time.time()))
     request.session["user_description"] = ""
-    return render(request, "blog/settfime.html")
+    return render(request, "blog/settime.html")
 
 
 def rewards(request):
