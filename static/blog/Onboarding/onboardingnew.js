@@ -167,8 +167,15 @@ function showFinal() {
 }
 
 function showstart() {
+
+  const p2 = document.getElementById('p2')
   document.getElementById('nobtn').style.display = "none";
   document.getElementById('yesbtn').style.display = "none";
+  document.getElementById('p1').style.display = "none";
+  p2.style.display = "block";
+  p2.style.transform="translate(340px, 10px)";
+
+  console.log(document.getElementById('p2'), 'p33333')
   document.getElementById('gobtn').style.display = "block";
 
 }
@@ -276,4 +283,3 @@ function smallMargin(){
   document.getElementById('p2').style.marginLeft ="-13px";
   }
 };
-

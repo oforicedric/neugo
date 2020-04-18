@@ -29,8 +29,14 @@
     <form id="name_form" style="color:#5d5e5ff5;" action='saveprofile/' method="post"> 
       {% csrf_token %}
       <!--method="get" no DB so keeps showing if i put it in-->
-      First name: <input type="text" name="FirstName" value="Didn't" style="border-radius:3px"><br>
-      Last name: <input type="text" name="LastName" value="Revise" style="border-radius:3px"><br>
+      <div class="onboard-form">
+        <label for="FirstName">First name:</label>
+        <input type="text" name="FirstName" value="Didn't" style="border-radius:3px" class="onboard-form-control">
+      </div>
+      <div class="onboard-form">
+        <label for="LastName">Last name:</label>
+        <input type="text" name="LastName" value="Revise" style="border-radius:3px" class="onboard-form-control">
+      </div>
     </form>
       <form action="saveuni/" method="post">
         {% csrf_token %}
