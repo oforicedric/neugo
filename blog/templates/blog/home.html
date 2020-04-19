@@ -4,60 +4,18 @@
 
     <head>
         <style>
-            @media (max-width: 400px) {
-                .row [class*="col-"] {
-                    padding: 0 0px;
-                    margin-top: 57px;
-                    min-width: 395px;
-                    margin-left: -5%;
-
+            @media (max-width: 768px) {
+                .row [class*="col-"]  {
+                    margin-top: 10%;
+                }
+            }
+            @media (max-width: 480px) {
+                .feednotes.comment {
+                    display: grid;
+                    grid-template-columns: 50% 50%;
                 }
             }
 
-            ;
-
-            @media (max-width: 4000px) {
-                .row [class*="col-"] {
-                    padding: 0 0px;
-                    margin-top: 15%;
-                }
-
-            }
-
-            ;
-
-            @media screen and (min-width: 405px) and (max-width: 420px) {
-                .row [class*="col-md-12"] {
-                    margin-top: 0px;
-                    padding: 0 0px;
-                }
-
-            ;
-
-                #feednote {
-                    display: inline-block;
-                }
-
-            ;
-            }
-
-            ;
-
-            @media screen and (max-width: 500px) {
-                .row [class*="col-md-12"] {
-                    margin-top: 60px;
-                    padding: 0 0px;
-                    min-width: 450px;
-                    margin-left: 0%;
-                }
-
-            ;
-            }
-
-            ;
-
-
-            }
         </style>
 
         <script>
@@ -84,7 +42,7 @@
                         <h2 style="font-size:20px;font-weight:600;">
                             <a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a>
                         </h2>
-                        <div>
+                        <div class="media-body-wrapper">
                             <div class="feednotes" id="feednote">
                                 <p class="text-muted"> Study time (minutes)</p>
                                 <p style="font-weight:600;font-size:20px;"
@@ -106,26 +64,27 @@
                     </div>
                 </article>
                 <div id="likebox" style="margin-top:0px;padding-top:0px;" class="media content-section likebox">
-                    <div style="width:100%;padding-top:4%;">
+                    <div class="likebox-innerwrap">
                         <div class="feednotes likes">
-                            <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
-                            {% if post.count_post_likes.count == 1 %}
-                                <span id="changeWordEnding{{ post.id }}">Like</span>
-                            {% else %}
-                                <span id="changeWordEnding{{ post.id }}">Likes</span>
-                            {% endif %}
+                            <div class="feednotes-likes">
+                                <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
+                                <span id="changeWordEnding{{ post.id }}">{% if post.count_post_likes.count > 1 %}Likes {% else %} Like {% endif %}</span>
+                            </div>
+
                             <a href="#" onclick="likePost(event, {{ post.id }})">
                                 {% if post|liked_by_user:request.user %}
-                                    <span id="likePostText{{ post.id }}">Unlike</span>
+                                <span id="likePostText{{ post.id }}">Unlike</span>
                                 {% else %}
-                                    <span id="likePostText{{ post.id }}">Like</span>
-                                    {#                            &nbsp&#10084;&#65039;#}
+                                <span id="likePostText{{ post.id }}">Like</span>
+                                {#                            &nbsp&#10084;&#65039;#}
                                 {% endif %}
                             </a>
                         </div>
-                        <div class="feednotes likes" style="border-width:0px;">
-                            <span id="countComments{{ post.id }}">{{ post.count_comments.count }}</span>
-                            &nbsp;&#x1F4AC;
+                        <div class="feednotes comment" style="border-width:0px;">
+                            <div>
+                                <span id="countComments{{ post.id }}">{{ post.count_comments.count }}</span>
+                                &nbsp;&#x1F4AC;
+                            </div>
                             <a href="#" onclick="showMoreComments(event, {{ post.id }})"
                                id="commentsButton{{ post.id }}">
                                 {% if post.post_comments.count > 1 %}
@@ -220,7 +179,7 @@
                         currentNumber = parseInt(currentNumber) - 1;
                     }
 
-                    if (currentNumber === 1) {
+                    if (currentNumber < 2) {
                         currentEnding = 'Like'
                     } else {
                         currentEnding = 'Likes'

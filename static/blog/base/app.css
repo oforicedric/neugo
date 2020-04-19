@@ -17013,7 +17013,6 @@ ul.timeline-list .media-body.fixed {
 }
 .row {
   margin: 0 -7.5px;
-  margin-top: 0px;
 }
 .row.gridalicious {
   margin: 0 -15px;
@@ -29827,33 +29826,13 @@ fieldset[disabled] .sidebar.sidebar-skin-white-brown .btn-default.active {
 
 /* feed css */
 
-@media (max-width:400px){
-  .feednotes{
-    border-right-style: solid;
-    border-color:#dee2e6e8;
-    border-width: thin;
-    width: 106px;
-    display:inline-block;
-  }
-
+.feednotes.likes, .feednotes.comment{
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
 }
-.feednotes.likes{
-  
-border-right-style: solid;
-  
-border-color: #808284e8;
-  
-border-width: thin;
-  
-width: 49%;
-  
-font-size: 16px;
-  
-padding-left: 14%;
-  
-/* padding-top: 8%; */
-  
-/* height: inherit; */
-  
-display:inline-block;
+
+.feednotes.likes {
+  border-right: 2px solid #dee2e6e8;
 }

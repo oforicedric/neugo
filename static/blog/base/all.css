@@ -5202,19 +5202,29 @@ a.thumbnail.active {
 .media-body {
   zoom: 1;
   overflow: hidden;
-  background-color:#FFFF;
-;
-.likebox{
-  background-color:grey;
-  ;
 }
 
+.likebox{
+  background-color:grey;
 }
-.media-body {
-  width: auto;
-  background-color:#1976D2;
-;
+
+.likebox .likebox-innerwrap{
+  padding: 5px;
+  grid-template-columns: 50% 50%;
+  display: grid;
 }
+
+
+.media > div {
+  width: 100%;
+}
+
+.media-body-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .media-object {
   display: block;
 }
@@ -5227,8 +5237,7 @@ a.thumbnail.active {
   padding-right: 10px;
 }
 .media-left,
-.media-right,
-.media-body {
+.media-right {
   /* display: table-cell; */
   /* display: inline-block; */
   background-color:#FFFF;
