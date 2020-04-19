@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="container">
-                <div class="row">
+                <div class="row register-row">
                     <p>{{ container_text }}</p>
                     <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
                 </div>
@@ -29,13 +29,15 @@
                     {% for field in wizard.form %}
                         {{ field|as_crispy_field }}
                     {% endfor %}
-                    {% if wizard.steps.prev %}
-                        <button name="wizard_goto_step" type="submit"
-                                value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
-                        <button name="wizard_goto_step" type="submit"
-                                value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
-                    {% endif %}
-                    <input type="submit" value="{% trans "Next" %}"/>
+                    <div class="register-buttons">
+                        {% if wizard.steps.prev %}
+                            <button class="btn-register register-first" name="wizard_goto_step" type="submit"
+                                    value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
+                            <button class="btn-register register-prev" name="wizard_goto_step" type="submit"
+                                    value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
+                        {% endif %}
+                        <input class="btn-register register-submit" type="submit" value="{% trans "Next" %}"/>
+                    </div>
                 </form>
             </div>
         </div>

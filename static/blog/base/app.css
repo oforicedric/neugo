@@ -17023,10 +17023,11 @@ ul.timeline-list .media-body.fixed {
   margin-top: 14%;
   margin-left: 11px;
 }
-.row [class*="col-"] {
+
+/* .row [class*="col-"] {
   padding: 0 7.5px;
-  margin-top: 39%;
-}
+  margin-top: 10%
+} */
 
 
 .row [class*="col-"].control-label {
