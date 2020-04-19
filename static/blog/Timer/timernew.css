@@ -115,10 +115,7 @@ svg circle {
 }
 
 #timerform {
-    width:max-content;
     margin-top: 6%;
-    margin-left: 36%;
-    text-align:center;
 }
 #timerpara {
     font-size: 33px;
@@ -222,4 +219,3 @@ font-size:16px;
 	font-size: 23px;
 	margin-top: 1%;
 }
-
