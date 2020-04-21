@@ -13,6 +13,58 @@
             align-items: center;
             margin-top: 60px;
         }
+
+        #countdown{
+            margin-left: 8%;
+            position: relative;
+        }
+
+         @media (max-width: 768px) {
+            #countdown {
+                margin-left: 15%;
+                margin-top: 10%;
+            }
+
+            .commentBox {
+                width: 100%;
+            }
+
+            #commentsubmitbtn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #countdown {
+                margin-left: 28%;
+            }
+        }
+
+        #finishbtn{
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 13px 70px;
+        }
+
+        #finish_comment {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+        }
+
+        #Feedbackhead {
+            text-align:left;
+            color:#424242;
+            font-size:32px;
+            border-bottom: 1px solid #cdcdcd;
+        }
+
+        #commentsubmitbtn {
+            background-color:#03a9f4;
+            color:#FFFF;
+            border-radius: 50px;
+        }
+
     </style>
 </head>
 
@@ -33,16 +85,16 @@
     </script>
     <div id="finish_session_button_div">
         <form id="finish_session_button" action="finish" method="GET">
-            <button onclick="getComments()" id="finishbtn" type="button" style="background-color:#03a9f4;color:#FFFF;"
+            <button onclick="getComments()" id="finishbtn" type="button" style=" background-color:#03a9f4;
+            color:#FFFF;"
                 class="btn btn-success">finish </button>
         </form>
     </div>
 
-    <div id="finish_comment" style="display:none;">
-        <h1 class="profile" id="Feedbackhead" style="text-align:left;color:#424242;font-size:32px;">Feedback</h1>
-        <hr style="border-width:2px;color:#424242" />
+    <div id="finish_comment">
+        <h1 class="profile" id="Feedbackhead">Feedback</h1>
         <div>
-            <h2 id="fin_comment" style="float:left;">{{ request.session.first_name }}, how was your session? </h2>
+            <h2 id="fin_comment">{{ request.session.first_name }}, how was your session? </h2>
         </div>
         <form action="finish/" id="finish_session_comment" method="post">
             {% csrf_token %}
