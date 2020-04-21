@@ -4,16 +4,27 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'blog/Timer/timernew.css' %}">
+
+    <style>
+        #rows{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+        }
+    </style>
 </head>
 
 <body>
     <script src="{% static 'blog/Timer/timer_rendernew.js' %}"></script>
+    
     <div id="countdown">
         <svg>
             <circle r="80" cx="100" cy="95"></circle>
         </svg>
+        <p id="countdown_number">{{request.session.initial_time_string}}</p>
     </div>
-    <p id="countdown_number">{{request.session.initial_time_string}}</p>
     <script src="{% static 'blog/Timer/example.js' %}"></script>
     <script type="text/javascript">
         var time_string = "{{request.session.study_time}}";

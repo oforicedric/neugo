@@ -6,32 +6,37 @@
   <link rel="stylesheet" type="text/css" href="{% static 'blog/Timer/timernew.css' %}">
   <style>
      .row [class*="col-"] {
+        margin-top: 10%;
        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
      }
+     
+     @media (max-width: 1024px) {
+       input[type=time] {
+         width: 27vw !important;
+       }
+     }
 
     @media screen and (max-width:768px) {
+      input[type=time] {
+         font-size: 3vw !important;
+       }
       body {
         margin: 0rem;
       }
-    }
-
-    @media screen and (min-width:400px) {
       .row [class*="col-"] {
-        margin-top: 10%;
+        margin-top: 30%;
       }
     }
 
-    #sessionbtn {
-      border-radius: 50px;
-      padding: 14px 50px;
-      font-weight: 600;
-      width: 30vw;
-      font-size: 16px;
-      background-color: #4cf16e;
-      color: #FFFF;
+    @media screen and (max-width:480px) {
+      input[type=time] {
+         font-size: 6vw !important;
+         width: 55vw !important;
+       }
+      
     }
 
     .time-image {
@@ -42,6 +47,20 @@
 
     .time-image img {
       width: 100%;
+    }
+
+    @media (max-width: 768px) {
+       .time-image {
+          width: 60%;
+          margin-top: -5%; 
+        }
+    }
+
+    @media (max-width: 480px) {
+       .time-image {
+          width: 100%;
+          margin-top: -10%; 
+        }
     }
 
     input[type=time] {
