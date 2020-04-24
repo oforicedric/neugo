@@ -11,13 +11,11 @@ body {
 }
 .comp1 {
 	height: auto;
-	width: 30%;
 	color:#313639;
 	background:#FFFF;
 	padding: 20px 20px 20px 20px;
 	border-radius: 10px / 10px;
 	position: relative;
-	margin: 10px auto;
 	border-style: solid;
 	border-width: 0.001px;
 	border-color: #888888;
@@ -136,7 +134,7 @@ margin:0 auto;
     margin: 180px auto;
   }
   .comp1, .comp2, .comp3 {
-  width:80%;
+    width:100%;
   }
   
 }
