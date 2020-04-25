@@ -40,13 +40,58 @@
     <title>Neugo</title>
     {% endif %}
 <style>
-@media (max-width: 400px){
+
+.navbar .navbar-nav .nav-item{
+    color: #212529;
+    padding: 13px;
+}
+
+.navbar .navbar-nav .nav-item:hover, .navbar .navbar-nav .nav-item:active, .navbar .navbar-nav .nav-item:focus{
+    color: #2f3841;
+}
+
+.left, .profile {
+    display: flex;
+}
+
+.navbar .container .navbar-brand{
+    color:#212529;
+    font-weight:600;
+    margin-right:5%;
+}
+
+button.navbar-toggler{
+    background:	#00796B;
+    color: #fff;
+}
+
+@media (max-width: 768px){
+  .left, .profile{
+      display: none
+  }
+}
+
+@media (max-width: 481px){
   .row [class*="col-"] {
     padding: 0 7.5px;
     padding-top:30px;
   }
-}
 
+  #navbarToggle {
+    position: absolute;
+    background: #dcdcdc;
+    width: 100%;
+    top: 100%;
+  }
+
+  .navbar .container .navbar-brand {
+    margin-left: -5%;
+  }
+
+   .container .navbar-toggler {
+    margin-left: 60%;
+  }
+}
 </style>
  
 </head>
@@ -55,12 +100,12 @@
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-neugo fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4" style="color:#212529;font-weight:300;margin-right:5%" href="{% url 'blog-home' %}">Feed</a>
+                <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Feed</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav mr-auto">
+                    <div class="navbar-nav mr-auto left">
                         {% if user.is_authenticated %}
                         <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home &#x1F3E0</a> 
                         <a class="nav-item nav-link" href="{% url 'blog-map' %}">Study &#x1F4DD</a>
@@ -68,9 +113,9 @@
                         {% endif %}
                     </div>
                     <!-- Navbar Right Side -->
-                    <div class="navbar-nav">
+                    <div class="navbar-nav pull-right right">
                         {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile &#x1F392</a>
+                        <a class="nav-item nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a>
                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a> 
                         {% else %}
                         <a class="nav-item nav-link" href="{% url 'login' %}">Login &#x1F6AA</a>
