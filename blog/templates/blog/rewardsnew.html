@@ -17,25 +17,18 @@
   <!-- Vendor CSS BUNDLE
     Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
     TIP: Using bundles will improve performance by reducing the number of network requests the client needs to make when loading the page. -->
-<<<<<<< HEAD
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{% static 'css/vendor/all1.css' %}" rel="stylesheet">
-    <link href="{% static 'blog/app1.css' %}" rel="stylesheet" type="text/css">
-    <!--<link href="all11.css" rel="stylesheet">
-    <link href="app1.css" rel="stylesheet" type="text/css">-->
-<style>
-=======
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="{% static 'css/vendor/all1.css' %}" rel="stylesheet">
-  <link href="{% static 'blog/app1.css' %}" rel="stylesheet" type="text/css">
-  <link href="all11.css" rel="stylesheet">
-  <link href="app1.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'owlcarousel/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'owlcarousel/owl.theme.default.min.css' %}">
+  <!-- <link href="{% static 'css/vendor/all1.css' %}" rel="stylesheet">
+  <link href="{% static 'blog/app1.css' %}" rel="stylesheet" type="text/css"> -->
+  <!-- <link href="all11.css" rel="stylesheet">
+  <link href="app1.css" rel="stylesheet" type="text/css"> -->
   <style>
     @media (max-width: 400px) {
       .row [class*="col-"] {
         padding: 0 7.5px;
         margin-top: 0%;
->>>>>>> 8e61f95e9456f9f14a0fcd6a084ac443f2a6ae8c
 
       }
     }
@@ -45,6 +38,14 @@
         padding: 0 7.5px;
         margin-top: 0%;
       }
+    }
+
+    .carouselling {
+      margin-bottom: 30px;
+    }
+
+    body {
+      overflow: auto;
     }
   </style>
 </head>
@@ -75,70 +76,304 @@
       <h4 class="category">Rewards</h4>
       <div class="sidebar-block padding-none">
         <div data-toggle="gridalicious" data-width="200">
-          <div class="panel panel-default relative">
-            <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Food</div>
-            <div class="cover hover overlajpgy margin-none">
-              <img src="/static/free_coffee.png" alt="location" class="img-responsive" />
-              <span class="v-center">
-              </span>
-              </a>
+        </div>
+        
+        
+        <div class="carouselling">
+          <div class="ribbon-heading ribbon-primary">Food</div>
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <div class="card">
+                <img src="/static/free_coffee.png"" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">Free coffee at your library!</h5>
+                  <p class="card-text">Collect 100 points to get a free coffee!
+                  </p>
+                  <form action="purchase_rewards_100" method="GET"
+                    onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 100</button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <div class="panel-body">
-              <h4 class="margin-v-0-5">Free coffee at your library!</h4>
-              <p>collect 100 points to get a free coffee!</p>
-              <form action="purchase_rewards_100" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
-                <button class="label label-blue">points: 100</a>
-              </form>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/free_coffee.png"" class=" card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">Free coffee at your library!</h5>
+                  <p class="card-text">Collect 100 points to get a free coffee!
+                  </p>
+                  <form action="purchase_rewards_100" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 100</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/free_coffee.png"" class=" card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">Free coffee at your library!</h5>
+                  <p class="card-text">Collect 100 points to get a free coffee!
+                  </p>
+                  <form action="purchase_rewards_100" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 100</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/free_coffee.png"" class=" card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">Free coffee at your library!</h5>
+                  <p class="card-text">Collect 100 points to get a free coffee!
+                  </p>
+                  <form action="purchase_rewards_100" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 100</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/free_coffee.png"" class=" card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">Free coffee at your library!</h5>
+                  <p class="card-text">Collect 100 points to get a free coffee!
+                  </p>
+                  <form action="purchase_rewards_100" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 100</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/free_coffee.png"" class=" card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">Free coffee at your library!</h5>
+                  <p class="card-text">Collect 100 points to get a free coffee!
+                  </p>
+                  <form action="purchase_rewards_100" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 100</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="panel panel-default relative">
-            <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Career</div>
-            <div class="cover hover overlajpgy margin-none">
-              <img src="/static/jp.png" alt="location" class="img-responsive" />
-              <span class="v-center">
-              </span>
-              </a>
+        </div>
+
+        <div class="carouselling">
+          <div class="ribbon-heading ribbon-primary">Career</div>
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <div class="card">
+                <img src="/static/jp.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">nvestment banking prep!</h5>
+                  <p class="card-text">Collect 500 points for JP interview questions.
+                  </p>
+                  <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 500</button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <div class="panel-body">
-              <h4 class="margin-v-0-5">Investment banking prep!</h4>
-              <p>collect 500 points for JP interview questions</p>
-              <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
-                <button class="label label-blue">points: 500</a>
-              </form>
-            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/jp.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">nvestment banking prep!</h5>
+                  <p class="card-text">Collect 500 points for JP interview questions.
+                  </p>
+                  <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 500</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/jp.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">nvestment banking prep!</h5>
+                  <p class="card-text">Collect 500 points for JP interview questions.
+                  </p>
+                  <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 500</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/jp.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">nvestment banking prep!</h5>
+                  <p class="card-text">Collect 500 points for JP interview questions.
+                  </p>
+                  <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 500</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/jp.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">nvestment banking prep!</h5>
+                  <p class="card-text">Collect 500 points for JP interview questions.
+                  </p>
+                  <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                    <button class="label label-blue btn btn-primary"">points: 500</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+            
+                        <div class="item">
+                          <div class="card">
+                            <img src="/static/jp.png" class="card-img-top img-responsive" alt="location">
+                            <div class="card-body">
+                              <h5 class="card-title">nvestment banking prep!</h5>
+                              <p class="card-text">Collect 500 points for JP interview questions.
+                              </p>
+                              <form action="purchase_rewards_500" method="GET" onSubmit="if(!confirm('Purchase this reward?')){return false;}">
+                                <button class="label label-blue btn btn-primary"">points: 500</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
           </div>
-          <div class="panel panel-default relative">
-            <div class="ribbon-heading ribbon-primary inline absolute left margin-none">Events</div>
-            <div class="cover hover overlajpgy margin-none">
-              <img src="/static/XOYO.png" alt="location" class="img-responsive" />
-              <span class="v-center">
-              </span>
-              </a>
+        </div>
+      
+        <div class="carouselling">
+          <div class="ribbon-heading ribbon-primary">Events</div>
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <div class="card">
+                <img src="/static/XOYO.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">location
+                  Jump the queue at XOYO this friday!</h5>
+                  <p class="card-text">Collect 50 points for the queue jump.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
             </div>
-            <div class="panel-body">
-              <h4 class="margin-v-0-5">Jump the queue at XOYO this friday!</h4>
-              <p>collect 50 points for the queue jump!</p>
-              <span class="label label-blue">points: 50</span>&nbsp;
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/XOYO.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">location
+                    Jump the queue at XOYO this friday!</h5>
+                  <p class="card-text">Collect 50 points for the queue jump.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/XOYO.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">location
+                    Jump the queue at XOYO this friday!</h5>
+                  <p class="card-text">Collect 50 points for the queue jump.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/XOYO.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">location
+                    Jump the queue at XOYO this friday!</h5>
+                  <p class="card-text">Collect 50 points for the queue jump.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/XOYO.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">location
+                    Jump the queue at XOYO this friday!</h5>
+                  <p class="card-text">Collect 50 points for the queue jump.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="card">
+                <img src="/static/XOYO.png" class="card-img-top img-responsive" alt="location">
+                <div class="card-body">
+                  <h5 class="card-title">location
+                    Jump the queue at XOYO this friday!</h5>
+                  <p class="card-text">Collect 50 points for the queue jump.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="sidebar-block equal-padding">
-        <ul class="pagination margin-none">
-          <li class="disabled"><a href="#">&laquo;</a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
-    </div>
-    <script src="{% static 'js/vendor/all1.js' %}"></script>
+      {% include "blog/bottom_nav.html" %}
+    <!-- <script src="{% static 'js/vendor/all1.js' %}"></script>
     <script src="{% static 'js/app/app1.js' %}"></script>
     <script src="all1.js"></script>
-    <script src="app1.js"></script>
-    </head>
+    <script src="app1.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script defer src="{% static 'owlcarousel/owl.carousel.min.js'%}"></script>
+
+    <script>
+      $(document).ready(function () {
+        console.log($.isFunction('owlCarousel'));
+          $(".owl-carousel").owlCarousel({
+            stagePadding: 50,
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            responsive: {
+              0: {
+                items: 1
+              },
+              600: {
+                items: 2
+              },
+              1000: {
+                items: 3
+              }
+            }
+          });
+        });
+    </script>
 
 </body>
 
