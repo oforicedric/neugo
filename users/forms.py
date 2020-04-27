@@ -30,6 +30,9 @@ class UserRegisterForm(UserCreationForm):
         self.helper = FormHelper()
         self.helper.add_input(Submit('submit', 'Next', css_class='button btn-success'))
 
+        for fieldname in ['username', 'email', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
     def clean_username(self):
         data = self.cleaned_data['username']
         if User.objects.filter(username=data).exists():

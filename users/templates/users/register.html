@@ -1,45 +1,39 @@
+{% extends "blog/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% load i18n %}
 
 {% block content %}
     <head>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
-              id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{% static 'blog/onboarding/onboardingnew.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/onboarding/register.css' %}">
     </head>
-    <div class="logo">
-        <img src="/static/neugo3.png" width="130" height="40"/>
-    </div>
+
+
     <div class="text-center">
         <h1 class="landings">Join Today!</h1>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="container">
-                <div class="row register-row">
-                    <p>{{ container_text }}</p>
-                    <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-                </div>
-                <form action="" method="post" novalidate>
-                    {% csrf_token %}
-                    {{ wizard.management_form }}
-                    {% for field in wizard.form %}
-                        {{ field|as_crispy_field }}
-                    {% endfor %}
-                    <div class="register-buttons">
-                        {% if wizard.steps.prev %}
-                            <button class="btn-register register-first" name="wizard_goto_step" type="submit"
-                                    value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
-                            <button class="btn-register register-prev" name="wizard_goto_step" type="submit"
-                                    value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
-                        {% endif %}
-                        <input class="btn-register register-submit" type="submit" value="{% trans "Next" %}"/>
-                    </div>
-                </form>
+        <div class="col-md-8 col-sm-6 offset-md-2 offset-sm-3 authentication">
+            <div class="row register-row">
+                <p class="steps">Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+                <p class="steps__text">{{ container_text }}</p>
             </div>
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ wizard.management_form }}
+                {% for field in wizard.form %}
+                    {{ field|as_crispy_field }}
+                {% endfor %}
+                <div class="register-buttons">
+                    {% if wizard.steps.prev %}
+                        <button class="btn-register register-first" name="wizard_goto_step" type="submit"
+                                value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
+                        <button class="btn-register register-prev" name="wizard_goto_step" type="submit"
+                                value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
+                    {% endif %}
+                    <input class="btn-register register-submit" type="submit" value="{% trans "Next" %}"/>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}

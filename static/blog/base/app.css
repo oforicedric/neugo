@@ -17011,9 +17011,7 @@ ul.timeline-list .media-body.fixed {
     border-bottom: 1px solid #e2e9e6;
   }
 }
-.row {
-  margin: 0 -7.5px;
-}
+
 .row.gridalicious {
   margin: 0 -15px;
 }
@@ -17022,11 +17020,6 @@ ul.timeline-list .media-body.fixed {
   margin-top: 14%;
   margin-left: 11px;
 }
-
-/* .row [class*="col-"] {
-  padding: 0 7.5px;
-  margin-top: 10%
-} */
 
 
 .row [class*="col-"].control-label {
@@ -17087,12 +17080,6 @@ html.app-mobile #content .container-fluid {
   height: 100%;
   overflow: hidden;
   position: relative;
-}
-@media (max-width: 400px){
-  .row [class*="col-"] {
-    padding: 0 7.5px;
-    margin-top:30%;
-  }
 }
 
 @media (min-width: 768px) {
