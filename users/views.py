@@ -19,8 +19,9 @@ class RegistrationWizard(SessionWizardView):
 
     def get_context_data(self, form, **kwargs):
         context = super().get_context_data(form=form, **kwargs)
-        container_text = " "
-
+        container_text = ""
+        if self.request.user.is_authenticated:
+            return redirect('/rewards/purchase_rewards/go_home/')
         if self.steps.current == '0':
             container_text = "Tell us your name.."
         elif self.steps.current == '1':
