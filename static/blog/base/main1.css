@@ -1,5 +1,4 @@
 body {
-    background: #fafafa;
     color: #333333;
     
 }
@@ -102,9 +101,21 @@ a.article-title:hover {
 }
 
 .article-img {
-    height: 45px;
-    width: 45px;
+    height: 60px;
+    width: 60px;
     margin-right: 16px;
+}
+
+@media (max-width: 481px) {
+    .article-img {
+        height: 45px;
+        width: 45px;
+    }
+
+    .content-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 .article-metadata {

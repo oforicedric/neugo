@@ -8,15 +8,67 @@
                 margin-top: 8%;
             }
 
+            .top-section {
+                display: grid;
+                grid-template-columns: 10% 90%;
+            }
+
+            .article-metadata {
+                display: flex;
+                align-items: center;
+            }
+
+            .article-metadata p {
+                margin-right: 20px;
+            }
+
+            .media-body {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .commentFormDiv .input-group input.form-control{
+                border-radius: 0;
+                margin-bottom: 5px;
+                background: white;
+                box-shadow: none;
+                height: 38px;
+            }
+
+            .list-group {
+                margin-bottom: 10px !important;
+            }
+
+            .btn-register {
+                font-size: 10px;
+
+            }
+
+            .media {
+                border: none !important;
+                box-shadow: 0 0 6px #cdcdcd !important;
+            }
+
             @media (max-width: 768px) {
                 .row [class*="col-"]  {
                     margin-top: 10%;
                 }
             }
-            @media (max-width: 480px) {
+            @media (max-width: 481px) {
                 .feednotes.comment {
                     display: grid;
                     grid-template-columns: 50% 50%;
+                }
+
+                .top-section {
+                    display: grid;
+                    grid-template-columns: 15% 85%;
+                }
+
+                .commentFormDiv > div.input-group{
+                    display: grid;
+                    grid-template-columns: 68% 32%;
+                    grid-gap: 2%
                 }
             }
 
@@ -31,89 +83,99 @@
         {% if event.post is not None %}
             {% with post=event.post %}
                 <article class="media content-section">
-                    <div style="inline-block;">
-                        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-                        <div style="display:inline-block;">
-                            <div class="media-body">
+
+                    <div class="top-section">
+                        <div class="top-section-image">
+                            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+                        </div>
+                        <div class="">
+                            <div class="media-header">
                                 <div class="article-metadata">
-                                <small style="font-weight:600" class="text-muted">
-                                    {{ request.session.first_name }}</small></br>
-                                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                                    <p style="font-weight:600" class="text-muted">
+                                        {{ post.author }}
+                                    </p>
+                                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                                </div>
+                                <p>
+                                    <a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a>
+                                </p>
+                            </div>
+                    
+                            <div class="media-body">
+                                <div class="media-body-wrapper">
+                                    <div class="feednotes" id="feednote">
+                                        <p class="text-muted"> Study time (minutes)</p>
+                                        <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
+                                    </div>
+                    
+                                    <div class="feednotes" id="feednote">
+                                        <p class="text-muted"> Points earned </p>
+                                        <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.points_earned }}</p>
+                                    </div>
+                    
+                                    <div style="border-width:0" class="feednotes" id="feednote">
+                                        <p class="text-muted">Rating</p>
+                                        <p style="font-weight:600;font-size:20px;" class="article-content">3</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- likes -->
+                            <div id="likebox" style="margin-top:0px;padding-top:0px;" class="content-section likebox">
+                                <div class="likebox-innerwrap">
+                                    <div class="feednotes likes">
+                                        <div class="feednotes-likes">
+                                            <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
+                                            <span id="changeWordEnding{{ post.id }}">{% if post.count_post_likes.count > 1 %}Likes {% else %} Like {% endif %}</span>
+                                        </div>
+            
+                                        <a href="#" onclick="likePost(event, {{ post.id }})">
+                                            {% if post|liked_by_user:request.user %}
+                                            <span id="likePostText{{ post.id }}">Unlike</span>
+                                            {% else %}
+                                            <span id="likePostText{{ post.id }}">Like</span>
+                                            {#                            &nbsp&#10084;&#65039;#}
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <div class="feednotes comment" style="border-width:0px;">
+                                        <div>
+                                            <span id="countComments{{ post.id }}">{{ post.count_comments.count }}</span>
+                                            &nbsp;&#x1F4AC;
+                                        </div>
+                                        <a href="#" onclick="showMoreComments(event, {{ post.id }})"
+                                           id="commentsButton{{ post.id }}">
+                                            {% if post.post_comments.count > 1 %}
+                                                Show More Comments
+                                            {% elif post.post_comments.count == 1 %}
+                                            {% else %}
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- comments -->
+                            <div id="commentsList{{ post.id }}" class="list-group list-group-flush">
+                                {% include "blog/includes/comment.html" %}
+                            </div>
+                            <div id="commentFormDiv{{ post.id }}" class="commentFormDiv">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Comment on this post" aria-label=""
+                                           aria-describedby="basic-addon1" id="input-value{{ post.id }}">
+                                    <div class="input-group-prepend">
+                                        <button type="submit" class="btn-register mb-2"
+                                                onclick="createPostComment(event, {{ post.id }})">Comment
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="media-body">
-                        <h2 style="font-size:20px;font-weight:600;">
-                            <a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a>
-                        </h2>
-                        <div class="media-body-wrapper">
-                            <div class="feednotes" id="feednote">
-                                <p class="text-muted"> Study time (minutes)</p>
-                                <p style="font-weight:600;font-size:20px;"
-                                   class="article-content">{{ post.time_studied }}</p>
-                            </div style="margin-left:">
 
-                            <div class="feednotes" id="feednote">
-                                <p class="text-muted"> Points earned </p>
-                                <p style="font-weight:600;font-size:20px;"
-                                   class="article-content">{{ post.points_earned }}</p>
-                            </div>
 
-                            <div style="border-width:0" class="feednotes" id="feednote">
-                                <p class="text-muted">Rating</p>
-                                <p style="font-weight:600;font-size:20px;" class="article-content">3</p>
-                            </div>
-                        </div>
-
-                    </div>
                 </article>
-                <div id="likebox" style="margin-top:0px;padding-top:0px;" class="media content-section likebox">
-                    <div class="likebox-innerwrap">
-                        <div class="feednotes likes">
-                            <div class="feednotes-likes">
-                                <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
-                                <span id="changeWordEnding{{ post.id }}">{% if post.count_post_likes.count > 1 %}Likes {% else %} Like {% endif %}</span>
-                            </div>
-
-                            <a href="#" onclick="likePost(event, {{ post.id }})">
-                                {% if post|liked_by_user:request.user %}
-                                <span id="likePostText{{ post.id }}">Unlike</span>
-                                {% else %}
-                                <span id="likePostText{{ post.id }}">Like</span>
-                                {#                            &nbsp&#10084;&#65039;#}
-                                {% endif %}
-                            </a>
-                        </div>
-                        <div class="feednotes comment" style="border-width:0px;">
-                            <div>
-                                <span id="countComments{{ post.id }}">{{ post.count_comments.count }}</span>
-                                &nbsp;&#x1F4AC;
-                            </div>
-                            <a href="#" onclick="showMoreComments(event, {{ post.id }})"
-                               id="commentsButton{{ post.id }}">
-                                {% if post.post_comments.count > 1 %}
-                                    Show More Comments
-                                {% elif post.post_comments.count == 1 %}
-                                {% else %}
-                                {% endif %}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div id="commentsList{{ post.id }}" class="list-group list-group-flush">
-                    {% include "blog/includes/comment.html" %}
-                </div>
-                <div id="commentFormDiv{{ post.id }}">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Comment on this post" aria-label=""
-                               aria-describedby="basic-addon1" id="input-value{{ post.id }}">
-                        <div class="input-group-prepend">
-                            <button type="submit" class="btn btn-primary mb-2"
-                                    onclick="createPostComment(event, {{ post.id }})">Comment
-                            </button>
-                        </div>
-                    </div>
-                </div>
             {% endwith %}
         {% endif %}
         {% if event.participant is not None %}

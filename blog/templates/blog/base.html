@@ -42,9 +42,6 @@
     <title>Neugo</title>
     {% endif %}
 <style>
-body {
-    /* font-family: 'Lato', sans-serif; */
-}
 
 .navbar .navbar-nav .nav-item{
     color: #212529;
@@ -99,6 +96,111 @@ button.navbar-toggler{
     margin-left: 40%;
   }
 }
+
+
+.btn-register {
+    position: relative;
+    border-radius: 3px;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    background-color: #43CBCC;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.btn-register::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.btn-register::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ripple */
+.btn-register::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px; /* Safari */
+    height: 32px; /* Safari */
+    background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 1s, transform 0.5s;
+}
+
+/* Hover, Focus */
+.btn-register:hover,
+.btn-register:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn-register:hover::before {
+    opacity: 0.08;
+}
+
+.btn-register:focus::before {
+    opacity: 0.24;
+}
+
+.btn-register:hover:focus::before {
+    opacity: 0.3;
+}
+
+/* Active */
+.btn-register:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-register:active::after {
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+}
+
+/* Disabled */
+.btn-register:disabled {
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.12);
+    box-shadow: none;
+    cursor: initial;
+}
+
+.btn-register:disabled::before {
+    opacity: 0;
+}
+
+.btn-register:disabled::after {
+    opacity: 0;
+}
 </style>
  
 </head>
@@ -122,16 +224,16 @@ button.navbar-toggler{
                         <li class=”nav-item”><a class="nav-link" href="{% url 'blog-map' %}">Study &#x1F4DD</a> </li>
                         <li class=”nav-item”><a class="nav-link" href="{% url 'blog-rewards' %}">Reward Yourself &#x1F389</a></li> 
                         {% endif %}
-                    </ul>
-                    <!-- Navbar Right Side -->
-                    <ul class="navbar-nav pull-right right">
-                        {% if user.is_authenticated %}
-                        <li class=”nav-item”><a class=" nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
-                        <li class=”nav-item”><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
-                        {% else %}
-                        <li class=”nav-item”><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
-                        <li class=”nav-item”><a class="nav-link" href="{% url 'register' %}">Register &#x1F44B</a></li>
-                        {% endif %}
+
+                        <ul class="navbar-nav ml-auto right">
+                            {% if user.is_authenticated %}
+                            <li class=”nav-item”><a class=" nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
+                            <li class=”nav-item”><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
+                            {% else %}
+                            <li class=”nav-item”><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
+                            <li class=”nav-item”><a class="nav-link" href="{% url 'register' %}">Register &#x1F44B</a></li>
+                            {% endif %}
+                        </ul>
                     </ul>
                 </div>
             </div>
