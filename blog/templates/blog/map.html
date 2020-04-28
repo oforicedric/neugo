@@ -14,10 +14,6 @@
   padding: 0 20px;
 }
 
-#mapbtn{
-  border-radius: 50px;
-}
-
 @media screen and (max-width: 768px) {
   #gmap_canvas, .gmap_canvas {
     height: 400px;
@@ -105,7 +101,7 @@
     <div id="maplinks">
     <div id="finish_session_button_div" >
         <div id="mappara" style="color:#424242e0;"><h3 >You are in a Neugo study zone! start your session to earn points: </h3>
-        <a id="mapbtn" href="{% url 'blog-study' %}" style="margin-top:3%;font-size:12px;font-weight:600;background-color:#1976d2;color:#FFFF;" class="btn btn-success">start session</a>
+        <a id="mapbtn" href="{% url 'blog-study' %}" class="btn-register btn-success">start session</a>
       </div>
   </div sty>
 </body>

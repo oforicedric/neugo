@@ -1,110 +1,122 @@
-{% extends "blog/base.html" %}
-{% block content %}
-{% load static %}
+{% extends "blog/base.html" %} {% block content %} {% load static %}
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/Timer/timernew.css' %}">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'blog/Timer/timernew.css' %}"
+  />
 
-    <style>
-        #rows{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 60px;
-        }
+  <style>
+    #rows {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 60px;
+    }
 
-        #countdown{
-            margin-left: 8%;
-            position: relative;
-        }
+    #countdown {
+      margin-left: 8%;
+      margin-top: 30px;
+      position: relative;
+    }
 
-         @media (max-width: 768px) {
-            #countdown {
-                margin-left: 15%;
-                margin-top: 10%;
-            }
+    @media (max-width: 768px) {
+      #countdown {
+        margin-left: 15%;
+        margin-top: 10%;
+      }
 
-            .commentBox {
-                width: 100%;
-            }
+      .commentBox {
+        width: 100%;
+      }
 
-            #commentsubmitbtn {
-                width: 100%;
-            }
-        }
+      #commentsubmitbtn {
+        width: 100%;
+      }
+    }
 
-        @media (max-width: 480px) {
-            #countdown {
-                margin-left: 28%;
-            }
-        }
+    @media (max-width: 480px) {
+      #countdown {
+        margin-left: 28%;
+      }
+    }
 
-        #finishbtn{
-            border-radius: 50px;
-            font-weight: bold;
-            padding: 13px 70px;
-        }
+    #finishbtn {
+      font-weight: bold;
+      padding: 0 70px;
+    }
 
-        #finish_comment {
-            width: 100%;
-            display: none;
-            flex-direction: column;
-        }
+    #finish_comment {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+    }
 
-        #Feedbackhead {
-            text-align:left;
-            color:#424242;
-            font-size:32px;
-            border-bottom: 1px solid #cdcdcd;
-        }
-
-        #commentsubmitbtn {
-            background-color:#03a9f4;
-            color:#FFFF;
-            border-radius: 50px;
-        }
-
-    </style>
+    #Feedbackhead {
+      text-align: left;
+      color: #424242;
+      font-size: 32px;
+      border-bottom: 1px solid #cdcdcd;
+    }
+  </style>
 </head>
 
 <body>
-    <script src="{% static 'blog/Timer/timer_rendernew.js' %}"></script>
-    
-    <div id="countdown">
-        <svg>
-            <circle r="80" cx="100" cy="95"></circle>
-        </svg>
-        <p id="countdown_number">{{request.session.initial_time_string}}</p>
-    </div>
-    <script src="{% static 'blog/Timer/example.js' %}"></script>
-    <script type="text/javascript">
-        var time_string = "{{request.session.study_time}}";
-        var time_int = parseInt(time_string, 10);
-        countdownTimeStart(time_int);
-    </script>
-    <div id="finish_session_button_div">
-        <form id="finish_session_button" action="finish" method="GET">
-            <button onclick="getComments()" id="finishbtn" type="button" style=" background-color:#03a9f4;
-            color:#FFFF;"
-                class="btn btn-success">finish </button>
-        </form>
-    </div>
+  <script src="{% static 'blog/Timer/timer_rendernew.js' %}"></script>
 
-    <div id="finish_comment">
-        <h1 class="profile" id="Feedbackhead">Feedback</h1>
-        <div>
-            <h2 id="fin_comment">{{ request.session.first_name }}, how was your session? </h2>
-        </div>
-        <form action="finish/" id="finish_session_comment" method="post">
-            {% csrf_token %}
-            <textarea id="get_comment" class="commentBox" name="user_description"></textarea>
-        </form>
-        <form action="finish" id="finish_session_button" method="post">
-            <button id="commentsubmitbtn" type="submit" form="finish_session_comment"
-                style="background-color:#03a9f4;color:#FFFF;" class="btn btn-success">Post</button>
-        </form>
+  <div id="countdown">
+    <svg>
+      <circle r="80" cx="100" cy="95"></circle>
+    </svg>
+    <p id="countdown_number">{{request.session.initial_time_string}}</p>
+  </div>
+  <script src="{% static 'blog/Timer/example.js' %}"></script>
+  <script type="text/javascript">
+    var time_string = "{{request.session.study_time}}";
+    var time_int = parseInt(time_string, 10);
+    countdownTimeStart(time_int);
+  </script>
+  <div id="finish_session_button_div">
+    <form id="finish_session_button" action="finish" method="GET">
+      <button
+        onclick="getComments()"
+        id="finishbtn"
+        type="button"
+        class="btn-register btn-success"
+      >
+        finish
+      </button>
+    </form>
+  </div>
+
+  <div id="finish_comment">
+    <h1 class="profile" id="Feedbackhead">Feedback</h1>
+    <div>
+      <h2 id="fin_comment">
+        {{ request.user.username }}, how was your session?
+      </h2>
     </div>
+    <form action="finish/" id="finish_session_comment" method="post">
+      {% csrf_token %}
+      <textarea
+        id="get_comment"
+        class="commentBox"
+        name="user_description"
+      ></textarea>
+    </form>
+    <form action="finish" id="finish_session_button" method="post">
+      <button
+        id="commentsubmitbtn"
+        type="submit"
+        form="finish_session_comment"
+        class="btn-register"
+      >
+        Post
+      </button>
+    </form>
+  </div>
 </body>
 
 {% endblock content %}

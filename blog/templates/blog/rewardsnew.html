@@ -47,6 +47,19 @@
     body {
       overflow: auto;
     }
+
+    .card{
+      width: 70% !important;
+    }
+
+    .owl-item {
+      margin-right: -72px !important;
+    }
+
+    .owl-carousel .owl-item img {
+      height: 121px !important;
+      width: 100% !important;
+  }
   </style>
 </head>
 
@@ -355,7 +368,7 @@
       $(document).ready(function () {
         console.log($.isFunction('owlCarousel'));
           $(".owl-carousel").owlCarousel({
-            stagePadding: 50,
+            stagePadding: 10,
             loop: true,
             margin: 10,
             nav: true,

@@ -224,16 +224,16 @@ button.navbar-toggler{
                         <li class=”nav-item”><a class="nav-link" href="{% url 'blog-map' %}">Study &#x1F4DD</a> </li>
                         <li class=”nav-item”><a class="nav-link" href="{% url 'blog-rewards' %}">Reward Yourself &#x1F389</a></li> 
                         {% endif %}
+                    </ul>
 
-                        <ul class="navbar-nav ml-auto right">
-                            {% if user.is_authenticated %}
-                            <li class=”nav-item”><a class=" nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
-                            <li class=”nav-item”><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
-                            {% else %}
-                            <li class=”nav-item”><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
-                            <li class=”nav-item”><a class="nav-link" href="{% url 'register' %}">Register &#x1F44B</a></li>
-                            {% endif %}
-                        </ul>
+                    <ul class="navbar-nav right pull-right">
+                        {% if user.is_authenticated %}
+                        <li class=”nav-item”><a class="nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
+                        <li class=”nav-item”><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
+                        {% else %}
+                        <li class=”nav-item”><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
+                        <li class=”nav-item”><a class="nav-link" href="{% url 'register' %}">Register &#x1F44B</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

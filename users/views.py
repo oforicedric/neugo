@@ -15,7 +15,8 @@ def register(request):
 
 class RegistrationWizard(SessionWizardView):
     template_name = "users/register.html"
-    form_list = [OnboardingNameForm, OnboardingUniversityForm, OnboardingSubjectForm, UserRegisterForm]
+    form_list = [OnboardingNameForm, OnboardingUniversityForm,
+                 OnboardingSubjectForm, UserRegisterForm]
 
     def get_context_data(self, form, **kwargs):
         context = super().get_context_data(form=form, **kwargs)
@@ -70,19 +71,21 @@ def compute_monthly_goal():
 
 def compute_progress(request):
     request.session["daily_progress"] = 100 * (
-            0.01
-            + (request.session["user_study_activity"][-1] / request.session["daily_goal"])
+        0.01
+        + (request.session["user_study_activity"]
+           [-1] / request.session["daily_goal"])
     )
     request.session["weekly_progress"] = 100 * (
-            0.01
-            + (sum(request.session["user_study_activity"]) / request.session["weekly_goal"])
+        0.01
+        + (sum(request.session["user_study_activity"]) /
+           request.session["weekly_goal"])
     )
     request.session["monthly_progress"] = 100 * (
-            0.01
-            + (
-                    sum(request.session["user_study_activity"])
-                    / request.session["monthly_goal"]
-            )
+        0.01
+        + (
+            sum(request.session["user_study_activity"])
+            / request.session["monthly_goal"]
+        )
     )
 
 
