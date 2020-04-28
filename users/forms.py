@@ -26,9 +26,12 @@ class UserRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
         email = forms.EmailField()
+        first_name = forms.CharField()
+        last_name = forms.CharField()
         self.fields['email'].required = True
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Next', css_class='button btn-success'))
+        self.helper.add_input(
+            Submit('submit', 'Next', css_class='button btn-success'))
 
         for fieldname in ['username', 'email', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
@@ -49,6 +52,8 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = [
             "username",
+            "first_name",
+            "last_name",
             "email",
             "password1",
             "password2"

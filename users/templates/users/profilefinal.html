@@ -40,8 +40,8 @@
         </div>
 
         <div class="profile-card__cnt js-profile-cnt">
-            <div class="profile-card__name">{{ request.session.first_name }} {{ request.session.second_name }}</div>
-            <div class="profile-card__txt">{{ request.session.subject }} student at
+            <div class="profile-card__name">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+            <div class="profile-card__txt">{{ request.user.subject }} student at
                 <strong>{{ request.session.university }}</strong></div>
             <div class="profile-card-loc">
 
