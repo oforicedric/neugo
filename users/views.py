@@ -18,23 +18,25 @@ class RegistrationWizard(SessionWizardView):
     form_list = [OnboardingNameForm, OnboardingUniversityForm,
                  OnboardingSubjectForm, UserRegisterForm]
 
-    def get_context_data(self, form, **kwargs):
-        context = super().get_context_data(form=form, **kwargs)
-        container_text = ""
-        if self.request.user.is_authenticated:
-            return redirect('/rewards/purchase_rewards/go_home/')
-        if self.steps.current == '0':
-            container_text = "Tell us your name.."
-        elif self.steps.current == '1':
-            container_text = "Nice! which University do you you go to?"
-        elif self.steps.current == '2':
-            container_text = "Amazing! What subject are you studying then?"
-        elif self.steps.current == '3':
-            container_text = "Okay, we just need a username, email and password to get started..."
+    # def get_context_data(self, form, **kwargs):
+        # context = super().get_context_data(form=form, **kwargs)
+        # container_text = ""
+        # if self.request.user.is_authenticated:
+        #     return redirect('/rewards/purchase_rewards/go_home/')
+        # if self.steps.current == '0':
+        #     container_text = "Tell us your name.."
+        # elif self.steps.current == '1':
+        #     container_text = "Nice! which University do you you go to?"
+        # elif self.steps.current == '2':
+        #     container_text = "Amazing! What subject are you studying then?"
+        # elif self.steps.current == '3':
+        #     container_text = "Okay, we just need a username, email and password to get started..."
 
-        context.update({'container_text': container_text})
+        # context.update({'container_text': container_text})
 
-        return context
+        # print(context, 'context')
+
+        # return context
 
     def done(self, form_list, **kwargs):
         form_list = list(form_list)
