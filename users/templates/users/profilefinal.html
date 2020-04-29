@@ -68,10 +68,15 @@
                 <div id="chart" style="width:500px; height:250px;float:left; margin:0 auto;"></div>
                     <canvas id="myChart" class="bodyb"></canvas>
                     <script>
-                        var user_activity = {{ request.session.user_study_activity| safe }};
-                        var all_activity = {{ request.session.all_users_study_activity| safe }};
-                        var graph_labels = {{ request.session.graph_labels| safe }};
+                        var user_activity = "{{ request.session.user_study_activity| safe }}";
+                        var all_activity = "{{ request.session.all_users_study_activity| safe }}";
+                        var graph_labels = "{{ request.session.graph_labels| safe }}";
+
+                        console.log(user_activity, 'user')
+                        console.log(all_activity, 'all')
+                        console.log(graph_labels, 'graph')
                         showChart(user_activity, all_activity, graph_labels);
+
                     </script>
                 </div>
             </div>

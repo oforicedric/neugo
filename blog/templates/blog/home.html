@@ -1,317 +1,338 @@
-{% extends "blog/base.html" %}
-{% load blog_tags %}
-{% block content %}
+{% extends "blog/base.html" %} {% load blog_tags %} {% block content %}
 
-    <head>
-        <style>
-            .row [class*="col-"]  {
-                margin-top: 8%;
-            }
+<head>
+  <style>
+    .row [class*="col-"] {
+      margin-top: 8%;
+    }
 
-            .top-section {
-                display: grid;
-                grid-template-columns: 10% 90%;
-            }
+    .top-section {
+      display: grid;
+      grid-template-columns: 5% 93%;
+      grid-gap: 2%;
+    }
 
-            .article-metadata {
-                display: flex;
-                align-items: center;
-            }
+    .article-metadata {
+      align-items: center;
+    }
 
-            .article-metadata p {
-                margin-right: 20px;
-            }
+    .article-metadata p {
+      margin-right: 20px;
+        font-size: 12px;
+    }
+    .article-title {
+        font-size: 12px;
+    }
 
-            .media-body {
-                margin-top: 10px;
-                margin-bottom: 10px;
-            }
+    .media-body {
+      margin-bottom: 10px;
+    }
 
-            .commentFormDiv .input-group input.form-control{
-                border-radius: 0;
-                margin-bottom: 5px;
-                background: white;
-                box-shadow: none;
-                height: 38px;
-            }
+    .feednotes .points {
+        margin-bottom: -20px;
+    }
 
-            .list-group {
-                margin-bottom: 10px !important;
-            }
+    .commentFormDiv .input-group input.form-control {
+      border-radius: 0;
+      margin-bottom: 5px;
+      background: white;
+      box-shadow: none;
+      height: 38px;
+    }
 
-            .btn-register {
-                font-size: 10px;
+    .list-group {
+      margin-bottom: 10px !important;
+    }
 
-            }
+    .btn-register {
+      font-size: 10px;
+    }
 
-            .media {
-                border: none !important;
-                box-shadow: 0 0 6px #cdcdcd !important;
-            }
+    @media (max-width: 768px) {
+      .row [class*="col-"] {
+        margin-top: 10%;
+      }
+    }
+    @media (max-width: 481px) {
+      .feednotes.comment {
+        display: grid;
+        grid-template-columns: 50% 50%;
+      }
 
-            @media (max-width: 768px) {
-                .row [class*="col-"]  {
-                    margin-top: 10%;
-                }
-            }
-            @media (max-width: 481px) {
-                .feednotes.comment {
-                    display: grid;
-                    grid-template-columns: 50% 50%;
-                }
+      .top-section {
+        display: grid;
+        grid-template-columns: 15% 85%;
+      }
 
-                .top-section {
-                    display: grid;
-                    grid-template-columns: 15% 85%;
-                }
+      .commentFormDiv > div.input-group {
+        display: grid;
+        grid-template-columns: 68% 32%;
+        grid-gap: 2%;
+      }
+    }
+  </style>
 
-                .commentFormDiv > div.input-group{
-                    display: grid;
-                    grid-template-columns: 68% 32%;
-                    grid-gap: 2%
-                }
-            }
-
-        </style>
-
-        <script>
-        </script>
-
-    </head>
-    {% for event in events %}
-
-        {% if event.post is not None %}
-            {% with post=event.post %}
-                <article class="media content-section">
-
-                    <div class="top-section">
-                        <div class="top-section-image">
-                            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-                        </div>
-                        <div class="">
-                            <div class="media-header">
-                                <div class="article-metadata">
-                                    <p style="font-weight:600" class="text-muted">
-                                        {{ post.author }}
-                                    </p>
-                                    <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-                                </div>
-                                <p>
-                                    <a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a>
-                                </p>
-                            </div>
-                    
-                            <div class="media-body">
-                                <div class="media-body-wrapper">
-                                    <div class="feednotes" id="feednote">
-                                        <p class="text-muted"> Study time (minutes)</p>
-                                        <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.time_studied }}</p>
-                                    </div>
-                    
-                                    <div class="feednotes" id="feednote">
-                                        <p class="text-muted"> Points earned </p>
-                                        <p style="font-weight:600;font-size:20px;" class="article-content">{{ post.points_earned }}</p>
-                                    </div>
-                    
-                                    <div style="border-width:0" class="feednotes" id="feednote">
-                                        <p class="text-muted">Rating</p>
-                                        <p style="font-weight:600;font-size:20px;" class="article-content">3</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- likes -->
-                            <div id="likebox" style="margin-top:0px;padding-top:0px;" class="content-section likebox">
-                                <div class="likebox-innerwrap">
-                                    <div class="feednotes likes">
-                                        <div class="feednotes-likes">
-                                            <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
-                                            <span id="changeWordEnding{{ post.id }}">{% if post.count_post_likes.count > 1 %}Likes {% else %} Like {% endif %}</span>
-                                        </div>
-            
-                                        <a href="#" onclick="likePost(event, {{ post.id }})">
-                                            {% if post|liked_by_user:request.user %}
-                                            <span id="likePostText{{ post.id }}">Unlike</span>
-                                            {% else %}
-                                            <span id="likePostText{{ post.id }}">Like</span>
-                                            {#                            &nbsp&#10084;&#65039;#}
-                                            {% endif %}
-                                        </a>
-                                    </div>
-                                    <div class="feednotes comment" style="border-width:0px;">
-                                        <div>
-                                            <span id="countComments{{ post.id }}">{{ post.count_comments.count }}</span>
-                                            &nbsp;&#x1F4AC;
-                                        </div>
-                                        <a href="#" onclick="showMoreComments(event, {{ post.id }})"
-                                           id="commentsButton{{ post.id }}">
-                                            {% if post.post_comments.count > 1 %}
-                                                Show More Comments
-                                            {% elif post.post_comments.count == 1 %}
-                                            {% else %}
-                                            {% endif %}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- comments -->
-                            <div id="commentsList{{ post.id }}" class="list-group list-group-flush">
-                                {% include "blog/includes/comment.html" %}
-                            </div>
-                            <div id="commentFormDiv{{ post.id }}" class="commentFormDiv">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Comment on this post" aria-label=""
-                                           aria-describedby="basic-addon1" id="input-value{{ post.id }}">
-                                    <div class="input-group-prepend">
-                                        <button type="submit" class="btn-register mb-2"
-                                                onclick="createPostComment(event, {{ post.id }})">Comment
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <script></script>
+</head>
+{% for event in events %} 
+    {% if event.post is not None %} 
+        {% with post=event.post %}
+            <article class="content-section">
+                <div class="top-section">
+                    <div class="top-section-image">
+                    <img
+                        class="rounded-circle article-img"
+                        src="{{ post.author.profile.image.url }}"
+                    />
+                    </div>
+                    <div class="article-metadata">
+                        <p style="font-weight: 600;" class="text-muted">
+                            {{ post.author }}
+                        </p>
+                        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="media-header">
+                        <p><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.user_description }}</a></p>
                     </div>
 
-
-                </article>
-            {% endwith %}
-        {% endif %}
-        {% if event.participant is not None %}
-            <article class="media content-section">
-                    <div style="inline-block;">
-                        <img class="rounded-circle article-img" src="{{ event.participant.user.profile.image.url }}">
-                        <div style="display:inline-block;">
-                            <div class="media-body">
-                                <div class="article-metadata">
-                                <small class="text-muted">{{ event.participant.datetime_joined|date:"F d, Y" }}</small>
-                            </div>
-                        </div>
-                    </div>
                     <div class="media-body">
-                        <h2 style="font-size:20px;font-weight:600;">
-                            <div class="article-title">{{ event.participant.user }} joined competition
-                                "{{ event.participant.competition.title }}"</div>
-                        </h2>
+                        <div class="media-body-wrapper">
+                        <div class="feednotes" id="feednote">
+                            <p class="text-muted  points">Study time (minutes)</p>
+                            <p
+                            style="font-weight: 600; font-size: 20px;"
+                            class="article-content">
+                            {{ post.time_studied }}
+                            </p>
+                        </div>
+
+                        <div class="feednotes" id="feednote">
+                            <p class="text-muted points">Points earned</p>
+                            <p style="font-weight: 600; font-size: 20px;" class="article-content">
+                                {{ post.points_earned }}
+                            </p>
+                        </div>
+
+                        <div style="border-width: 0;" class="feednotes" id="feednote">
+                            <p class="text-muted">Rating</p>
+                             <p style="font-weight: 600; font-size: 20px;" class="article-content">3</p>
+                        </div>
+                        </div>
                     </div>
+
+                    <!-- likes -->
+                    <div
+                        id="likebox"
+                        style="margin-top: 0px; padding-top: 0px;"
+                        class="likebox">
+                        <div class="likebox-innerwrap">
+                        <div class="feednotes likes">
+                            <div class="feednotes-likes">
+                            <span id="countLikes{{ post.id }}">{{ post.count_post_likes.count }}</span>
+                            <span id="changeWordEnding{{ post.id }}">
+                                {% if post.count_post_likes.count > 1 %}
+                                    Likes 
+                                {% else %}
+                                     Like
+                                {% endif %}</span>
+                            </div>
+
+                            <a href="#" onclick="likePost(event, {{ post.id }})">
+                            {% if post|liked_by_user:request.user %}
+                            <span id="likePostText{{ post.id }}">Unlike</span>
+                            {% else %}
+                            <span id="likePostText{{ post.id }}">Like</span>
+                            {# &nbsp&#10084;&#65039;#} {% endif %}
+                            </a>
+                        </div>
+                        <div class="feednotes comment" style="border-width: 0px;">
+                            <div>
+                            <span id="countComments{{ post.id }}" >{{ post.count_comments.count }}</span>
+                            &nbsp;&#x1F4AC;
+                            </div>
+                            <a
+                            href="#"
+                            onclick="showMoreComments(event, {{ post.id }})"
+                            id="commentsButton{{ post.id }}">
+                            {% if post.post_comments.count > 1 %} 
+                                Show More Comments 
+                            {% elif post.post_comments.count == 1 %} 
+                            {% else %} 
+                            {% endif %}
+                            </a>
+                        </div>
+                        </div>
                     </div>
+
+                    <!-- comments -->
+                    <div id="commentsList{{ post.id }}" class="list-group list-group-flush">
+                        {% include "blog/includes/comment.html" %}
+                    </div>
+                    <div id="commentFormDiv{{ post.id }}" class="commentFormDiv">
+                        <div class="input-group mb-3">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Comment on this post"
+                            aria-label=""
+                            aria-describedby="basic-addon1"
+                            id="input-value{{ post.id }}"
+                        />
+                        <div class="input-group-prepend">
+                            <button
+                            type="submit"
+                            class="btn-register mb-2"
+                            onclick="createPostComment(event, {{ post.id }})"
+                            >
+                            Comment
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </article>
-        {% endif %}
-    {% endfor %}
-    {% if is_paginated %}
+        {% endwith %} 
+    {% endif %} 
 
-        {% if page_obj.has_previous %}
-            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
+    {% if event.participant is not None %}
+        <article class="media content-section">
+        <div style="inline-block;">
+            <img
+            class="rounded-circle article-img"
+            src="{{ event.participant.user.profile.image.url }}"
+            />
+            <div style="display: inline-block;">
+            <div class="media-body">
+                <div class="article-metadata">
+                <small class="text-muted">{{ event.participant.datetime_joined|date:"F d, Y" }}</small>
+                </div>
+            </div>
+            </div>
+            <div class="media-body">
+            <h2 style="font-size: 20px; font-weight: 600;">
+                <div class="article-title">
+                {{ event.participant.user }} joined competition "{{event.participant.competition.title }}"
+                </div>
+            </h2>
+            </div>
+        </div>
+        </article>
+    {% endif %} 
+{% endfor %} 
 
-        {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-            {% endif %}
-        {% endfor %}
+{% if is_paginated %} 
+    {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}" >Previous</a>
+    {% endif %} 
+    {% for num in page_obj.paginator.page_range %} 
+        {% if page_obj.number == num %}
+            <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %} 
+    {% endfor %} 
+    {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %} 
+{% endif %}
 
-        {% if page_obj.has_next %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
+<script type="text/javascript">
+  function likePost(e, post_id) {
+    e.preventDefault();
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "/ajax/post/" + post_id + "/like", true);
+    xhr.onload = function () {
+      if (this.status === 200) {
+        let like = document.getElementById("likePostText" + post_id);
+        let number = document.getElementById("countLikes" + post_id);
+        let word = document.getElementById("changeWordEnding" + post_id);
+        const currentText = like.innerText;
+        let currentNumber = number.innerText;
+        let currentEnding = word.innerText;
 
-    {% endif %}
+        let output;
 
-    <script type="text/javascript">
-        function likePost(e, post_id) {
-            e.preventDefault();
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/ajax/post/' + post_id + '/like', true);
-            xhr.onload = function () {
-                if (this.status === 200) {
-                    let like = document.getElementById('likePostText' + post_id);
-                    let number = document.getElementById('countLikes' + post_id);
-                    let word = document.getElementById('changeWordEnding' + post_id);
-                    const currentText = like.innerText;
-                    let currentNumber = number.innerText;
-                    let currentEnding = word.innerText;
-
-                    let output;
-
-                    if (currentText === 'Like') {
-                        output = 'Unlike';
-                        currentNumber = parseInt(currentNumber) + 1;
-                    } else {
-                        output = 'Like';
-                        currentNumber = parseInt(currentNumber) - 1;
-                    }
-
-                    if (currentNumber < 2) {
-                        currentEnding = 'Like'
-                    } else {
-                        currentEnding = 'Likes'
-                    }
-
-                    like.innerHTML = output;
-                    number.innerHTML = currentNumber;
-                    word.innerHTML = currentEnding;
-                }
-            };
-            xhr.send('like');
+        if (currentText === "Like") {
+          output = "Unlike";
+          currentNumber = parseInt(currentNumber) + 1;
+        } else {
+          output = "Like";
+          currentNumber = parseInt(currentNumber) - 1;
         }
 
-        function createPostComment(e, post_id) {
-            e.preventDefault();
-            let formInput = document.getElementById('input-value' + post_id).value;
-            let oldDiv = document.getElementById('commentsList' + post_id);
-            let countComments = document.getElementById('countComments' + post_id);
-            let currentNumber = countComments.innerText;
-
-            if (formInput) {
-                let data = new FormData();
-                data.append('the_comment', formInput);
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/ajax/post/' + post_id + '/create/comment/', true);
-                xhr.onload = function () {
-                    if (this.status === 200) {
-                        let newDiv = xhr.responseText;
-                        oldDiv.innerHTML = newDiv;
-                        currentNumber = parseInt(currentNumber) + 1;
-                        countComments.innerHTML = currentNumber;
-                        if (currentNumber <= 1) {
-                            document.getElementById('commentsButton' + post_id).innerText = "";
-                            console.log('labas')
-                        } else {
-                            document.getElementById('commentsButton' + post_id).innerText = "Hide Comments";
-                        }
-
-                        document.getElementById('input-value' + post_id).value = "";
-                        document.getElementById('all-comments' + post_id).style.display = "block";
-                    }
-                };
-                xhr.send(data);
-            }
+        if (currentNumber < 2) {
+          currentEnding = "Like";
+        } else {
+          currentEnding = "Likes";
         }
 
-        function showMoreComments(e, post_id) {
-            console.log('clicked');
-            e.preventDefault();
-            let showCommentsBlock = document.getElementById('commentsList' + post_id);
-            let allCommentsDiv = document.getElementById('all-comments' + post_id);
-            let commentFormDiv = document.getElementById('commentFormDiv' + post_id);
-            let changeCommentButton = document.getElementById('commentsButton' + post_id);
-            let currentText = changeCommentButton.innerText;
+        like.innerHTML = output;
+        number.innerHTML = currentNumber;
+        word.innerHTML = currentEnding;
+      }
+    };
+    xhr.send("like");
+  }
 
-            if (allCommentsDiv.style.display === 'none') {
-                allCommentsDiv.style.display = 'block';
-                currentText = 'Hide Comments';
-            } else {
-                allCommentsDiv.style.display = 'none';
-                currentText = 'Show More Comments';
-            }
+  function createPostComment(e, post_id) {
+    e.preventDefault();
+    let formInput = document.getElementById("input-value" + post_id).value;
+    let oldDiv = document.getElementById("commentsList" + post_id);
+    let countComments = document.getElementById("countComments" + post_id);
+    let currentNumber = countComments.innerText;
 
-            changeCommentButton.innerText = currentText;
+    if (formInput) {
+      let data = new FormData();
+      data.append("the_comment", formInput);
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/ajax/post/" + post_id + "/create/comment/", true);
+      xhr.onload = function () {
+        if (this.status === 200) {
+          let newDiv = xhr.responseText;
+          oldDiv.innerHTML = newDiv;
+          currentNumber = parseInt(currentNumber) + 1;
+          countComments.innerHTML = currentNumber;
+          if (currentNumber <= 1) {
+            document.getElementById("commentsButton" + post_id).innerText = "";
+            console.log("labas");
+          } else {
+            document.getElementById("commentsButton" + post_id).innerText =
+              "Hide Comments";
+          }
 
+          document.getElementById("input-value" + post_id).value = "";
+          document.getElementById("all-comments" + post_id).style.display =
+            "block";
         }
+      };
+      xhr.send(data);
+    }
+  }
 
-    </script>
+  function showMoreComments(e, post_id) {
+    console.log("clicked");
+    e.preventDefault();
+    let showCommentsBlock = document.getElementById("commentsList" + post_id);
+    let allCommentsDiv = document.getElementById("all-comments" + post_id);
+    let commentFormDiv = document.getElementById("commentFormDiv" + post_id);
+    let changeCommentButton = document.getElementById(
+      "commentsButton" + post_id
+    );
+    let currentText = changeCommentButton.innerText;
+
+    if (allCommentsDiv.style.display === "none") {
+      allCommentsDiv.style.display = "block";
+      currentText = "Hide Comments";
+    } else {
+      allCommentsDiv.style.display = "none";
+      currentText = "Show More Comments";
+    }
+
+    changeCommentButton.innerText = currentText;
+  }
+</script>
 {% endblock content %}

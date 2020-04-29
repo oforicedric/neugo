@@ -16151,7 +16151,7 @@ ul.palette li a {
   color: #00897b;
 }
 .text-teal-700 {
-  color: #00796b;
+  color: #5B5C5E;
 }
 .text-teal-800 {
   color: #00695c;
@@ -30372,8 +30372,8 @@ fieldset[disabled] .btn-teal-600.btn-stroke.active {
 }
 .btn-teal-700 {
   color: #ffffff;
-  background-color: #00796b;
-  border-color: #00796b;
+  background-color: #5B5C5E;
+  border-color: #5B5C5E;
 }
 .btn-teal-700:hover,
 .btn-teal-700:focus,
@@ -30408,17 +30408,17 @@ fieldset[disabled] .btn-teal-700:active,
 .btn-teal-700.disabled.active,
 .btn-teal-700[disabled].active,
 fieldset[disabled] .btn-teal-700.active {
-  background-color: #00796b;
-  border-color: #00796b;
+  background-color: #5B5C5E;
+  border-color: #5B5C5E;
 }
 .btn-teal-700 .badge {
-  color: #00796b;
+  color: #5B5C5E;
   background-color: #ffffff;
 }
 .btn-teal-700.btn-stroke {
-  color: #00796b;
+  color: #5B5C5E;
   background-color: #ffffff;
-  border-color: #00796b;
+  border-color: #5B5C5E;
 }
 .btn-teal-700.btn-stroke:hover,
 .btn-teal-700.btn-stroke:focus,
@@ -30426,7 +30426,7 @@ fieldset[disabled] .btn-teal-700.active {
 .btn-teal-700.btn-stroke:active,
 .btn-teal-700.btn-stroke.active,
 .open > .dropdown-toggle.btn-teal-700.btn-stroke {
-  color: #00796b;
+  color: #5B5C5E;
   background-color: #e6e6e6;
   border-color: #003c35;
 }
@@ -30454,19 +30454,19 @@ fieldset[disabled] .btn-teal-700.btn-stroke:active,
 .btn-teal-700.btn-stroke[disabled].active,
 fieldset[disabled] .btn-teal-700.btn-stroke.active {
   background-color: #ffffff;
-  border-color: #00796b;
+  border-color: #5B5C5E;
 }
 .btn-teal-700.btn-stroke .badge {
   color: #ffffff;
-  background-color: #00796b;
+  background-color: #5B5C5E;
 }
 .btn-teal-700.btn-stroke.active,
 .btn-teal-700.btn-stroke:active,
 .btn-teal-700.btn-stroke:focus,
 .btn-teal-700.btn-stroke:hover,
 .btn-teal-700.btn-stroke .open > .dropdown-toggle.btn-teal-700.btn-stroke {
-  background-color: #00796b;
-  border-color: #00796b;
+  background-color: #5B5C5E;
+  border-color: #5B5C5E;
   color: #ffffff;
 }
 .btn-teal-800 {
