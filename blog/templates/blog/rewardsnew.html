@@ -69,6 +69,12 @@
   .owl-carousel .owl-stage-outer {
     overflow: visible !important;
   }
+
+  .owl-carousel .owl-item .competition-card img {
+    width: 50% !important;
+    display: flex;
+    margin: 13px auto;
+  }
   </style>
 </head>
 
@@ -364,31 +370,33 @@
         </div>
 
         <!-- competitions -->
+
         <div class="carouselling">
           <div class="ribbon-heading ribbon-primary">Competitions</div>
           <div class="owl-carousel owl-theme">
-            <!-- {% for competition in competitions %} -->
-              <div class="items">
-                <div class="competitions-card">
+            {% for competition in competitions %}
+              <div class="item">
+                <div class="card competition-card">
                   <img src="/static/challenge1.png" class="leftimage">
-                  <div class="rightside">
-                    <h2 style="font-weight:500;">{{ competition.title }}</h2>
-                    <p style="font-weight:200;">{{ competition.message }} </p>
+                  <div class="card-body">
+                    <div class="rightside">
+                      <h2 class="card-title">{{ competition.title }}</h2>
+                      <p class="card-text">{{ competition.message }} </p>
+                    </div>
+                    {% if competition|user_finished_competition:request.user %}
+                      <p>You finished this competition!</p>
+                    {% elif competition|user_joined_competition:request.user %}
+                      <p class="card-text">You joined this competition.</p>
+                    {% else %}
+                      <a href="{% url "join_competition" pk=competition.pk %}" class="btn button btn-success">Join</a>
+                    {% endif %}
                   </div>
-                  {% if competition|user_finished_competition:request.user %}
-                    <p>You finished this competition!</p>
-                  {% elif competition|user_joined_competition:request.user %}
-                    <p>You joined this competition.</p>
-                  {% else %}
-                    <a href="{% url "join_competition" pk=competition.pk %}" class="button btn-success">Join</a>
-                  {% endif %}
                 </div>
               </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
           </div>
-
         </div>
-      </div>
+    </div>
 
       {% include "blog/bottom_nav.html" %}
     <!-- <script src="{% static 'js/vendor/all1.js' %}"></script>
@@ -404,7 +412,7 @@
         console.log($.isFunction('owlCarousel'));
           $(".owl-carousel").owlCarousel({
             stagePadding: 10,
-            loop: true,
+            loop: false,
             margin: 10,
             nav: true,
             dots: false,
@@ -422,6 +430,8 @@
           });
         });
     </script>
+
+    </div>
 
 </body>
 

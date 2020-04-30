@@ -122,16 +122,10 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
-    competitions = Competition.objects.all()
     context = {
         "u_form": u_form,
         "p_form": p_form,
-        "competitions": competitions
     }
-
-    for competition in competitions:
-        for participant in competition.competitionparticipant_set.all():
-            result = participant.fulfill_competition_conditions()
 
     return render(request, "users/profilefinal.html", context)
 

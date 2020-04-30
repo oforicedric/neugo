@@ -68,7 +68,16 @@ def study(request):
 
 
 def rewards(request):
-    return render(request, "blog/rewardsnew.html")
+    competitions = Competition.objects.all()
+    context = {
+        "competitions": competitions
+    }
+
+    for competition in competitions:
+        for participant in competition.competitionparticipant_set.all():
+            result = participant.fulfill_competition_conditions()
+
+    return render(request, "blog/rewardsnew.html", context)
 
 
 def tutorial(request):
