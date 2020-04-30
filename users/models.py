@@ -41,7 +41,7 @@ class Profile(models.Model):
         profile_pictures[i] = "potential_pics/" + profile_pictures[i]
 
     image = models.ImageField(
-        default=random.choice(profile_pictures), upload_to="profile_pics"
+        upload_to="profile_pics/", default=random.choice(profile_pictures)
     )
     
     wallet_points = models.BigIntegerField(default=0)
@@ -58,4 +58,3 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
-

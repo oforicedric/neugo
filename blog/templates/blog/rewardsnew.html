@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
+{% load blog_tags %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html
@@ -61,6 +62,8 @@
     .owl-carousel .owl-item img {
       height: 121px !important;
       width: 100% !important;
+      border-top-right-radius: 50px;
+      border-top-left-radius: 50px;
   }
 
   .owl-carousel .owl-stage-outer {
@@ -358,6 +361,32 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- competitions -->
+        <div class="carouselling">
+          <div class="ribbon-heading ribbon-primary">Competitions</div>
+          <div class="owl-carousel owl-theme">
+            <!-- {% for competition in competitions %} -->
+              <div class="items">
+                <div class="competitions-card">
+                  <img src="/static/challenge1.png" class="leftimage">
+                  <div class="rightside">
+                    <h2 style="font-weight:500;">{{ competition.title }}</h2>
+                    <p style="font-weight:200;">{{ competition.message }} </p>
+                  </div>
+                  {% if competition|user_finished_competition:request.user %}
+                    <p>You finished this competition!</p>
+                  {% elif competition|user_joined_competition:request.user %}
+                    <p>You joined this competition.</p>
+                  {% else %}
+                    <a href="{% url "join_competition" pk=competition.pk %}" class="button btn-success">Join</a>
+                  {% endif %}
+                </div>
+              </div>
+            <!-- {% endfor %} -->
+          </div>
+
         </div>
       </div>
 

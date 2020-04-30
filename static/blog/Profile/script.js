@@ -1,11 +1,11 @@
 function showChart(user_activity, all_activity) {
-  var ctx = document.getElementById("myChart");
+  var ctx = document.getElementById("myChart").getContext('2d');;
   ctx.width = 100;
   ctx.height = 100;
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: graph_labels,
+      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       datasets: [
         {
           data: user_activity,

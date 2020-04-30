@@ -90,7 +90,6 @@ def compute_progress(request):
         )
     )
 
-
 @login_required
 def profile(request):
     from django.contrib.auth.models import User
@@ -111,10 +110,9 @@ def profile(request):
     request.session["graph_labels"] = generate_graph_labels()
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(
-            request.POST, request.FILES, instance=request.user.profile
-        )
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
+            print('I got here')
             u_form.save()
             p_form.save()
             messages.success(request, f"Your account has been updated!")
@@ -134,8 +132,6 @@ def profile(request):
     for competition in competitions:
         for participant in competition.competitionparticipant_set.all():
             result = participant.fulfill_competition_conditions()
-
-            print(result)
 
     return render(request, "users/profilefinal.html", context)
 
