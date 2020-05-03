@@ -167,7 +167,7 @@
     grid-template-columns: auto;
   }
   .profile__body {
-    top: 45vh;
+    top: 90vw;
   }
   .profile__header{
     margin-top: 20px;

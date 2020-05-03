@@ -19,6 +19,7 @@ body {
   position: relative;
   text-align: right;
   height: 500px;
+  margin-top: -75px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -118,13 +119,19 @@ svg circle {
   color: #ffff;
 }
 
+@media screen and (max-width: 1024px) {
+  .mapouter {
+    margin-top: -15px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #sessionbtn {
     width: 30vw;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 481px) {
   body {
     margin: 0;
   }
@@ -162,6 +169,10 @@ svg circle {
   #pausebtn {
     float: right;
     margin-right: 15%;
+  }
+
+  .mapouter {
+    margin-top: -15px;
   }
 }
 

@@ -268,5 +268,5 @@ def join_competition(request, pk):
             request.user.profile.save()
             return redirect('profile')
         else:
-            messages.info(request, "You don't have the required points to join competition")
+            messages.info(request, "You don't have the required points to join competition Please study more to increase your point")
             return redirect('blog-rewards')
