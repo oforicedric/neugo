@@ -48,9 +48,28 @@
       font-size: 10px;
     }
 
+    .filter {
+      margin-bottom: 30px;
+      width: 50vw;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-gap: 1rem;
+    }
+
+    .custom-select:focus {
+      border: 1px solid rgba(0,0,0,.26) !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
     @media (max-width: 768px) {
       .row [class*="col-"] {
         margin-top: 10%;
+      }
+
+      .filter {
+        width: 98%;
+        margin-top: 3.5rem;
       }
     }
     @media (max-width: 481px) {
@@ -69,11 +88,36 @@
         grid-template-columns: 68% 32%;
         grid-gap: 2%;
       }
+
+      .filter {
+        width: 95%;
+      }
     }
   </style>
 
   <script></script>
 </head>
+<!-- Filter -->
+<div class="filter">
+  <select class="custom-select">
+    <option selected disabled>Filter by University</option>
+    <option value="all">All</option>
+    <option value="UM">University of Manchester</option>
+    <option value="ICL">Imperial College London</option>
+    <option value="UL">University of Leeds</option>
+    <option value="UO">University of Oxford</option>
+  </select>
+  <select class="custom-select">
+    <option selected disabled>Filter by Degree</option>
+    <option value="all">All</option>
+    <option value="Physics">Physics</option>
+    <option value="Economics">Economics</option>
+    <option value="History">History</option>
+    <option value="Psychology">Psychology</option>
+  </select>
+</div>
+<!-- Filter end -->
+
 {% for event in events %} 
     {% if event.post is not None %} 
         {% with post=event.post %}
