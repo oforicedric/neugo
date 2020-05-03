@@ -17,6 +17,7 @@ from django.utils import timezone
 import time
 import pdb
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 @login_required
@@ -253,11 +254,19 @@ def create_comment(request, pk):
 
 @login_required
 def join_competition(request, pk):
+
     competition = Competition.objects.get(pk=pk)
+
     if not CompetitionParticipant.objects.filter(competition=competition, user=request.user).exists():
         competition_user = CompetitionParticipant()
         competition_user.competition = competition
         competition_user.user = request.user
-        competition_user.save()
-
-    return redirect('profile')
+        if competition_user.user.profile.wallet_points >= competition.points_required:
+            points_remaining = competition_user.user.profile.wallet_points - competition.points_required
+            request.user.profile.wallet_points = points_remaining
+            competition_user.save()
+            request.user.profile.save()
+            return redirect('profile')
+        else:
+            messages.info(request, "You don't have the required points to join competition")
+            return redirect('blog-rewards')

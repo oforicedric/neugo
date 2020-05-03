@@ -39,6 +39,8 @@ class RegistrationWizard(SessionWizardView):
         # return context
 
     def done(self, form_list, **kwargs):
+        if self.user.is_authenticated:
+            redirect('register_onboarding')
         form_list = list(form_list)
         # create user
         new_user = form_list[3].save()
@@ -112,7 +114,6 @@ def profile(request):
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
-            print('I got here')
             u_form.save()
             p_form.save()
             messages.success(request, f"Your account has been updated!")
@@ -122,9 +123,11 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
+    competitions = Competition.objects.all()
     context = {
         "u_form": u_form,
         "p_form": p_form,
+        "competitions": competitions,
     }
 
     return render(request, "users/profilefinal.html", context)

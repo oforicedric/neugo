@@ -311,7 +311,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="profile card">
           </div>
           <div class="profile__header-wrapper-description">
-            <div class="profile-card__name">{{ user.first_name }} {{ user.last_name }}</div>
+            <div class="profile-card__name">{{ user.profile.first_name }} {{ user.profile.last_name }}</div>
             <div class="profile-card__txt">{{ user.profile.subject }} student at
               <strong>{{ user.profile.university }}</strong></div>
           </div>
@@ -420,8 +420,8 @@
   <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
     integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
   <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
-
-  <!-- <script type="text/javascript" src="{% static 'blog/profile/scriptfarm.js' %}"></script>
+<!-- 
+  <script type="text/javascript" src="{% static 'blog/profile/scriptfarm.js' %}"></script>
   
   <script type="text/javascript" src="{% static 'blog/profile/onboardingfarm.js' %}"></script>
   
