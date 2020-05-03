@@ -122,4 +122,3 @@ class Event(models.Model):
     datetime_created = models.DateTimeField(auto_now_add=True)
     post = models.OneToOneField(Post, on_delete=models.CASCADE, blank=True, null=True)
     participant = models.OneToOneField(CompetitionParticipant, on_delete=models.CASCADE, blank=True, null=True)
-

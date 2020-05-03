@@ -133,27 +133,38 @@ def make_a_code(request):
 
 def purchase_rewards_100(request):
     profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 10
-    profile.save()
-
-    return home(request)
+    if profile.wallet_points >= 100:
+        profile.wallet_points = request.user.profile.wallet_points - 100
+        profile.save()
+        return home(request)
+    else:
+        messages.info(
+            request, "You need %i points to purchase this reward Please study more to increase your point" % 100)
+        return redirect('blog-rewards')
 
 
 def purchase_rewards_500(request):
     profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 50
-    profile.save()
-
-    return home(request)
+    if profile.wallet_points >= 500:
+        profile.wallet_points = request.user.profile.wallet_points - 500
+        profile.save()
+        return home(request)
+    else:
+        messages.info(
+            request, "You need %i points to purchase this reward Please study more to increase your point" % 500)
+        return redirect('blog-rewards')
 
 
 def purchase_rewards_50(request):
     profile = request.user.profile
-    profile.wallet_points = request.user.profile.wallet_points - 50
-    profile.save()
-
-    return home(request)
-
+    if profile.wallet_points >= 50:
+        profile.wallet_points = request.user.profile.wallet_points - 50
+        profile.save()
+        return home(request)
+    else:
+        messages.info(
+            request, "You need %i points to purchase this reward Please study more to increase your point" % 50)
+        return redirect('blog-rewards')
 
 def load_user_post_stats():
     posts = Post.objects().all()
