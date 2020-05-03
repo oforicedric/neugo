@@ -14,12 +14,16 @@
   <link rel="stylesheet"
     href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
     integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
+    rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+    
 
   <link rel="stylesheet" href="{% static 'blog/profile/profile.css' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="/static/neugoiphone.png">
@@ -47,15 +51,24 @@
   <title>Neugo</title>
   {% endif %}
   <style>
+    body {
+      font-family: 'Lato', sans-serif;
+    }
+    .navbar {
+      background: #2c99f1;
+    }
     .navbar .navbar-nav .nav-item {
       color: #212529;
-      padding: 13px;
     }
 
     .navbar .navbar-nav .nav-item:hover,
     .navbar .navbar-nav .nav-item:active,
     .navbar .navbar-nav .nav-item:focus {
       color: #2f3841;
+    }
+
+    .site-header .navbar-nav .nav-link {
+        color: #dcdcdc;
     }
 
     .left,
@@ -70,13 +83,26 @@
     }
 
     button.navbar-toggler {
-      background: #5B5C5E;
+      /* background: #5B5C5E; */
       color: #fff;
     }
 
     main {
       background-image: linear-gradient(#2296f3, #157ac6);
       height: 100vh;
+    }
+
+    .progress {
+      margin-top: -1.5rem;
+    }
+
+    .graph{
+      width: 74vw;
+      margin: 4rem auto;
+    }
+
+    #myChart {
+      width: 74vw !important;
     }
 
     @media (max-width: 768px) {
@@ -103,12 +129,31 @@
         top: 100%;
       }
 
+      .site-header .navbar-nav .nav-link {
+        color: #212529;
+      }
+
       .navbar .container .navbar-brand {
         margin-left: -5%;
       }
 
       .container .navbar-toggler {
-        margin-left: 40%;
+        margin-left: 35%;
+
+      }
+
+      .container .navbar-toggler svg{
+        height: 30px;
+        width: 30px;
+      } 
+
+      .graph{
+        width: 90vw;
+        margin: 2rem auto;
+      }
+    
+      #myChart {
+        width: 100% !important;
       }
     }
 
@@ -231,7 +276,7 @@
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
         aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
       </button>
       <div class="collapse navbar-collapse" id="navbarToggle">
         <ul class="navbar-nav mr-auto left">
@@ -244,11 +289,11 @@
 
         <ul class="navbar-nav right pull-right">
           {% if user.is_authenticated %}
-          <li class=”nav-item”><a class="nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
-          <li class=”nav-item”><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
+          <li class="nav-item profile"><a class="nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
           {% else %}
-          <li class=”nav-item”><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
-          <li class=”nav-item”><a class="nav-link" href="{% url 'register' %}">Register &#x1F44B</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register &#x1F44B</a></li>
           {% endif %}
         </ul>
       </div>
@@ -256,8 +301,8 @@
   </nav>
 </header>
 <body class="bod">
-  <script type="text/javascript" src="{% static 'blog/Onboarding/onboarding.js' %}"></script>
-  <!-- <script type="text/javascript" src="{% static 'blog/profile/script.js' %}"></script> -->
+  <!-- <script type="text/javascript" src="{% static 'blog/Onboarding/onboarding.js' %}"></script> -->
+  <script type="text/javascript" src="{% static 'blog/profile/script.js' %}"></script>
   <main role="main">
     <div class="profile__header">
       <div class="profile__header-wrapper">
@@ -314,7 +359,7 @@
       
 
         <!-- chart -->
-        <div>
+        <div class="graph">
           <!-- <div id="chart" style="width:500px; height:250px;float:left; margin:0 auto;"></div> -->
           <canvas id="myChart" width="400" height="400"></canvas>
           <script>
@@ -322,9 +367,6 @@
             var all_activity = '{{ request.session.all_users_study_activity| safe }}';
             var graph_labels = JSON.parse('{{ request.session.graph_labels| safe }}');
 
-            console.log(user_activity, 'user')
-            console.log(all_activity, 'all')
-            console.log(graph_labels, 'graph')
             showChart(user_activity, all_activity, graph_labels);
 
           </script>

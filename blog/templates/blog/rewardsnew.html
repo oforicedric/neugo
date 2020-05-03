@@ -106,6 +106,33 @@
         <div data-toggle="gridalicious" data-width="200">
         </div>
         
+        <!-- competitions -->
+        
+        <div class="carouselling">
+          <div class="ribbon-heading ribbon-primary">Competitions</div>
+          <div class="owl-carousel owl-theme">
+            {% for competition in competitions %}
+            <div class="item">
+              <div class="card competition-card">
+                <img src="/static/challenge1.png" class="leftimage">
+                <div class="card-body">
+                  <div class="rightside">
+                    <h2 class="card-title">{{ competition.title }}</h2>
+                    <p class="card-text">{{ competition.message }} </p>
+                  </div>
+                  {% if competition|user_finished_competition:request.user %}
+                  <p>You finished this competition!</p>
+                  {% elif competition|user_joined_competition:request.user %}
+                  <p class="card-text">You joined this competition.</p>
+                  {% else %}
+                  <a href="{% url "join_competition" pk=competition.pk %}" class="btn button btn-success">Join</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
         
         <div class="carouselling">
           <div class="ribbon-heading ribbon-primary">Food</div>
@@ -369,33 +396,6 @@
           </div>
         </div>
 
-        <!-- competitions -->
-
-        <div class="carouselling">
-          <div class="ribbon-heading ribbon-primary">Competitions</div>
-          <div class="owl-carousel owl-theme">
-            {% for competition in competitions %}
-              <div class="item">
-                <div class="card competition-card">
-                  <img src="/static/challenge1.png" class="leftimage">
-                  <div class="card-body">
-                    <div class="rightside">
-                      <h2 class="card-title">{{ competition.title }}</h2>
-                      <p class="card-text">{{ competition.message }} </p>
-                    </div>
-                    {% if competition|user_finished_competition:request.user %}
-                      <p>You finished this competition!</p>
-                    {% elif competition|user_joined_competition:request.user %}
-                      <p class="card-text">You joined this competition.</p>
-                    {% else %}
-                      <a href="{% url "join_competition" pk=competition.pk %}" class="btn button btn-success">Join</a>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
     </div>
 
       {% include "blog/bottom_nav.html" %}

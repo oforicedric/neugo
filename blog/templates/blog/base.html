@@ -11,7 +11,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" 
     integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
@@ -43,6 +42,10 @@
     {% endif %}
 <style>
 
+body{
+    font-family: 'Lato', sans-serif;
+}
+
 .navbar .navbar-nav .nav-item{
     color: #212529;
     padding: 13px;
@@ -63,8 +66,7 @@
 }
 
 button.navbar-toggler{
-    background:	#5B5C5E;
-    color: #fff;
+    color: #5B5C5E;
 }
 
 @media (max-width: 768px){
@@ -81,6 +83,7 @@ button.navbar-toggler{
     #rows {
         margin-top: 20%;
     }
+
   #navbarToggle {
     position: absolute;
     background: #dcdcdc;
@@ -95,6 +98,11 @@ button.navbar-toggler{
    .container .navbar-toggler {
     margin-left: 40%;
   }
+
+  .container .navbar-toggler svg{
+    height: 30px;
+    width: 30px;
+    } 
 }
 
 
@@ -215,7 +223,10 @@ button.navbar-toggler{
                 </div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false">
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+                d="M4 7h22M4 15h22M4 23h22"></path>
+        </svg>
           </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <ul class="navbar-nav mr-auto left">
@@ -228,7 +239,7 @@ button.navbar-toggler{
 
                     <ul class="navbar-nav right pull-right">
                         {% if user.is_authenticated %}
-                        <li class=”nav-item”><a class="nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
+                        <li class="nav-item profile"><a class="nav-link profile" href="{% url 'profile' %}">Profile &#x1F392</a></li>
                         <li class=”nav-item”><a class="nav-link" href="{% url 'logout' %}">Logout &#x1F6AA</a></li>
                         {% else %}
                         <li class=”nav-item”><a class="nav-link" href="{% url 'login' %}">Login &#x1F6AA</a></li>
