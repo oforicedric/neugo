@@ -14,6 +14,7 @@ def register(request):
 
 
 class RegistrationWizard(SessionWizardView):
+        #     return redirect('/rewards/purchase_rewards/go_home/')
     template_name = "users/register.html"
     form_list = [OnboardingNameForm, OnboardingUniversityForm,
                  OnboardingSubjectForm, UserRegisterForm]
@@ -39,8 +40,6 @@ class RegistrationWizard(SessionWizardView):
         # return context
 
     def done(self, form_list, **kwargs):
-        if self.user.is_authenticated:
-            redirect('register_onboarding')
         form_list = list(form_list)
         # create user
         new_user = form_list[3].save()
