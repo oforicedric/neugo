@@ -1,0 +1,69 @@
+body {
+  background: white !important;
+}
+
+.register-row {
+  padding-top: 5px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.landings {
+  font-size: 22px;
+}
+
+.register-row p {
+  margin-left: 15px;
+}
+
+.authentication {
+  box-shadow: 0 0 17px #cdcdcd;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.login {
+  padding: 20px 0;
+}
+
+.custom-file-control:invalid, .form-control:invalid, .custom-file-control:read-only, .form-control:read-only {
+    background-image: none !important;
+}
+
+.login legend {
+  text-align: center;
+  padding-bottom: 16px;
+  font-weight: 400;
+}
+
+.steps {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.steps__text{
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.register-buttons{
+  display:grid;
+  grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
+  grid-gap: 10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .register-buttons{
+    grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+  }
+}
+
+@media (max-width: 481px) {
+  .authentication{
+     box-shadow: none;
+  }
+}
