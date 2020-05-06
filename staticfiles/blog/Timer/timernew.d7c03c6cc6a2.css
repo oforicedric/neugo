@@ -1,0 +1,197 @@
+body {
+  color: #333333;
+  margin-top: 5rem;
+}
+
+#countdown_number {
+  top: 43.5%;
+  left: 22.5%;
+  text-align: center;
+  font-size: 25px;
+  position: absolute;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #212121;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 500px;
+  margin-top: -75px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gmap_canvas {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: none !important;
+  height: 500px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg {
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 0; */
+  height: 190px;
+  /* transform: rotateY(-180deg) rotateZ(-90deg); */
+}
+
+svg circle {
+  stroke-dasharray: 505px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 10px;
+  stroke: #1976d2;
+  fill: none;
+  animation: countdown 900s linear infinite forwards;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 505px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 500px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    margin: 2rem;
+  }
+  .bod {
+    margin: 0;
+  }
+  #countdown {
+    margin-top: 40%;
+    margin-left: auto;
+  }
+
+  #countdown_number {
+    margin-left: auto;
+  }
+
+  #finishbtn {
+    margin-left: 0%;
+  }
+
+  #pausebtn {
+    float: right;
+    margin-right: 15%;
+  }
+}
+
+#timerform {
+  margin-top: 6%;
+}
+#timerpara {
+  font-size: 33px;
+  text-align: center;
+}
+
+#finishbtn {
+  margin-left: 0%;
+}
+
+#pausebtn {
+  float: right;
+}
+
+#sessionbtn {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  width: 20vw;
+  font-size: 16px;
+  color: #ffff;
+}
+
+@media screen and (max-width: 1024px) {
+  .mapouter {
+    margin-top: -15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #sessionbtn {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 481px) {
+  body {
+    margin: 0;
+  }
+  #countdown {
+    margin-top: 40%;
+    margin-left: auto;
+  }
+  #countdown_number {
+    margin-left: auto;
+  }
+
+  #sessionlength * {
+    margin-top: 5%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  #timerpara {
+    margin-top: 4%;
+    font-size: 30px;
+    color: #212529d6;
+    margin-left: -3%;
+    line-height: 1.42857143;
+  }
+
+  #sessionbtn {
+    margin: 0 auto;
+    width: 55vw;
+  }
+
+  #finishbtn {
+    margin-left: 2%;
+  }
+
+  #pausebtn {
+    float: right;
+    margin-right: 15%;
+  }
+
+  .mapouter {
+    margin-top: -15px;
+  }
+}
+
+/*comment box */
+
+.commentBox {
+  border-radius: 3px;
+  border-width: 0;
+  box-shadow: 0px 0px 2px 0px;
+  line-height: 1;
+  padding: 2px 20px 35px 2px;
+  line-height: 1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  width: 50%;
+  height: 100px;
+}
+
+#fin_comment {
+  font-size: 23px;
+  margin-top: 1%;
+}
