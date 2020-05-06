@@ -60,10 +60,15 @@ body {
   .register-buttons{
     grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
   }
+
+  .authentication{
+     margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 481px) {
   .authentication{
      box-shadow: none;
+     margin-bottom: 80px;
   }
 }
