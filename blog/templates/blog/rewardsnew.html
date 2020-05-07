@@ -128,7 +128,7 @@
                   {% elif competition|user_joined_competition:request.user %}
                   <p class="card-text">You joined this competition.</p>
                   {% else %}
-                  <a href="{% url 'join_competition pk=competition.pk' %}" class="btn button btn-success">Join</a>
+                  <a href="{% url "join_competition" pk=competition.pk %}" class="btn button btn-success">Join</a>
                   {% endif %}
                 </div>
               </div>
