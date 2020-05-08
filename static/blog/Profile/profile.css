@@ -202,4 +202,8 @@
   .awards__wrapper h4 {
     font-size: 1.5rem;
   }
+
+  .progress-parent-wrapper {
+      margin-bottom: 100px;
+    }
 }

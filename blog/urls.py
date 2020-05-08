@@ -36,8 +36,4 @@ urlpatterns = [
     path('ajax/post/<int:pk>/create/comment/', views.create_comment, name='create_comment'),
     path('tutorial/', views.tutorial, name='tutorial'),
     path('join-competition/<int:pk>/', views.join_competition, name='join_competition')
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

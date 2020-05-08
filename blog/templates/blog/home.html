@@ -142,7 +142,7 @@
                     </div>
                     <div class="article-metadata">
                         <p style="font-weight: 600;" class="text-muted">
-                            {{ post.author }}
+                            {{ post.author.user.profile.first_name }} {{ post.author.user.profile.last_name }}
                         </p>
                         <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                     </div>

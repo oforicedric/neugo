@@ -2,7 +2,6 @@ import random
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
-from blog.models import Post
 
 UNIVERSITIES = (
     ("UM", "University of Manchester"),
