@@ -6627,7 +6627,7 @@ ul.icon-list.icon-list-block li:not(:last-of-type) {
   margin-right: 5px;
 }
 .label {
-  padding: 5px 10px;
+  padding: 5px 1px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 4px;
