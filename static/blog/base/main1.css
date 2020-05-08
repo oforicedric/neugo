@@ -99,7 +99,7 @@ a.article-title:hover {
 .article-content {
     white-space: pre-line;
     color: #424242;
-    font-family: number;
+    font-family: comment;
 }
 
 .article-img {
