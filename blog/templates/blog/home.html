@@ -102,9 +102,9 @@
   <script></script>
 </head>
 
-<p style="font-weight: 600; font-size: 20px;margin-bottom:-8%;" class="article-content">
-                               Use the study tab to start engaging with your peers and earning points.
-                            </p>
+<p style="font-weight: 600; font-size: 20px;margin-bottom:1.5rem;" class="article-content">
+  Use the study tab to start engaging with your peers and earning points.
+</p>
 <!-- Filter -->
 
 <div class="filter">
@@ -118,7 +118,7 @@
     <option value="UL">University of Leeds</option>
     <option value="UO">University of Oxford</option>
   </select>
-  <select class="custom-select">
+  <select class="custom-select" onchange="filterBySubject">
     <option selected disabled>Degree Filter not available yet</option>
     <option value="all">All</option>
     <option value="Physics">Physics</option>
@@ -129,6 +129,7 @@
 
 </div>
 <!-- Filter end -->
+
 {% for event in events %} 
     {% if event.post is not None %} 
         {% with post=event.post %}
@@ -142,7 +143,9 @@
                     </div>
                     <div class="article-metadata">
                         <p style="font-weight: 600;" class="text-muted">
-                            {{ post.author.user.profile.first_name }} {{ post.author.user.profile.last_name }}
+                            {{ post.author.profile.first_name }} {{ post.author.profile.last_name }}
+                        <p style="font-weight: 600;" class="text-muted">
+                         {{ post.author.profile.subject}} - {{ post.author.profile.university}}
                         </p>
                         <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
                     </div>

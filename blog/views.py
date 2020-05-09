@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
+from django.core.serializers import serialize
 from django.views.generic import (
     ListView,
     DetailView,
@@ -13,6 +14,7 @@ from django.views.generic import (
     DeleteView,
 )
 from .models import Post, PostLike, PostComment, Competition, CompetitionParticipant, Event
+from users.models import Profile
 from django.utils import timezone
 import time
 import pdb
