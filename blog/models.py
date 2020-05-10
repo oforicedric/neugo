@@ -15,7 +15,7 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     user_description = models.CharField(
-        default="", max_length=40
+        default="", max_length=400
     )
 
     def __str__(self):
