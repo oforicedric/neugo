@@ -997,7 +997,7 @@
  @font-face {
   font-family: "montserrat";
   
-  src: url('/static/fonts/montserrat.ttf'); }
+  src: url('/static/fonts/montserrat.otf'); }
 
 /** Ultra Light */
 @font-face {
