@@ -56,15 +56,15 @@ ul {
 /*fonts for feed */
 @font-face {
     font-family: 'Comment'; /*a name to be used later*/
-    src: url('/static/fonts/Urania-Bold.ttf'); /*URL to font*/
+    src: url("/static/fonts/Urania-Bold.48b22c5bad0a.ttf"); /*URL to font*/
 }
 @font-face {
     font-family: 'pointsdiv'; /*a name to be used later*/
-    src: url('/static/fonts/Typold.otf'); /*URL to font*/
+    src: url("/static/fonts/Typold.d3b7e9816012.otf"); /*URL to font*/
 }
 @font-face {
     font-family: 'number'; /*a name to be used later*/
-    src: url('/static/fonts/Publica.otf'); /*URL to font*/
+    src: url("/static/fonts/Publica.d3f0cf98374a.otf"); /*URL to font*/
 }
 
 .content-section {
